@@ -3,6 +3,8 @@ import QtQuick 2.0
 Item {
     SystemPalette { id: systemPalette }
 
+    property color backgroundColor  : "#E1E4FA"
+
     property color textColor        : "black"
 
     property color colorWhenDefault : "#586A8C"

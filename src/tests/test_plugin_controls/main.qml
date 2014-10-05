@@ -7,6 +7,9 @@ Window {
     visible : true
     width   : 360
     height  : 360
+    color   : style.backgroundColor
+
+    Style { id: style }
 
     property real __labelsWidth : 30
 
@@ -44,7 +47,8 @@ Window {
                 verticalAlignment   : Text.AlignVCenter
             }
             Button {
-                Component.onCompleted: __labelsWidth = Math.max(__labelsWidth, width)
+                checkable               : false
+                Component.onCompleted   : __labelsWidth = Math.max(__labelsWidth, width)
             }
         }
 

@@ -17,7 +17,7 @@ Checkable {
 
     width       : txt.paintedWidth + 20
     height      : txt.paintedHeight + 20
-    checkable   : true
+    checkable   : false
 
     Rectangle {
         id          : rectangle
@@ -58,6 +58,5 @@ Checkable {
             when: disabled
             PropertyChanges { target: rectangle; color: colorWhenDisabled }
         }
-
     ]
 }
