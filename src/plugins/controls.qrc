@@ -1,0 +1,7 @@
+<RCC>
+<qresource prefix="/com/armax/controls">
+<file alias="Style.qml">Style.qml</file>
+<file alias="CheckBox.qml">CheckBox.qml</file>
+<file alias="Button.qml">Button.qml</file>
+</qresource>
+</RCC>
