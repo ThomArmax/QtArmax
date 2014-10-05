@@ -5,9 +5,9 @@ Item {
 
     property color textColor        : "black"
 
-    property color colorWhenDefault : "#537EBF"
-    property color colorWhenPressed : "#37547F"
-    property color colorWhenHovered : "#37547F"
-    property color colorWhenChecked : "#6497E5"
-    property color colorWhenDisabled: "#1C2A40"
+    property color colorWhenDefault : "#586A8C"
+    property color colorWhenPressed : "#283059"
+    property color colorWhenHovered : "#070226"
+    property color colorWhenChecked : "#A0C9D9"
+    property color colorWhenDisabled: "#E9F0F4"
 }
