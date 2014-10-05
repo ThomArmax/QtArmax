@@ -20,12 +20,14 @@ OTHER_FILES = \
     qmldir \
     CheckBox.qml \
     Style.qml \
-    Button.qml
+    Button.qml \
+    RadioButton.qml
 
 # QML files to be included in resources file
 QML_FILES = \
     Style.qml \
     CheckBox.qml \
+    RadioButton.qml \
     Button.qml
 
 GFX = \

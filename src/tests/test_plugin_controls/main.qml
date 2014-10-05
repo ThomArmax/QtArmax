@@ -39,12 +39,45 @@ Window {
             Text {
                 width               : parent.width - __labelsWidth - parent.spacing
                 height              : parent.height
-                text                : "CheckBox :"
+                text                : "Button :"
                 font.pointSize      : 14
                 verticalAlignment   : Text.AlignVCenter
             }
             Button {
                 Component.onCompleted: __labelsWidth = Math.max(__labelsWidth, width)
+            }
+        }
+
+        Row {
+            width   : parent.width
+            height  : implicitHeight
+            spacing : 10
+            Text {
+                width               : parent.width - __labelsWidth - parent.spacing
+                height              : parent.height
+                text                : "Checkable Button :"
+                font.pointSize      : 14
+                verticalAlignment   : Text.AlignVCenter
+            }
+            Button {
+                checkable               : true
+                Component.onCompleted   : __labelsWidth = Math.max(__labelsWidth, width)
+            }
+        }
+
+        Row {
+            width   : parent.width
+            height  : implicitHeight
+            spacing : 10
+            Text {
+                width               : parent.width - __labelsWidth - parent.spacing
+                height              : parent.height
+                text                : "RadioButton :"
+                font.pointSize      : 14
+                verticalAlignment   : Text.AlignVCenter
+            }
+            RadioButton {
+                Component.onCompleted   : __labelsWidth = Math.max(__labelsWidth, width)
             }
         }
     }

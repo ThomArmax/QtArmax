@@ -8,9 +8,10 @@ static const struct {
     const char *type;
     int major, minor;
 } qmldir [] = {
-    { "CheckBox", 1, 0 },
-    { "Button"  , 1, 0 },
-    { "Style"   , 1, 0 }
+    { "CheckBox"    , 1, 0 },
+    { "RadioButton" , 1, 0 },
+    { "Button"      , 1, 0 },
+    { "Style"       , 1, 0 }
 };
 
 static void initResources()
