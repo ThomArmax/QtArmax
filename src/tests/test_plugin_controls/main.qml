@@ -47,7 +47,7 @@ Window {
                 verticalAlignment   : Text.AlignVCenter
             }
             Button {
-                checkable               : false
+                hoverEnabled            : true
                 Component.onCompleted   : __labelsWidth = Math.max(__labelsWidth, width)
             }
         }

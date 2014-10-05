@@ -40,7 +40,7 @@ Checkable {
         },
         State {
             name: "hovered"
-            when: containsMouse
+            when: hovered
             PropertyChanges { target: rectangle; color: colorWhenHovered }
         },
         State {

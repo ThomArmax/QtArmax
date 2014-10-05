@@ -7,7 +7,7 @@ Checkable::Checkable(QQuickItem *parent):
     m_hoverEnabled  (false),
     m_pressed       (false),
     m_checked       (false),
-    m_containsMouse (false)
+    m_hovered       (false)
 {
     setAcceptHoverEvents(m_hoverEnabled);
     setAcceptedMouseButtons(Qt::LeftButton);
@@ -18,15 +18,6 @@ Checkable::Checkable(QQuickItem *parent):
  */
 Checkable::~Checkable()
 {
-}
-
-void Checkable::mouseMoveEvent(QMouseEvent *event)
-{
-    qDebug() << Q_FUNC_INFO;
-    if(m_hoverEnabled)
-    {
-        setContainsMouse(boundingRect().contains(event->globalPos()));
-    }
 }
 
 void Checkable::mousePressEvent(QMouseEvent *event)
@@ -59,18 +50,14 @@ void Checkable::mouseReleaseEvent(QMouseEvent *event)
     emit released();
 }
 
-/**
- * @brief Sets the containsMouse property
- * The signal containsMouseChanged() is emitted if the property changed
- * @param contains
- */
-void Checkable::setContainsMouse(const bool containsMouse)
+void Checkable::hoverEnterEvent(QHoverEvent */*event*/)
 {
-    if(m_hoverEnabled && m_containsMouse != containsMouse)
-    {
-        m_containsMouse = containsMouse;
-        emit containsMouseChanged(containsMouse);
-    }
+    setHovered( m_hoverEnabled );
+}
+
+void Checkable::hoverLeaveEvent(QHoverEvent */*event*/)
+{
+    setHovered(false);
 }
 
 void Checkable::setHoverEnabled(const bool enabled)
@@ -78,9 +65,19 @@ void Checkable::setHoverEnabled(const bool enabled)
     if(m_hoverEnabled != enabled)
     {
         m_hoverEnabled = enabled;
-        setContainsMouse(false);
+        setHovered(false);
         setAcceptHoverEvents(enabled);
         emit hoverEnabledChanged(enabled);
+    }
+}
+
+void Checkable::setHovered(const bool hovered)
+{
+    bool newHovered = hovered && m_hoverEnabled;
+    if(m_hovered != newHovered)
+    {
+        m_hovered = newHovered;
+        emit hoveredChanged(m_hovered);
     }
 }
 
