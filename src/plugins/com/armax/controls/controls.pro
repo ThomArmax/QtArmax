@@ -3,7 +3,7 @@ TARGET = controls
 QT += qml quick
 CONFIG += qt plugin
 
-TARGET = $$qtLibraryTarget($$TARGET)
+#TARGET = $$qtLibraryTarget($$TARGET)
 TARGETPATH = ../../../imports
 uri = com.armax.controls
 
