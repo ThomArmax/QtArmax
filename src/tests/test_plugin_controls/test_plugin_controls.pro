@@ -2,11 +2,13 @@ TEMPLATE = app
 
 QT += qml quick
 
+TARGET  = test_plugin_controls
+
 SOURCES += main.cpp
 
 RESOURCES += qml.qrc
 
-DESTDIR = ../../tests
+DESTDIR = $$absolute_path(../../../tests)
 
 # Default rules for deployment.
 include(deployment.pri)
