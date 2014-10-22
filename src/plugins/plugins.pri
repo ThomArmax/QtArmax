@@ -35,7 +35,6 @@ TARGETPATH = $$QML_IMPORT_PATH/$$URI_TO_PATH
         relativepath_in = $$relative_path($$resourcefileabsolutepath, $$_PRO_FILE_PWD_)
         relativepath_out = $$relative_path($$resourcefileabsolutepath, $$OUT_PWD)
         RESOURCE_CONTENT += "<file alias=\"$$relativepath_in\">$$relativepath_out</file>"
-
 #        message("plugins.pri: generating qrc file for " $$resourcefile " ==> " $$resourcefileabsolutepath)
 #        message("          relativepath_in ==> " $$relativepath_in)
 #        message("          relativepath_out ==> " $$relativepath_out)
@@ -69,7 +68,7 @@ contains(QT_CONFIG, reduce_exports):CONFIG += hide_symbols
 wince*:LIBS += $$QMAKE_LIBS_GUI
 
 # Create qmltypes file
-system(qmlplugindump $$uri 1.0 $$absolute_path($${_PRO_FILE_PWD_}) > $$absolute_path($${OUT_PWD}/$${TARGET}.qmltypes))
+QMAKE_POST_LINK += qmlplugindump $$uri 1.0 $$absolute_path($${_PRO_FILE_PWD_}) > $$absolute_path($${DESTDIR}/$${TARGET}.qmltypes)
 
 #message("plugins.pri: " $$TARGET ": DESTDIR = " $$DESTDIR)
 #message("plugins.pri: " $$TARGET ": URI_TO_PATH = " $$URI_TO_PATH)
