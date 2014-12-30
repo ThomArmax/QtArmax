@@ -7,12 +7,15 @@ include(../common.pri)
 
 DESTDIR = $$PWD/../../usr/lib/QtArmax
 
-PUBLIC_HEADERS += \
+DATA_MODELS_HEADERS = \
     datamodels/abstractlistitem.h \
     datamodels/abstractqueue.h \
     datamodels/fifo.h \
     datamodels/lifo.h \
     datamodels/listmodel.h
+
+PUBLIC_HEADERS += \
+    $$DATA_MODELS_HEADERS
 
 HEADERS += \
     $$PUBLIC_HEADERS
@@ -29,7 +32,8 @@ OTHER_FILES += \
 
 unix {
     target.path = /usr/lib/QtArmax
-    public_headers.path = /usr/include/QtArmax
-    public_headers.files = $$PUBLIC_HEADERS
-    INSTALLS += target public_headers
+    headers_dir = /usr/include/QtArmax-$$VERSION/
+    datamodels_headers.path = $$headers_dir/datamodels
+    datamodels_headers.files = $$DATA_MODELS_HEADERS
+    INSTALLS += target datamodels_headers
 }
