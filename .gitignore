@@ -2,3 +2,4 @@ build*
 imports
 tests
 *.pro.*user*
+usr/*

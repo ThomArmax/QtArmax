@@ -8,8 +8,9 @@ CONFIG += ordered
 
 TEMPLATE = subdirs
 SUBDIRS  += \
-        plugins     \
-        tests
+        core    \
+        plugins \
+        tests \
 
 OTHER_FILES += \
     common.pri
