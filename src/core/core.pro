@@ -3,19 +3,19 @@ TEMPLATE = lib
 
 DEFINES += QT_ARMAX_CORE
 
-unix {
-    target.path = /usr/lib
-    INSTALLS += target
-}
+include(../common.pri)
 
-DESTDIR = $$PWD/../../usr/lib
-message(DESTDIR $$DESTDIR)
-HEADERS += \
+DESTDIR = $$PWD/../../usr/lib/QtArmax
+
+PUBLIC_HEADERS += \
     datamodels/abstractlistitem.h \
     datamodels/abstractqueue.h \
     datamodels/fifo.h \
     datamodels/lifo.h \
     datamodels/listmodel.h
+
+HEADERS += \
+    $$PUBLIC_HEADERS
 
 SOURCES += \
     datamodels/abstractlistitem.cpp \
@@ -26,3 +26,10 @@ SOURCES += \
 
 OTHER_FILES += \
     core.pri
+
+unix {
+    target.path = /usr/lib/QtArmax
+    public_headers.path = /usr/include/QtArmax
+    public_headers.files = $$PUBLIC_HEADERS
+    INSTALLS += target public_headers
+}

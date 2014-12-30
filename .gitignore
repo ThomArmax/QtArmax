@@ -3,3 +3,4 @@ imports
 tests
 *.pro.*user*
 usr/*
+Makefile

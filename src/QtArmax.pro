@@ -4,13 +4,20 @@
 #
 #-------------------------------------------------
 
-CONFIG += ordered
+CONFIG += ordered no_make_tests
 
 TEMPLATE = subdirs
 SUBDIRS  += \
         core    \
-        plugins \
-        tests \
+        plugins
 
+contains(CONFIG, make_tests) {
+    message(Tests will be build)
+    SUBDIRS += tests
+}
+else {
+    message(Tests will not be build)
+    SUBDIRS -= tests
+}
 OTHER_FILES += \
     common.pri
