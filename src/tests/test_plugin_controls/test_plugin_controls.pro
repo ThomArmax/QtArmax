@@ -1,3 +1,5 @@
+include(../../common.pri)
+
 TEMPLATE = app
 
 QT += qml quick
@@ -12,4 +14,3 @@ DESTDIR = $$absolute_path(../../../tests)
 
 # Default rules for deployment.
 include(deployment.pri)
-include(../../common.pri)

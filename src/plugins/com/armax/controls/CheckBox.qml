@@ -35,7 +35,7 @@ Checkable {
             anchors.fill    : parent
             anchors.margins : base.radius > 0 ? 0.8*base.radius : 0.2*width
             radius          : 0.8*base.radius
-            Behavior on color { ColorAnimation { duration : 300 } }
+            Behavior on color { ColorAnimation { duration : 100 } }
         }
     }
 

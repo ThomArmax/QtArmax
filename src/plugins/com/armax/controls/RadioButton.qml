@@ -27,7 +27,7 @@ Checkable {
             anchors.fill    : parent
             anchors.margins : 0.2*parent.width
             radius          : width
-            Behavior on color { ColorAnimation { duration : 300 } }
+            Behavior on color { ColorAnimation { duration : 100 } }
         }
     }
 
@@ -44,6 +44,5 @@ Checkable {
             PropertyChanges { target: checkRectangle; color: colorWhenChecked }
             PropertyChanges { target: checkRectangle; border.color: Qt.darker(colorWhenChecked) }
         }
-
     ]
 }

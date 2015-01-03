@@ -1,7 +1,7 @@
 import QtQuick 2.2
 import QtQuick.Window 2.1
 
-import com.armax.controls 1.0
+import com.armax.controls 1.0 as Armax
 
 Window {
     visible : true
@@ -9,7 +9,7 @@ Window {
     height  : 360
     color   : style.backgroundColor
 
-    Style { id: style }
+    Armax.Style { id: style }
 
     property real __labelsWidth : 30
 
@@ -28,9 +28,10 @@ Window {
                 height              : parent.height
                 text                : "CheckBox :"
                 font.pointSize      : 14
+                color               : style.textColor
                 verticalAlignment   : Text.AlignVCenter
             }
-            CheckBox {
+            Armax.CheckBox {
                 Component.onCompleted: __labelsWidth = Math.max(__labelsWidth, width)
             }
         }
@@ -44,9 +45,10 @@ Window {
                 height              : parent.height
                 text                : "Button :"
                 font.pointSize      : 14
+                color               : style.textColor
                 verticalAlignment   : Text.AlignVCenter
             }
-            Button {
+            Armax.Button {
                 hoverEnabled            : true
                 Component.onCompleted   : __labelsWidth = Math.max(__labelsWidth, width)
             }
@@ -61,10 +63,30 @@ Window {
                 height              : parent.height
                 text                : "Checkable Button :"
                 font.pointSize      : 14
+                color               : style.textColor
                 verticalAlignment   : Text.AlignVCenter
             }
-            Button {
+            Armax.Button {
                 checkable               : true
+                Component.onCompleted   : __labelsWidth = Math.max(__labelsWidth, width)
+            }
+        }
+
+        Row {
+            width   : parent.width
+            height  : implicitHeight
+            spacing : 10
+            Text {
+                width               : parent.width - __labelsWidth - parent.spacing
+                height              : parent.height
+                text                : "Disabled Button :"
+                font.pointSize      : 14
+                color               : style.textColor
+                verticalAlignment   : Text.AlignVCenter
+            }
+            Armax.Button {
+                checkable               : true
+                enabled                 : false
                 Component.onCompleted   : __labelsWidth = Math.max(__labelsWidth, width)
             }
         }
@@ -78,9 +100,10 @@ Window {
                 height              : parent.height
                 text                : "RadioButton :"
                 font.pointSize      : 14
+                color               : style.textColor
                 verticalAlignment   : Text.AlignVCenter
             }
-            RadioButton {
+            Armax.RadioButton {
                 Component.onCompleted   : __labelsWidth = Math.max(__labelsWidth, width)
             }
         }
