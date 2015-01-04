@@ -23,6 +23,7 @@ Checkable::~Checkable()
 void Checkable::mousePressEvent(QMouseEvent *event)
 {
     Q_UNUSED(event)
+    setHovered(false);
     setPressed(true);
     emit pressed();
 }
@@ -46,6 +47,9 @@ void Checkable::mouseReleaseEvent(QMouseEvent *event)
     }
 
     setPressed(false);
+
+    if(contains(event->localPos()))
+        setHovered(true);
 
     emit released();
 }
