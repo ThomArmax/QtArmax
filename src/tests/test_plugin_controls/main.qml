@@ -27,7 +27,7 @@ Window {
                 width               : parent.width - __labelsWidth - parent.spacing
                 height              : parent.height
                 text                : "CheckBox :"
-                font.pointSize      : 14
+                font.pointSize      : style.defaultFontSize
                 color               : style.textColor
                 verticalAlignment   : Text.AlignVCenter
             }
@@ -44,7 +44,25 @@ Window {
                 width               : parent.width - __labelsWidth - parent.spacing
                 height              : parent.height
                 text                : "Button :"
-                font.pointSize      : 14
+                font.pointSize      : style.defaultFontSize
+                color               : style.textColor
+                verticalAlignment   : Text.AlignVCenter
+            }
+            Armax.Button {
+                hoverEnabled            : false
+                Component.onCompleted   : __labelsWidth = Math.max(__labelsWidth, width)
+            }
+        }
+
+        Row {
+            width   : parent.width
+            height  : implicitHeight
+            spacing : 10
+            Text {
+                width               : parent.width - __labelsWidth - parent.spacing
+                height              : parent.height
+                text                : "Button Hoverable :"
+                font.pointSize      : style.defaultFontSize
                 color               : style.textColor
                 verticalAlignment   : Text.AlignVCenter
             }
@@ -62,7 +80,7 @@ Window {
                 width               : parent.width - __labelsWidth - parent.spacing
                 height              : parent.height
                 text                : "Checkable Button :"
-                font.pointSize      : 14
+                font.pointSize      : style.defaultFontSize
                 color               : style.textColor
                 verticalAlignment   : Text.AlignVCenter
             }
@@ -80,7 +98,7 @@ Window {
                 width               : parent.width - __labelsWidth - parent.spacing
                 height              : parent.height
                 text                : "Disabled Button :"
-                font.pointSize      : 14
+                font.pointSize      : style.defaultFontSize
                 color               : style.textColor
                 verticalAlignment   : Text.AlignVCenter
             }
@@ -99,7 +117,7 @@ Window {
                 width               : parent.width - __labelsWidth - parent.spacing
                 height              : parent.height
                 text                : "RadioButton :"
-                font.pointSize      : 14
+                font.pointSize      : style.defaultFontSize
                 color               : style.textColor
                 verticalAlignment   : Text.AlignVCenter
             }
