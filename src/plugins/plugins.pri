@@ -67,14 +67,16 @@ contains(QT_CONFIG, reduce_exports):CONFIG += hide_symbols
 
 wince*:LIBS += $$QMAKE_LIBS_GUI
 
-# Create qmltypes file
-QMLTYPESFILE.files = $$absolute_path($${DESTDIR}/$${TARGET}.qmltypes)
-QMAKE_POST_LINK += $$[QT_INSTALL_PREFIX]/bin/qmlplugindump $$uri 1.0 $$absolute_path($${_PRO_FILE_PWD_}) > $$absolute_path($${DESTDIR}/$${TARGET}.qmltypes)
-unix {
-    installPath = $$[QT_INSTALL_QML]/$$replace(uri, \\., /)
-    QMLTYPESFILE.path = $$installPath
-    INSTALLS += QMLTYPESFILE
-}
+installPath = $$[QT_INSTALL_QML]/$$replace(uri, \\., /)
+target.target = $$TARGET
+target.path = $$installPath
+qmldir.target = qmldir
+qmldir.path = $$installPath
+qmltypes.path = $$installPath
+qmltypes.target = qmltypes
+qmltypes.commands = $$[QT_INSTALL_BINS]/qmlplugindump -nonrelocatable $$uri 1.0 > $$installPath/$${TARGET}.qmltypes
+
+INSTALLS += target qmldir qmltypes
 
 #message("plugins.pri: " $$TARGET ": DESTDIR = " $$DESTDIR)
 #message("plugins.pri: " $$TARGET ": URI_TO_PATH = " $$URI_TO_PATH)

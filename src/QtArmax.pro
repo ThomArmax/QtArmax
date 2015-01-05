@@ -11,6 +11,8 @@ SUBDIRS  += \
         core    \
         plugins
 
+message("QML Plugins will be installed in $$[QT_INSTALL_QML]")
+
 contains(CONFIG, make_tests) {
     message(Tests will be build)
     SUBDIRS += tests
