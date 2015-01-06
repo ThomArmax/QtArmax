@@ -14,7 +14,7 @@ The libraries part provides native C++/Qt addons for Qt5 and tooling functions.
 ### QML plugins
 The QML plugins provided by QtArmax are mainly designed for embedded systems.
 
-* **com.armax.controls** which provide graphicals controls (buttons, checkbox, radio buttons ...)
+* **com.armax.controls** which provides graphicals controls (buttons, checkbox, radio buttons ...)
 * **com.armax.datamodels** which is a _link_ between the QtArmaxCore datamodels part for the QML side.
 * **com.armax.dialogs** will provide dialogs for QML applications (popup, alert message, informations, file browser ...)
 
