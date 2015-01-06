@@ -81,7 +81,7 @@ qmltypes.commands = $${QML_DUMP} -nonrelocatable $$uri 1.0 > $$installPath/$${TA
 qmltypes.commands = $${QML_DUMP} -nonrelocatable $$uri 1.0 $$QML_PLUGINS_PREFIX > $$installPath/$${TARGET}.qmltypes
 }
 QMAKE_POST_LINK += $${QML_DUMP} -nonrelocatable $$uri 1.0 $$QML_IMPORT_PATH > $$absolute_path($${DESTDIR}/$${TARGET}.qmltypes)
-message(Qml plugin $$uri will be install in $$installPath)
+message(Qml plugin $$uri will be installed in $$installPath)
 
 INSTALLS += target qmldir qmltypes
 

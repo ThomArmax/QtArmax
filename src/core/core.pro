@@ -31,8 +31,8 @@ OTHER_FILES += \
     core.pri
 
 unix {
-    target.path = /usr/lib/QtArmax
-    headers_dir = /usr/include/QtArmax-$$VERSION/
+    target.path = $$LIB_DIR
+    headers_dir = $$INC_DIR
     datamodels_headers.path = $$headers_dir/datamodels
     datamodels_headers.files = $$DATA_MODELS_HEADERS
     INSTALLS += target datamodels_headers

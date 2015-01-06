@@ -7,8 +7,9 @@
  * @param parent : the parent object
  */
 ListModel::ListModel(QObject *parent) : QAbstractItemModel(parent),
-    m_maxSize(-1),
-    m_selectedIndex(-1),
+    m_prototype         (NULL),
+    m_maxSize           (-1),
+    m_selectedIndex     (-1),
     m_hasObjectOwnership(true)
 {
 
@@ -20,9 +21,9 @@ ListModel::ListModel(QObject *parent) : QAbstractItemModel(parent),
  * @param parent : the parent object
  */
 ListModel::ListModel(AbstractListItem* prototype, QObject *parent) : QAbstractItemModel(parent),
-    m_prototype(prototype),
-    m_maxSize(-1),
-    m_selectedIndex(-1),
+    m_prototype         (prototype),
+    m_maxSize           (-1),
+    m_selectedIndex     (-1),
     m_hasObjectOwnership(true)
 {
     m_rolesNames = m_prototype->roleNames();
@@ -33,7 +34,8 @@ ListModel::ListModel(AbstractListItem* prototype, QObject *parent) : QAbstractIt
  */
 ListModel::~ListModel()
 {
-    delete m_prototype;
+    if(m_prototype)
+        delete m_prototype;
     clear();
 }
 
@@ -85,7 +87,6 @@ bool ListModel::moveRow(const int from, const int to)
         if(from == to)
             return true;
         int destinationChild = (from < to) ? to+1 : to;
-        //debugLog(Log::Datamodel) << Q_FUNC_INFO << "from" << from << "to" << to;
         beginMoveRows(QModelIndex(), from, from, QModelIndex(), destinationChild);
         m_list.move(from, to);
         emit rowsMoved(from, to);
@@ -316,15 +317,15 @@ QModelIndexList ListModel::match(const QModelIndex &start, int role, const QVari
  * @param role : the role in which to find
  * @return the item corresponding if succeeded, 0 otherwise
  */
-QObject * ListModel::find(const QVariant &toFind, const int &role) const
+AbstractListItem * ListModel::find(const QVariant &toFind, const int &role) const
 {
-    QObject * o = NULL;
+    AbstractListItem * o = NULL;
 
     foreach(AbstractListItem* item, m_list)
     {
         if(item->data(role) == toFind)
         {
-            o = qobject_cast<QObject*>(item);
+            o = item;
         }
     }
     return o;
@@ -450,12 +451,6 @@ AbstractListItem *ListModel::at(int row)
 {
     if(row < 0 || row >= m_list.size()) return 0;
     return m_list.at(row);
-}
-
-QObject * ListModel::get(int index)
-{
-    QObject * o = at(index);
-    return o;
 }
 
 /**

@@ -5,10 +5,11 @@
 #-------------------------------------------------
 include(common.pri)
 
+message(Headers will be installed in $$INC_DIR)
+message(Libs will be installed in $$LIB_DIR)
+message(Qml plugins will be installed in $$QML_PLUGINS_PREFIX)
 
-message(Qml plugins will be installed in $$QML_PLUGINS_PREFIX . You can customize with QML_PLUGINS_PREFIX variable)
-
-CONFIG += ordered no_make_tests
+CONFIG += ordered make_tests
 
 TEMPLATE = subdirs
 SUBDIRS  += \

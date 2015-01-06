@@ -19,7 +19,7 @@ static void initResources()
     //Q_INIT_RESOURCE(controls);
 }
 
-void ControlsPlugin::registerTypes(const char *uri)
+void DataModelsPlugin::registerTypes(const char *uri)
 {
     initResources();
     // @uri com.mycompany.qmlcomponents
@@ -30,7 +30,7 @@ void ControlsPlugin::registerTypes(const char *uri)
             qmlRegisterType(QUrl(filesLocation + "/" + qmldir[i].type + ".qml"), uri, qmldir[i].major, qmldir[i].minor, qmldir[i].type);
 }
 
-void ControlsPlugin::initializeEngine(QQmlEngine *engine, const char *uri)
+void DataModelsPlugin::initializeEngine(QQmlEngine *engine, const char *uri)
 {
     Q_UNUSED(uri);
     Q_UNUSED(engine);
@@ -40,14 +40,14 @@ void ControlsPlugin::initializeEngine(QQmlEngine *engine, const char *uri)
 
 }
 
-QString ControlsPlugin::fileLocation() const
+QString DataModelsPlugin::fileLocation() const
 {
     if (isLoadedFromResource())
         return "qrc:/com/armax/controls";
     return baseUrl().toString();
 }
 
-bool ControlsPlugin::isLoadedFromResource() const
+bool DataModelsPlugin::isLoadedFromResource() const
 {
     // If one file is missing, it will load all the files from the resource
 //    QFile file(baseUrl().toLocalFile() + "/ApplicationWindow.qml");

@@ -15,14 +15,14 @@
 class ListModel : public QAbstractItemModel
 {
     Q_OBJECT
-    Q_PROPERTY(int      size            READ rowCount                           NOTIFY rowCountChanged      )
-    Q_PROPERTY(int      selectedIndex   READ selectedIndex  WRITE selectIndex   NOTIFY selectedIndexChanged )
-    Q_PROPERTY(QObject* selectedObject  READ selectedObject                     NOTIFY selectedItemChanged  )
+    Q_PROPERTY(int                  size            READ rowCount                           NOTIFY rowCountChanged      )
+    Q_PROPERTY(int                  selectedIndex   READ selectedIndex  WRITE selectIndex   NOTIFY selectedIndexChanged )
+    Q_PROPERTY(AbstractListItem*    selectedItem    READ selectedItem   WRITE selectItem    NOTIFY selectedItemChanged  )
 
 public:
-                        ListModel           (QObject * parent = 0);
-    explicit            ListModel           (AbstractListItem* prototype, QObject* parent = 0);
-    ~                   ListModel           ();
+    explicit                ListModel           (QObject * parent = 0);
+                            ListModel           (AbstractListItem* prototype, QObject* parent = 0);
+    virtual ~               ListModel           ();
 
     // QAbstractListModel
     int                     rowCount            (const QModelIndex &parent = QModelIndex()) const;
@@ -39,7 +39,7 @@ public:
     // Sizes
     bool                    isEmpty             () const { return m_list.isEmpty(); }
     Q_INVOKABLE int         count               () const { return rowCount(); }
-    int                     size                () const { return rowCount(); }
+    Q_INVOKABLE int         size                () const { return rowCount(); }
 
     // Row opperations
     void                    prependRow          (AbstractListItem* item);
@@ -58,7 +58,7 @@ public:
     QList
         <AbstractListItem*> items               () { return m_list; }
     QList
-        <AbstractListItem*>* itemsRef           () { return &m_list; }
+        <AbstractListItem*>*itemsRef            () { return &m_list; }
 
     QModelIndex             indexFromItem       (const AbstractListItem* item) const;
 
@@ -79,22 +79,15 @@ public:
     AbstractListItem*       selectedItem        ();
     bool                    selectIndex         (const int &row);
     int                     selectedIndex       () const;
-    Q_INVOKABLE QObject*    selectedObject      () { return m_list.value(m_selectedIndex, 0); }
-
+    
     // Tooling
     QString                 toString            () const;
     QString                 toJSON              () const;
 
     QString                 prototypeClassName  () const { return m_prototype ? m_prototype->metaObject()->className() : ""; }
 
-    template <class T>
-    const T &               operator[]          (int i) const { return m_list.at(i); }
-
-    template <class T>
-    T &                     operator[]          (int i) { return m_list.at(i); }
-
 public slots:
-    QObject*                find                (const QVariant &toFind, const int &role) const;
+    AbstractListItem *      find                (const QVariant &toFind, const int &role) const;
     void                    resetSelection      ();
 
 signals:
