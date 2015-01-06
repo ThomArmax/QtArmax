@@ -15,6 +15,8 @@ isEmpty(uri) {
     error("plugins.pri: You must provide an uri!")
 }
 
+QML_DUMP = $$[QT_INSTALL_BINS]/qmlplugindump
+
 URI_TO_PATH = $$replace(uri, \\., /)
 
 DESTDIR = $$absolute_path(../../imports/$$URI_TO_PATH)
@@ -67,14 +69,19 @@ contains(QT_CONFIG, reduce_exports):CONFIG += hide_symbols
 
 wince*:LIBS += $$QMAKE_LIBS_GUI
 
-installPath = $$[QT_INSTALL_QML]/$$replace(uri, \\., /)
+installPath = $$QML_PLUGINS_PREFIX/$$replace(uri, \\., /)
 target.target = $$TARGET
 target.path = $$installPath
 qmldir.target = qmldir
 qmldir.path = $$installPath
 qmltypes.path = $$installPath
 qmltypes.target = qmltypes
-qmltypes.commands = $$[QT_INSTALL_BINS]/qmlplugindump -nonrelocatable $$uri 1.0 > $$installPath/$${TARGET}.qmltypes
+qmltypes.commands = $${QML_DUMP} -nonrelocatable $$uri 1.0 > $$installPath/$${TARGET}.qmltypes
+!equals($$QML_PLUGINS_PREFIX, $$[QT_INSTALL_PLUGINS]) {
+qmltypes.commands = $${QML_DUMP} -nonrelocatable $$uri 1.0 $$QML_PLUGINS_PREFIX > $$installPath/$${TARGET}.qmltypes
+}
+QMAKE_POST_LINK += $${QML_DUMP} -nonrelocatable $$uri 1.0 $$QML_IMPORT_PATH > $$absolute_path($${DESTDIR}/$${TARGET}.qmltypes)
+message(Qml plugin $$uri will be install in $$installPath)
 
 INSTALLS += target qmldir qmltypes
 
