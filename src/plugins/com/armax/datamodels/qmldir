@@ -1,0 +1,3 @@
+module com.armax.datamodels
+plugin QtArmaxDatamodelsPlugin
+typeinfo QtArmaxDatamodelsPlugin.qmltypes
