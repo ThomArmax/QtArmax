@@ -10,6 +10,7 @@ UI_DIR = $$PWD/build/ui
 
 LIB_DIR = /usr/lib/QtArmax-$$VERSION
 INC_DIR = /usr/include/QtArmax-$$VERSION
+LOCAL_LIB_DEST_DIR = $$absolute_path($$PWD/../usr/lib/QtArmax)
 
 contains(CONFIG, INSTALL_IN_QT) {
     LIB_DIR = $$[QT_INSTALL_LIBS]/QtArmax-$$VERSION
@@ -19,4 +20,3 @@ contains(CONFIG, INSTALL_IN_QT) {
 isEmpty(QML_PLUGINS_PREFIX) {
     QML_PLUGINS_PREFIX = $$[QT_INSTALL_QML]
 }
-

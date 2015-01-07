@@ -5,7 +5,7 @@ DEFINES += QT_ARMAX_CORE
 
 include(../common.pri)
 
-DESTDIR = $$PWD/../../usr/lib/QtArmax
+DESTDIR = $$LOCAL_LIB_DEST_DIR
 
 DATA_MODELS_HEADERS = \
     datamodels/abstractlistitem.h \

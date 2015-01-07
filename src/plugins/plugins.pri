@@ -80,7 +80,7 @@ qmltypes.commands = $${QML_DUMP} -nonrelocatable $$uri 1.0 > $$installPath/$${TA
 !equals($$QML_PLUGINS_PREFIX, $$[QT_INSTALL_PLUGINS]) {
 qmltypes.commands = $${QML_DUMP} -nonrelocatable $$uri 1.0 $$QML_PLUGINS_PREFIX > $$installPath/$${TARGET}.qmltypes
 }
-QMAKE_POST_LINK += $${QML_DUMP} -nonrelocatable $$uri 1.0 $$QML_IMPORT_PATH > $$absolute_path($${DESTDIR}/$${TARGET}.qmltypes)
+QMAKE_POST_LINK += LD_LIBRARY_PATH=$$LOCAL_LIB_DEST_DIR $${QML_DUMP} -nonrelocatable $$uri 1.0 $$QML_IMPORT_PATH > $$absolute_path($${DESTDIR}/$${TARGET}.qmltypes)
 message(Qml plugin $$uri will be installed in $$installPath)
 
 INSTALLS += target qmldir qmltypes
