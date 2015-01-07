@@ -10,6 +10,8 @@ SOURCES += main.cpp
 
 RESOURCES += qml.qrc
 
+OTHER_FILES += main.qml
+
 DESTDIR = $$absolute_path(../../../tests)
 
 # Default rules for deployment.

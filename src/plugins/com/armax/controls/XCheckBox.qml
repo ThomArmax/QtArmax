@@ -1,10 +1,10 @@
 import QtQuick 2.0
 import com.armax.controls 1.0
 
-Checkable {
+XCheckable {
 
     // public properties
-    property Style  style                   : Style {}
+    property XStyle style                   : XStyle {}
     property color  colorWhenDefault        : style.colorWhenDefault
     property color  colorWhenChecked        : style.colorWhenChecked
     property alias  radius                  : base.radius

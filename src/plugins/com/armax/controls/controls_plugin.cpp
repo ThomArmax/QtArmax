@@ -8,26 +8,26 @@ static const struct {
     const char *type;
     int major, minor;
 } qmldir [] = {
-    { "CheckBox"    , 1, 0 },
-    { "RadioButton" , 1, 0 },
-    { "Button"      , 1, 0 },
-    { "Style"       , 1, 0 }
+    { "XCheckBox"   , 1, 0 },
+    { "XRadioButton", 1, 0 },
+    { "XButton"     , 1, 0 },
+    { "XStyle"      , 1, 0 }
 };
 
 static void initResources()
 {
-    //Q_INIT_RESOURCE(controls);
+    Q_INIT_RESOURCE(QtArmaxControlsPlugin);
 }
 
 void DataModelsPlugin::registerTypes(const char *uri)
 {
     initResources();
     // @uri com.mycompany.qmlcomponents
-    qmlRegisterType<Checkable>(uri, 1, 0, "Checkable");
+    qmlRegisterType<Checkable>(uri, 1, 0, "XCheckable");
 
     const QString filesLocation = fileLocation();
-        for (int i = 0; i < int(sizeof(qmldir)/sizeof(qmldir[0])); i++)
-            qmlRegisterType(QUrl(filesLocation + "/" + qmldir[i].type + ".qml"), uri, qmldir[i].major, qmldir[i].minor, qmldir[i].type);
+    for (int i = 0; i < int(sizeof(qmldir)/sizeof(qmldir[0])); i++)
+        qmlRegisterType(QUrl(filesLocation + "/" + qmldir[i].type + ".qml"), uri, qmldir[i].major, qmldir[i].minor, qmldir[i].type);
 }
 
 void DataModelsPlugin::initializeEngine(QQmlEngine *engine, const char *uri)

@@ -1,7 +1,7 @@
 import QtQuick 2.2
 import QtQuick.Window 2.1
 
-import com.armax.controls 1.0 as Armax
+import com.armax.controls 1.0
 
 Window {
     visible : true
@@ -9,7 +9,7 @@ Window {
     height  : 360
     color   : style.backgroundColor
 
-    Armax.Style { id: style }
+    XStyle { id: style }
 
     property real __labelsWidth : 30
 
@@ -31,7 +31,7 @@ Window {
                 color               : style.textColor
                 verticalAlignment   : Text.AlignVCenter
             }
-            Armax.CheckBox {
+            XCheckBox {
                 Component.onCompleted: __labelsWidth = Math.max(__labelsWidth, width)
             }
         }
@@ -48,7 +48,7 @@ Window {
                 color               : style.textColor
                 verticalAlignment   : Text.AlignVCenter
             }
-            Armax.Button {
+            XButton {
                 hoverEnabled            : false
                 Component.onCompleted   : __labelsWidth = Math.max(__labelsWidth, width)
             }
@@ -66,7 +66,7 @@ Window {
                 color               : style.textColor
                 verticalAlignment   : Text.AlignVCenter
             }
-            Armax.Button {
+            XButton {
                 hoverEnabled            : true
                 Component.onCompleted   : __labelsWidth = Math.max(__labelsWidth, width)
             }
@@ -84,7 +84,7 @@ Window {
                 color               : style.textColor
                 verticalAlignment   : Text.AlignVCenter
             }
-            Armax.Button {
+            XButton {
                 checkable               : true
                 Component.onCompleted   : __labelsWidth = Math.max(__labelsWidth, width)
             }
@@ -102,7 +102,7 @@ Window {
                 color               : style.textColor
                 verticalAlignment   : Text.AlignVCenter
             }
-            Armax.Button {
+            XButton {
                 checkable               : true
                 enabled                 : false
                 Component.onCompleted   : __labelsWidth = Math.max(__labelsWidth, width)
@@ -121,7 +121,7 @@ Window {
                 color               : style.textColor
                 verticalAlignment   : Text.AlignVCenter
             }
-            Armax.RadioButton {
+            XRadioButton {
                 Component.onCompleted   : __labelsWidth = Math.max(__labelsWidth, width)
             }
         }

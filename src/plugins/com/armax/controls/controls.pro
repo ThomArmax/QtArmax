@@ -17,17 +17,17 @@ HEADERS += \
 
 OTHER_FILES = \
     qmldir \
-    CheckBox.qml \
-    Style.qml \
-    Button.qml \
-    RadioButton.qml
+    XButton.qml \
+    XStyle.qml \
+    XRadioButton.qml \
+    XCheckBox.qml
 
 # QML files to be included in resources file
 QML_FILES = \
-    Style.qml \
-    CheckBox.qml \
-    RadioButton.qml \
-    Button.qml
+    XStyle.qml \
+    XCheckBox.qml \
+    XRadioButton.qml \
+    XButton.qml
 
 # Graphics files to be included in resources file
 GFX = \
