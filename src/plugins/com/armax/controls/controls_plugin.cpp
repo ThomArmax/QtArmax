@@ -11,7 +11,8 @@ static const struct {
     { "XCheckBox"   , 1, 0 },
     { "XRadioButton", 1, 0 },
     { "XButton"     , 1, 0 },
-    { "XStyle"      , 1, 0 }
+    { "XStyle"      , 1, 0 },
+    { "XSlider"     , 1, 0 }
 };
 
 static void initResources()

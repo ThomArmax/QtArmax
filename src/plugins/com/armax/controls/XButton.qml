@@ -28,6 +28,8 @@ XCheckable {
     property Gradient   gradientWhenHovered     : style.gradientWhenHovered
     property Gradient   gradientWhenDisabled    : style.gradientWhenDisabled
 
+    property int        radius                  : style.radius
+
     property bool       useGradients            : true
     property real       animationDuration       : style.controlAnimationDuration
 
@@ -52,7 +54,7 @@ XCheckable {
         anchors.fill: parent
         color       : colorWhenDefault
         gradient    : gradientWhenDefault
-        radius      : 5
+        radius      : root.radius
         border.width: borderWidth
         border.color: borderColorWhenDefault
         state       : root.state

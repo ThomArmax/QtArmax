@@ -125,5 +125,22 @@ Window {
                 Component.onCompleted   : __labelsWidth = Math.max(__labelsWidth, width)
             }
         }
+
+        Row {
+            width   : parent.width
+            height  : implicitHeight
+            spacing : 10
+            Text {
+                width               : parent.width - __labelsWidth - parent.spacing
+                height              : parent.height
+                text                : "Slider :"
+                font.pointSize      : style.defaultFontSize
+                color               : style.textColor
+                verticalAlignment   : Text.AlignVCenter
+            }
+            XSlider {
+                Component.onCompleted   : __labelsWidth = Math.max(__labelsWidth, width)
+            }
+        }
     }
 }

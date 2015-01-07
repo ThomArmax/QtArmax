@@ -21,6 +21,8 @@ Item {
     property color      borderColorWhenChecked  : "#222222"
     property color      borderColorWhenDisabled : "#222222"
 
+    property int        radius                  : 5
+
     property Gradient   gradientWhenDefault     : Gradient { GradientStop { position: 0.0; color: colorWhenDefault } GradientStop { position: 1.0; color: colorWhenChecked } }
     property Gradient   gradientWhenPressed     : Gradient { GradientStop { position: 0.0; color: colorWhenPressed } GradientStop { position: 1.0; color: colorWhenDefault } }
     property Gradient   gradientWhenHovered     : Gradient { GradientStop { position: 0.0; color: colorWhenHovered } GradientStop { position: 1.0; color: colorWhenDefault } }
