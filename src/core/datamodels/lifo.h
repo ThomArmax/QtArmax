@@ -4,6 +4,9 @@
 #include <QObject>
 #include "abstractqueue.h"
 
+namespace Armax {
+namespace Datamodels {
+
 class Lifo : public AbstractQueue
 {
     Q_OBJECT
@@ -27,5 +30,7 @@ signals:
     void                sizeChanged ();
     
 };
+
+}} // END namespace Armax::Datamodels
 
 #endif // LIFO_H

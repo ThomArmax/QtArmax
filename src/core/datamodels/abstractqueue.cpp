@@ -1,5 +1,8 @@
 #include "abstractqueue.h"
 
+namespace Armax {
+namespace Datamodels {
+
 /**
  * @brief AbstractQueue::AbstractQueue
  * @param parent
@@ -112,3 +115,5 @@ int AbstractQueue::getSize() const
 {
     return m_size;
 }
+
+}} // END namespace Armax::Datamodels

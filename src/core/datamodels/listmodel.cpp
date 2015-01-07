@@ -2,6 +2,9 @@
 
 #include <QDebug>
 
+namespace Armax {
+namespace Datamodels {
+
 /**
  * @brief ListModel constructor
  * @param parent : the parent object
@@ -560,3 +563,5 @@ void ListModel::resetSelection()
     }
     return JSON::Instance().serialize(list);
 }*/
+
+}} // END namespace

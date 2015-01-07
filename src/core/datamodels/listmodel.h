@@ -7,6 +7,9 @@
 #include <QStringList>
 #include <QHash>
 
+namespace Armax {
+namespace Datamodels {
+
 /**
  * @brief The ListModel class inherists QAbstractListModel, used to handle objects which inherits AbstractListItem into a view
  * (ListView, GridView ...)
@@ -108,5 +111,7 @@ protected :
     bool                        m_hasObjectOwnership;
     
 };
+
+}} // END namespace Armax::Datamodels
 
 #endif // LISTMODEL_H

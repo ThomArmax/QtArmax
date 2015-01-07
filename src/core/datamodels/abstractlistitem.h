@@ -6,6 +6,9 @@
 #include <QVariant>
 #include <QStringList>
 
+namespace Armax {
+namespace Datamodels {
+
 /**
  * @brief The AbstractListItem class provides the default implementation of objects to be used with the ListModel class
  * @sa ListModel
@@ -66,5 +69,7 @@ private:
 protected:
             bool m_valueChanged;                                                    /**< Says is the value has changed or not (usefull for DB   */
 };
+
+}} // END namespace Armax::Datamodels
 
 #endif // ABSTRACTLISTITEM_H

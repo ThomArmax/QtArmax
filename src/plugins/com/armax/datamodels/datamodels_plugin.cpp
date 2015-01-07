@@ -6,6 +6,8 @@
 
 #include <QtQml>
 
+using namespace Armax::Datamodels;
+
 static void initResources()
 {
     //Q_INIT_RESOURCE(datamodels);

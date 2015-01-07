@@ -1,5 +1,8 @@
 #include "lifo.h"
 
+namespace Armax {
+namespace Datamodels {
+
 /**
  * @brief Lifo::AbstractListItem
  * @param parent
@@ -68,3 +71,5 @@ AbstractListItem * Lifo::dequeue() {
 
     return ret;
 }
+
+}} // END namespace Armax::Datamodels

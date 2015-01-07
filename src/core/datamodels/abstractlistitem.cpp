@@ -1,5 +1,8 @@
 #include "abstractlistitem.h"
 
+namespace Armax {
+namespace Datamodels {
+
 /**
  * @brief AbstractListItem contructor
  * @param parent : AbstractListItem's parent object
@@ -172,3 +175,5 @@ bool AbstractListItem::valuesHasChanged() const
 {
     return m_valueChanged;
 }
+
+} } // END namespace Armax::Datamodels

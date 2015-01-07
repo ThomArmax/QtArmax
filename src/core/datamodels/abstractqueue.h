@@ -5,6 +5,9 @@
 
 #include "listmodel.h"
 
+namespace Armax {
+namespace Datamodels {
+
 /**
  * @brief The AbstractQueue class
  */
@@ -57,5 +60,7 @@ protected :
     AbstractListItem*           m_proto;
     
 };
+
+}} // END namespace Armax::Datamodels
 
 #endif // QUEUE_H

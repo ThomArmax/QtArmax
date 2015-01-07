@@ -3,6 +3,9 @@
 
 #include "abstractqueue.h"
 
+namespace Armax {
+namespace Datamodels {
+
 class AbstractListItem;
 
 /**
@@ -26,5 +29,7 @@ public slots:
 
 
 };
+
+}} // END namespace Armax::Datamodels
 
 #endif // FIFO_H

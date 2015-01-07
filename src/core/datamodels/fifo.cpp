@@ -1,5 +1,8 @@
 #include "fifo.h"
 
+namespace Armax {
+namespace Datamodels {
+
 /**
  * @brief FIFO's constructor
  * @param parent : the parent object
@@ -68,3 +71,5 @@ AbstractListItem * Fifo::dequeue()
 
     return ret;
 }
+
+}} // END namespace Armax::Datamodels
