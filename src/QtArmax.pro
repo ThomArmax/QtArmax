@@ -27,5 +27,7 @@ else {
 OTHER_FILES += \
     common.pri
 
+HEADERS += global.h
+
 QMAKE_DISTCLEAN += $$PWD/../imports -r
 QMAKE_DISTCLEAN += $$PWD/../usr -r

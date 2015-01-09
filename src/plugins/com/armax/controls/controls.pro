@@ -20,7 +20,8 @@ OTHER_FILES = \
     XButton.qml \
     XStyle.qml \
     XRadioButton.qml \
-    XCheckBox.qml
+    XCheckBox.qml \
+    XSlider.qml
 
 # QML files to be included in resources file
 QML_FILES = \
@@ -40,6 +41,3 @@ include(../../../plugins.pri)
 RESOURCES += $$GENERATED_RESOURCE_FILE
 
 qmldir.files = qmldir
-
-DISTFILES += \
-    XSlider.qml
