@@ -15,6 +15,7 @@ Item {
     property color      colorWhenPressed        : style.colorWhenPressed
     property color      colorWhenHovered        : style.colorWhenHovered
     property color      colorWhenDisabled       : style.colorWhenDisabled
+    property color      progressColor           : style.colorWhenChecked
 
     property int        borderWidth             : style.borderWidth
     property color      borderColorWhenDefault  : style.borderColorWhenDefault
@@ -39,6 +40,10 @@ Item {
             gradientWhenDisabled: null
         }
     }
+    onValueChanged: {
+        slide.updatePosition(value)
+    }
+    Component.onCompleted: slide.updatePosition(value)
 
     id      : root
     width   : 100
@@ -64,9 +69,12 @@ Item {
         State {
             name: "disabled"
             when: !enabled
-            PropertyChanges { target: slide; color          : colorWhenDisabled         }
-            PropertyChanges { target: slide; gradient       : gradientWhenDisabled      }
-            PropertyChanges { target: slide; border.color   : borderColorWhenDisabled   }
+            PropertyChanges { target: slide; color              : colorWhenDisabled         }
+            PropertyChanges { target: slide; gradient           : gradientWhenDisabled      }
+            PropertyChanges { target: slide; border.color       : borderColorWhenDisabled   }
+            PropertyChanges { target: sliderBase; color         : colorWhenDisabled         }
+            PropertyChanges { target: sliderBase; gradient      : gradientWhenDisabled      }
+            PropertyChanges { target: sliderBase; border.color  : borderColorWhenDisabled   }
         }
     ]
 
@@ -79,14 +87,34 @@ Item {
         color           : backgoundColor
         border.width    : borderWidth
         border.color    : borderColorWhenDefault
+        Item {
+            id              : progressContainer
+            anchors.fill    : parent
+            anchors.margins : 3
+            Rectangle {
+                id                      : sliderProgress
+                height                  : parent.height
+                width                   : slide.x + slide.width/2
+                anchors.verticalCenter  : parent.verticalCenter
+                color                   : progressColor
+                radius                  : sliderBase.radius
+            }
+        }
     }
 
     Rectangle {
         property int __activeArea: root.width - width
-        function __computeValue(x) {
-            var percent = 100*x /__activeArea
-            console.debug("value =", percent, "%")
-            value = percent
+        property real percent : (100*x /__activeArea)
+        function computeValue(x) {
+            var ratio   = (x /__activeArea)
+            percent     = (100*ratio).toFixed(decimals)
+            value       = (((maxValue - minValue) * ratio) + minValue).toFixed(decimals)
+            //console.debug("XSlider::computeValue : percent = " + percent + "%, value =", value)
+        }
+        function updatePosition(value) {
+            var ratio   = (value - minValue) / (maxValue - minValue)
+            percent     = (100*ratio).toFixed(decimals)
+            x           = __activeArea*ratio
         }
 
         id          : slide
@@ -98,7 +126,7 @@ Item {
         border.width: borderWidth
         border.color: borderColorWhenDefault
         state       : root.state
-        onXChanged  : __computeValue(x)
+        onXChanged  : computeValue(x)
         MouseArea {
             id              : dragArea
             anchors.fill    : parent
