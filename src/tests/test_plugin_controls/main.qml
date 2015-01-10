@@ -11,136 +11,176 @@ Window {
 
     XStyle { id: style }
 
-    property real __labelsWidth : 30
+    property real __controlsWidth : 30
 
     Column {
-        id              : verticalLayout
-        anchors.fill    : parent
-        anchors.margins : 10
-        spacing         : 10
+        id                  : verticalLayout
+        anchors.fill        : parent
+        anchors.margins     : 10
+        spacing             : 10
 
         Row {
             width   : parent.width
-            height  : implicitHeight
+            height  : 35
             spacing : 10
             Text {
-                width               : parent.width - __labelsWidth - parent.spacing
+                width               : parent.width - __controlsWidth - parent.spacing
                 height              : parent.height
                 text                : "CheckBox :"
                 font.pointSize      : style.defaultFontSize
                 color               : style.textColor
                 verticalAlignment   : Text.AlignVCenter
             }
-            XCheckBox {
-                Component.onCompleted: __labelsWidth = Math.max(__labelsWidth, width)
+            Item {
+                width   : __controlsWidth
+                height  : parent.height
+                XCheckBox {
+                    anchors.right           : parent.right
+                    Component.onCompleted   : __controlsWidth = Math.max(__controlsWidth, width)
+                }
             }
         }
 
         Row {
             width   : parent.width
-            height  : implicitHeight
+            height  : 35
             spacing : 10
             Text {
-                width               : parent.width - __labelsWidth - parent.spacing
+                width               : parent.width - __controlsWidth - parent.spacing
                 height              : parent.height
                 text                : "Button :"
                 font.pointSize      : style.defaultFontSize
                 color               : style.textColor
                 verticalAlignment   : Text.AlignVCenter
             }
-            XButton {
-                hoverEnabled            : false
-                Component.onCompleted   : __labelsWidth = Math.max(__labelsWidth, width)
+            Item {
+                width   : __controlsWidth
+                height  : parent.height
+                XButton {
+                    anchors.right           : parent.right
+                    hoverEnabled            : false
+                    Component.onCompleted   : __controlsWidth = Math.max(__controlsWidth, width)
+                }
             }
         }
 
         Row {
             width   : parent.width
-            height  : implicitHeight
+            height  : 35
             spacing : 10
             Text {
-                width               : parent.width - __labelsWidth - parent.spacing
+                width               : parent.width - __controlsWidth - parent.spacing
                 height              : parent.height
                 text                : "Button Hoverable :"
                 font.pointSize      : style.defaultFontSize
                 color               : style.textColor
                 verticalAlignment   : Text.AlignVCenter
             }
-            XButton {
-                hoverEnabled            : true
-                Component.onCompleted   : __labelsWidth = Math.max(__labelsWidth, width)
+            Item {
+                width   : __controlsWidth
+                height  : parent.height
+                XButton {
+                    anchors.right           : parent.right
+                    hoverEnabled            : true
+                    Component.onCompleted   : __controlsWidth = Math.max(__controlsWidth, width)
+                }
             }
         }
 
         Row {
             width   : parent.width
-            height  : implicitHeight
+            height  : 35
             spacing : 10
             Text {
-                width               : parent.width - __labelsWidth - parent.spacing
+                width               : parent.width - __controlsWidth - parent.spacing
                 height              : parent.height
                 text                : "Checkable Button :"
                 font.pointSize      : style.defaultFontSize
                 color               : style.textColor
                 verticalAlignment   : Text.AlignVCenter
             }
-            XButton {
-                checkable               : true
-                Component.onCompleted   : __labelsWidth = Math.max(__labelsWidth, width)
+            Item {
+                width   : __controlsWidth
+                height  : parent.height
+                XButton {
+                    anchors.right           : parent.right
+                    checkable               : true
+                    Component.onCompleted   : __controlsWidth = Math.max(__controlsWidth, width)
+                }
             }
         }
 
         Row {
             width   : parent.width
-            height  : implicitHeight
+            height  : 35
             spacing : 10
             Text {
-                width               : parent.width - __labelsWidth - parent.spacing
+                width               : parent.width - __controlsWidth - parent.spacing
                 height              : parent.height
                 text                : "Disabled Button :"
                 font.pointSize      : style.defaultFontSize
                 color               : style.textColor
                 verticalAlignment   : Text.AlignVCenter
             }
-            XButton {
-                checkable               : true
-                enabled                 : false
-                Component.onCompleted   : __labelsWidth = Math.max(__labelsWidth, width)
+            Item {
+                width   : __controlsWidth
+                height  : parent.height
+                XButton {
+                    anchors.right           : parent.right
+                    checkable               : true
+                    enabled                 : false
+                    Component.onCompleted   : __controlsWidth = Math.max(__controlsWidth, width)
+                }
             }
         }
 
         Row {
             width   : parent.width
-            height  : implicitHeight
+            height  : 35
             spacing : 10
             Text {
-                width               : parent.width - __labelsWidth - parent.spacing
+                width               : parent.width - __controlsWidth - parent.spacing
                 height              : parent.height
                 text                : "RadioButton :"
                 font.pointSize      : style.defaultFontSize
                 color               : style.textColor
                 verticalAlignment   : Text.AlignVCenter
             }
-            XRadioButton {
-                Component.onCompleted   : __labelsWidth = Math.max(__labelsWidth, width)
+            Item {
+                width   : __controlsWidth
+                height  : parent.height
+                XRadioButton {
+                    anchors.right           : parent.right
+                    Component.onCompleted   : __controlsWidth = Math.max(__controlsWidth, width)
+                }
             }
         }
 
         Row {
             width   : parent.width
-            height  : implicitHeight
+            height  : 35
             spacing : 10
             Text {
-                width               : parent.width - __labelsWidth - parent.spacing
+                width               : parent.width - __controlsWidth - parent.spacing
                 height              : parent.height
                 text                : "Slider :"
                 font.pointSize      : style.defaultFontSize
                 color               : style.textColor
                 verticalAlignment   : Text.AlignVCenter
             }
-            XSlider {
-                Component.onCompleted   : __labelsWidth = Math.max(__labelsWidth, width)
+            Item {
+                width   : __controlsWidth
+                height  : parent.height
+                XSlider {
+                    width                   : 150
+                    anchors.right           : parent.right
+                    value                   : 25
+                    minValue                : 0
+                    maxValue                : 100
+                    Component.onCompleted   : __controlsWidth = Math.max(__controlsWidth, width)
+                }
             }
+
         }
     }
 }

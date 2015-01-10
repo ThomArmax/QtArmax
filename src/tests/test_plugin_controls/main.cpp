@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
-    engine.addImportPath(QString(LOCAL_QML_IMPORT_PATH));
+    engine.addImportPath(QString(STRINGIFY(LOCAL_QML_IMPORT_PATH)));
     engine.load(QUrl(QStringLiteral("qrc:///main.qml")));
 
     return app.exec();
