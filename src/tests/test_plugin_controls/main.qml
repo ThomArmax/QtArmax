@@ -203,7 +203,44 @@ Window {
                     Component.onCompleted   : __controlsWidth = Math.max(__controlsWidth, width)
                 }
             }
-
         }
+
+        Row {
+            width   : parent.width
+            height  : 35
+            spacing : 10
+            Text {
+                width               : parent.width - __controlsWidth - parent.spacing
+                height              : parent.height
+                text                : "Progress bar :"
+                font.pointSize      : style.defaultFontSize
+                color               : style.textColor
+                verticalAlignment   : Text.AlignVCenter
+            }
+            Item {
+                width   : __controlsWidth
+                height  : parent.height
+                XProgressBar {
+                    id                      : progress
+                    width                   : 150
+                    anchors.right           : parent.right
+                    Component.onCompleted   : __controlsWidth = Math.max(__controlsWidth, width)
+                    Timer {
+                        interval    : 75
+                        running     : true
+                        repeat      : true
+                        onTriggered : {
+                            if(progress.progress <100) {
+                                progress.progress += 1
+                            }
+                            else {
+                                progress.progress = 0
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }

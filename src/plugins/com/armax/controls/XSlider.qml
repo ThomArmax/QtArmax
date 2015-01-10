@@ -33,12 +33,14 @@ Item {
     property XStyle     style                   : XStyle{}
     property int        radius                  : style.radius
 
-    property color      backgoundColor          : style.colorWhenDefault
+    property color      backgroundColor         : style.colorWhenDefault
+    property Gradient   backgroundGradient      : style.gradientWhenDefault
     property color      colorWhenDefault        : style.colorWhenDefault
     property color      colorWhenPressed        : style.colorWhenPressed
     property color      colorWhenHovered        : style.colorWhenHovered
     property color      colorWhenDisabled       : style.colorWhenDisabled
     property color      progressColor           : style.colorWhenChecked
+    property Gradient   progressGradient        : style.gradientWhenChecked
 
     property int        borderWidth             : style.borderWidth
     property color      borderColorWhenDefault  : style.borderColorWhenDefault
@@ -107,7 +109,8 @@ Item {
         height          : 0.4*parent.height
         anchors.centerIn: parent
         radius          : root.radius
-        color           : backgoundColor
+        color           : backgroundColor
+        gradient        : backgroundGradient
         border.width    : borderWidth
         border.color    : borderColorWhenDefault
         Item {
@@ -120,6 +123,7 @@ Item {
                 width                   : slide.x + slide.width/2
                 anchors.verticalCenter  : parent.verticalCenter
                 color                   : progressColor
+                gradient                : progressGradient
                 radius                  : sliderBase.radius
             }
         }

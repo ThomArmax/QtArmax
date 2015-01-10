@@ -35,7 +35,8 @@ static const struct {
     { "XRadioButton", 1, 0 },
     { "XButton"     , 1, 0 },
     { "XStyle"      , 1, 0 },
-    { "XSlider"     , 1, 0 }
+    { "XSlider"     , 1, 0 },
+    { "XProgressBar", 1, 0 }
 };
 
 static void initResources()
