@@ -23,9 +23,7 @@
 
 import QtQuick 2.0
 
-Item {
-    SystemPalette { id: systemPalette }
-
+QtObject {
     property color      backgroundColor         : "#253344"
 
     property color      textColor               : "white"

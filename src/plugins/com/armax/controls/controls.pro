@@ -9,11 +9,11 @@ uri = com.armax.controls
 # Input
 SOURCES += \
     controls_plugin.cpp \
-    checkable.cpp
+    xcheckable_p.cpp
 
 HEADERS += \
     controls_plugin.h \
-    checkable.h
+    xcheckable_p.h
 
 OTHER_FILES = \
     qmldir \
@@ -22,7 +22,8 @@ OTHER_FILES = \
     XRadioButton.qml \
     XCheckBox.qml \
     XSlider.qml \
-    XProgressBar.qml
+    XProgressBar.qml \
+    XCheckable.qml
 
 # QML files to be included in resources file
 QML_FILES = \
@@ -31,7 +32,8 @@ QML_FILES = \
     XRadioButton.qml \
     XButton.qml \
     XSlider.qml \
-    XProgressBar.qml
+    XProgressBar.qml \
+    XCheckable.qml
 
 # Graphics files to be included in resources file
 GFX = \
@@ -43,4 +45,5 @@ include(../../../plugins.pri)
 RESOURCES += $$GENERATED_RESOURCE_FILE
 
 qmldir.files = qmldir
+
 

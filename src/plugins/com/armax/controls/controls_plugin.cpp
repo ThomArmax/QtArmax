@@ -22,7 +22,7 @@
 ****************************************************************************/
 
 #include "controls_plugin.h"
-#include "checkable.h"
+#include "xcheckable_p.h"
 
 #include <QQmlEngine>
 #include <QQmlContext>
@@ -36,7 +36,8 @@ static const struct {
     { "XButton"     , 1, 0 },
     { "XStyle"      , 1, 0 },
     { "XSlider"     , 1, 0 },
-    { "XProgressBar", 1, 0 }
+    { "XProgressBar", 1, 0 },
+    { "XCheckable"  , 1, 0}
 };
 
 static void initResources()
@@ -48,7 +49,8 @@ void DataModelsPlugin::registerTypes(const char *uri)
 {
     initResources();
     // @uri com.mycompany.qmlcomponents
-    qmlRegisterType<Checkable>(uri, 1, 0, "XCheckable");
+    //qmlRegisterUncreatableType<XCheckablePrivate>(uri, 1, 0, "XCheckablePrivate", "Private type, use XCheckable insteed");
+    //qmlRegisterType<XCheckablePrivate>(uri, 1, 0, "XCheckablePrivate");
 
     const QString filesLocation = fileLocation();
     for (int i = 0; i < int(sizeof(qmldir)/sizeof(qmldir[0])); i++)
@@ -63,6 +65,8 @@ void DataModelsPlugin::initializeEngine(QQmlEngine *engine, const char *uri)
     if (isLoadedFromResource())
         engine->addImportPath(QStringLiteral("qrc:/"));
 
+    const char *private_uri = "com.armax.controls.private";
+    qmlRegisterType<XCheckablePrivate>(private_uri, 1, 0, "XCheckablePrivate");
 }
 
 QString DataModelsPlugin::fileLocation() const

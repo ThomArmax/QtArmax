@@ -23,6 +23,7 @@
 
 import QtQuick 2.2
 import QtQuick.Window 2.1
+import QtQuick.Controls 1.1
 
 import com.armax.controls 1.0
 
@@ -172,9 +173,24 @@ Window {
             Item {
                 width   : __controlsWidth
                 height  : parent.height
-                XRadioButton {
-                    anchors.right           : parent.right
-                    Component.onCompleted   : __controlsWidth = Math.max(__controlsWidth, width)
+                ExclusiveGroup { id: radioEX }
+                Row {
+                    width           : implicitWidth
+                    height          : parent.height
+                    anchors.right   : parent.right
+                    spacing         : 5
+                    XRadioButton {
+                        exclusiveGroup          : radioEX
+                        Component.onCompleted   : __controlsWidth = Math.max(__controlsWidth, width)
+                    }
+                    XRadioButton {
+                        exclusiveGroup          : radioEX
+                        Component.onCompleted   : __controlsWidth = Math.max(__controlsWidth, width)
+                    }
+                    XRadioButton {
+                        exclusiveGroup          : radioEX
+                        Component.onCompleted   : __controlsWidth = Math.max(__controlsWidth, width)
+                    }
                 }
             }
         }

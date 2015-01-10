@@ -29,10 +29,10 @@
 /**
  * @brief The base class used to create Checkable, Button, RadioButton ...
  */
-class Checkable : public QQuickItem
+class XCheckablePrivate : public QQuickItem
 {
     Q_OBJECT
-    Q_DISABLE_COPY(Checkable)
+    Q_DISABLE_COPY(XCheckablePrivate)
 
     Q_PROPERTY(bool checkable       READ isCheckable    WRITE setCheckable      NOTIFY checkableChanged)
     Q_PROPERTY(bool pressed         READ isPressed      WRITE setPressed        NOTIFY pressedChanged)
@@ -41,8 +41,8 @@ class Checkable : public QQuickItem
     Q_PROPERTY(bool hovered         READ isHovered                              NOTIFY hoveredChanged)
 
 public:
-                    Checkable           (QQuickItem *parent = 0);
-                    ~Checkable          ();
+                    XCheckablePrivate   (QQuickItem *parent = 0);
+                    ~XCheckablePrivate  ();
 
     // Overridden from QQuickItem
     virtual void    mouseReleaseEvent   (QMouseEvent * event);

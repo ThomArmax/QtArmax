@@ -21,10 +21,9 @@
 **
 ****************************************************************************/
 
-#include "checkable.h"
-#include <QDebug>
+#include "xcheckable_p.h"
 
-Checkable::Checkable(QQuickItem *parent):
+XCheckablePrivate::XCheckablePrivate(QQuickItem *parent):
     QQuickItem      (parent),
     m_checkable     (true),
     m_hoverEnabled  (false),
@@ -37,13 +36,13 @@ Checkable::Checkable(QQuickItem *parent):
 }
 
 /**
- * @brief Destroys the Checkable instance
+ * @brief Destroys the XCheckablePrivate instance
  */
-Checkable::~Checkable()
+XCheckablePrivate::~XCheckablePrivate()
 {
 }
 
-void Checkable::mousePressEvent(QMouseEvent *event)
+void XCheckablePrivate::mousePressEvent(QMouseEvent *event)
 {
     Q_UNUSED(event)
     setHovered(false);
@@ -56,7 +55,7 @@ void Checkable::mousePressEvent(QMouseEvent *event)
  * @param event
  * @todo Avoid emitting checked, clicked, pressed and CO if the event is catch outside of the component
  */
-void Checkable::mouseReleaseEvent(QMouseEvent *event)
+void XCheckablePrivate::mouseReleaseEvent(QMouseEvent *event)
 {
     Q_UNUSED(event);
 
@@ -77,17 +76,17 @@ void Checkable::mouseReleaseEvent(QMouseEvent *event)
     emit released();
 }
 
-void Checkable::hoverEnterEvent(QHoverEvent */*event*/)
+void XCheckablePrivate::hoverEnterEvent(QHoverEvent */*event*/)
 {
     setHovered( m_hoverEnabled );
 }
 
-void Checkable::hoverLeaveEvent(QHoverEvent */*event*/)
+void XCheckablePrivate::hoverLeaveEvent(QHoverEvent */*event*/)
 {
     setHovered(false);
 }
 
-void Checkable::setHoverEnabled(const bool enabled)
+void XCheckablePrivate::setHoverEnabled(const bool enabled)
 {
     if(m_hoverEnabled != enabled)
     {
@@ -98,7 +97,7 @@ void Checkable::setHoverEnabled(const bool enabled)
     }
 }
 
-void Checkable::setHovered(const bool hovered)
+void XCheckablePrivate::setHovered(const bool hovered)
 {
     bool newHovered = hovered && m_hoverEnabled;
     if(m_hovered != newHovered)
@@ -108,7 +107,7 @@ void Checkable::setHovered(const bool hovered)
     }
 }
 
-void Checkable::setCheckable(const bool checkable)
+void XCheckablePrivate::setCheckable(const bool checkable)
 {
     if (m_checkable != checkable) {
         m_checkable = checkable;
@@ -116,7 +115,7 @@ void Checkable::setCheckable(const bool checkable)
     }
 }
 
-void Checkable::setPressed(const bool pressed)
+void XCheckablePrivate::setPressed(const bool pressed)
 {
     if(m_pressed != pressed)
     {
@@ -125,7 +124,7 @@ void Checkable::setPressed(const bool pressed)
     }
 }
 
-void Checkable::setChecked(const bool checked)
+void XCheckablePrivate::setChecked(const bool checked)
 {
     if (m_checkable && m_checked != checked)
     {
