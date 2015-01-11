@@ -55,6 +55,9 @@ Item {
         }
     }
 
+    Behavior on progress { NumberAnimation { duration: 75 } }
+    //Behavior on progress { SpringAnimation { spring: 2; damping: 0.2; loops:Animation.Infinite } }
+
     id      : root
     width   : 100
     height  : 25
