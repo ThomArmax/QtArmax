@@ -132,7 +132,7 @@ Item {
             color               : fontColor
             horizontalAlignment : Text.AlignHCenter
             verticalAlignment   : Text.AlignVCenter
-            font.pointSize      : fontSize
+            font.pointSize      : fontSize > 0 ? fontSize : 10
         }
     }
 }

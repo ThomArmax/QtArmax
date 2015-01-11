@@ -90,7 +90,7 @@ Item {
             horizontalAlignment : Text.AlignHCenter
             text                : progress + "%"
             color               : fontColor
-            font.pointSize      : fontSize
+            font.pointSize      : fontSize > 0 ? fontSize : 10
         }
     }
 }

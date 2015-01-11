@@ -30,6 +30,7 @@ XCheckable {
 
     property alias      text                    : txt.text
     property color      textColor               : style.textColor
+    property int        fontSize                : style.defaultFontSize
 
     property color      colorWhenDefault        : style.colorWhenDefault
     property color      colorWhenPressed        : style.colorWhenPressed
@@ -87,7 +88,8 @@ XCheckable {
         anchors.centerIn: parent
         text            : "Button"
         color           : textColor
-        font.pointSize  : 12
+        clip            : true
+        font.pointSize  : fontSize > 0 ? fontSize : 10
     }
 
     states: [
