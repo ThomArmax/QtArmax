@@ -15,4 +15,4 @@ OTHER_FILES += main.qml
 DESTDIR = $$absolute_path(../../../tests)
 
 # Default rules for deployment.
-include(deployment.pri)
+#include(deployment.pri)

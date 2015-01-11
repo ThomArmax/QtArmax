@@ -22,7 +22,6 @@
 ****************************************************************************/
 
 import QtQuick 2.0
-import com.armax.controls 1.0
 
 XCheckable {
     // public properties
