@@ -31,13 +31,14 @@ static const struct {
     const char *type;
     int major, minor;
 } qmldir [] = {
-    { "XCheckBox"   , 1, 0 },
-    { "XRadioButton", 1, 0 },
-    { "XButton"     , 1, 0 },
-    { "XStyle"      , 1, 0 },
-    { "XSlider"     , 1, 0 },
-    { "XProgressBar", 1, 0 },
-    { "XCheckable"  , 1, 0}
+    { "XCheckBox"           , 1, 0 },
+    { "XRadioButton"        , 1, 0 },
+    { "XButton"             , 1, 0 },
+    { "XStyle"              , 1, 0 },
+    { "XSlider"             , 1, 0 },
+    { "XProgressBar"        , 1, 0 },
+    { "XCheckable"          , 1, 0 },
+    { "XCircularProgress"   , 1, 0 }
 };
 
 static void initResources()
@@ -49,8 +50,6 @@ void DataModelsPlugin::registerTypes(const char *uri)
 {
     initResources();
     // @uri com.mycompany.qmlcomponents
-    //qmlRegisterUncreatableType<XCheckablePrivate>(uri, 1, 0, "XCheckablePrivate", "Private type, use XCheckable insteed");
-    //qmlRegisterType<XCheckablePrivate>(uri, 1, 0, "XCheckablePrivate");
 
     const QString filesLocation = fileLocation();
     for (int i = 0; i < int(sizeof(qmldir)/sizeof(qmldir[0])); i++)

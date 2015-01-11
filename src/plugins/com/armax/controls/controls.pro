@@ -23,7 +23,8 @@ OTHER_FILES = \
     XCheckBox.qml \
     XSlider.qml \
     XProgressBar.qml \
-    XCheckable.qml
+    XCheckable.qml \
+    XCircularProgress.qml \
 
 # QML files to be included in resources file
 QML_FILES = \
@@ -33,7 +34,8 @@ QML_FILES = \
     XButton.qml \
     XSlider.qml \
     XProgressBar.qml \
-    XCheckable.qml
+    XCheckable.qml \
+    XCircularProgress.qml
 
 # Graphics files to be included in resources file
 GFX = \

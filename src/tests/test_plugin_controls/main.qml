@@ -30,7 +30,7 @@ import com.armax.controls 1.0
 Window {
     visible : true
     width   : 360
-    height  : 360
+    height  : 580
     color   : style.backgroundColor
 
     XStyle { id: style }
@@ -50,7 +50,7 @@ Window {
             Text {
                 width               : parent.width - __controlsWidth - parent.spacing
                 height              : parent.height
-                text                : "CheckBox :"
+                text                : "XCheckBox :"
                 font.pointSize      : style.defaultFontSize
                 color               : style.textColor
                 verticalAlignment   : Text.AlignVCenter
@@ -72,7 +72,7 @@ Window {
             Text {
                 width               : parent.width - __controlsWidth - parent.spacing
                 height              : parent.height
-                text                : "Button :"
+                text                : "XButton :"
                 font.pointSize      : style.defaultFontSize
                 color               : style.textColor
                 verticalAlignment   : Text.AlignVCenter
@@ -95,7 +95,7 @@ Window {
             Text {
                 width               : parent.width - __controlsWidth - parent.spacing
                 height              : parent.height
-                text                : "Button Hoverable :"
+                text                : "XButton Hoverable :"
                 font.pointSize      : style.defaultFontSize
                 color               : style.textColor
                 verticalAlignment   : Text.AlignVCenter
@@ -118,7 +118,7 @@ Window {
             Text {
                 width               : parent.width - __controlsWidth - parent.spacing
                 height              : parent.height
-                text                : "Checkable Button :"
+                text                : "XButton checkable :"
                 font.pointSize      : style.defaultFontSize
                 color               : style.textColor
                 verticalAlignment   : Text.AlignVCenter
@@ -141,7 +141,7 @@ Window {
             Text {
                 width               : parent.width - __controlsWidth - parent.spacing
                 height              : parent.height
-                text                : "Disabled Button :"
+                text                : "XButton disabled :"
                 font.pointSize      : style.defaultFontSize
                 color               : style.textColor
                 verticalAlignment   : Text.AlignVCenter
@@ -165,7 +165,7 @@ Window {
             Text {
                 width               : parent.width - __controlsWidth - parent.spacing
                 height              : parent.height
-                text                : "RadioButton :"
+                text                : "XRadioButton :"
                 font.pointSize      : style.defaultFontSize
                 color               : style.textColor
                 verticalAlignment   : Text.AlignVCenter
@@ -180,6 +180,7 @@ Window {
                     anchors.right   : parent.right
                     spacing         : 5
                     XRadioButton {
+                        checked                 : true
                         exclusiveGroup          : radioEX
                         Component.onCompleted   : __controlsWidth = Math.max(__controlsWidth, width)
                     }
@@ -202,7 +203,7 @@ Window {
             Text {
                 width               : parent.width - __controlsWidth - parent.spacing
                 height              : parent.height
-                text                : "Slider :"
+                text                : "XSlider :"
                 font.pointSize      : style.defaultFontSize
                 color               : style.textColor
                 verticalAlignment   : Text.AlignVCenter
@@ -228,7 +229,7 @@ Window {
             Text {
                 width               : parent.width - __controlsWidth - parent.spacing
                 height              : parent.height
-                text                : "Progress bar :"
+                text                : "XProgressBar :"
                 font.pointSize      : style.defaultFontSize
                 color               : style.textColor
                 verticalAlignment   : Text.AlignVCenter
@@ -237,7 +238,7 @@ Window {
                 width   : __controlsWidth
                 height  : parent.height
                 XProgressBar {
-                    id                      : progress
+                    id                      : progressBar
                     width                   : 150
                     anchors.right           : parent.right
                     Component.onCompleted   : __controlsWidth = Math.max(__controlsWidth, width)
@@ -246,11 +247,49 @@ Window {
                         running     : true
                         repeat      : true
                         onTriggered : {
-                            if(progress.progress <100) {
-                                progress.progress += 1
+                            if(progressBar.progress <100) {
+                                progressBar.progress += 1
                             }
                             else {
-                                progress.progress = 0
+                                progressBar.progress = 0
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        Row {
+            width   : parent.width
+            height  : 35
+            spacing : 10
+            Text {
+                width               : parent.width - __controlsWidth - parent.spacing
+                height              : parent.height
+                text                : "XCircularProgress :"
+                font.pointSize      : style.defaultFontSize
+                color               : style.textColor
+                verticalAlignment   : Text.AlignVCenter
+            }
+            Item {
+                width   : __controlsWidth
+                height  : parent.height
+                XCircularProgress {
+                    id                      : circularProgress
+                    width                   : 150
+                    anchors.right           : parent.right
+                    text                    : "Loading\n" + progress + "%"
+                    Component.onCompleted   : __controlsWidth = Math.max(__controlsWidth, width)
+                    Timer {
+                        interval    : 75
+                        running     : true
+                        repeat      : true
+                        onTriggered : {
+                            if(circularProgress.progress <100) {
+                                circularProgress.progress += 1
+                            }
+                            else {
+                                circularProgress.progress = 0
                             }
                         }
                     }
