@@ -21,10 +21,10 @@ The QML plugins provided by QtArmax are mainly designed for embedded systems.
 ### Build - Installation
 The basic build and installation process is as below :
 ```
-cd src
-qmake -recursive
-make
-make install
+$ cd src
+$ qmake -recursive
+$ make
+$ make install
 ```
 By default 
 * Headers will be installed in `/usr/include/QtArmax-<version>`
@@ -34,3 +34,9 @@ By default
 To change the QML plugins installation path, run `qmake "QML_PLUGINS_PREFIX=<plugins/dir/installation/path>"`
 
 If you want to install libraries/headers in Qt's path , run `qmake "CONFIG+=INSTALL_IN_QT"`
+
+### Run the demo applications
+```
+$ cd <QtArmax/Root/Dir>
+$ demos/qml_demo
+```
