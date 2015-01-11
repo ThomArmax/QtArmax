@@ -1,14 +1,16 @@
-VERSION = 1.0
+unix:VERSION = 1.0
 
 QML_IMPORT_PATH = $$absolute_path(../imports)
 
 DEFINES += LOCAL_QML_IMPORT_PATH="\\\"$${QML_IMPORT_PATH}\\\""
 
-OUT_PWD = $$PWD/build
-OBJECTS_DIR = $$PWD/build/obj
-MOC_DIR = $$PWD/build/moc
-RCC_DIR = $$PWD/build/qrc
-UI_DIR = $$PWD/build/ui
+CONFIG(release, debug|release): OUT_PWD = $$PWD/build/release
+else: OUT_PWD = $$PWD/build/debug
+
+OBJECTS_DIR = $$OUT_PWD/obj
+MOC_DIR = $$OUT_PWD/moc
+RCC_DIR = $$OUT_PWD/qrc
+UI_DIR = $$OUT_PWD/ui
 
 LIB_DIR = /usr/lib/QtArmax-$$VERSION
 INC_DIR = /usr/include/QtArmax-$$VERSION

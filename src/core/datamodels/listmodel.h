@@ -80,7 +80,7 @@ public:
 
     // Item getters
     AbstractListItem*       at                  (int row);
-    Q_INVOKABLE QObject*    get                 (int index);
+    Q_INVOKABLE QObject*    get                 (int index) { return at(index); }
     QList
         <AbstractListItem*> items               () { return m_list; }
     QList
