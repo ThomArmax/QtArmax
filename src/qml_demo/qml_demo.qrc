@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>ButtonsPage.qml</file>
+        <file>SlidersPage.qml</file>
+        <file>ProgressPage.qml</file>
+    </qresource>
+</RCC>

@@ -14,7 +14,8 @@ CONFIG += ordered make_tests
 TEMPLATE = subdirs
 SUBDIRS  += \
         core    \
-        plugins
+        plugins \
+        qml_demo
 
 contains(CONFIG, make_tests) {
     message(Tests will be build)
