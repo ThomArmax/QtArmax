@@ -34,31 +34,51 @@ XCheckable {
     property color  backgroundColor         : style.colorWhenDefault
     property color  backgroundBorderColor   : Qt.darker(backgroundColor)
 
-    property Image imageWhenDefault         : null
-    property Image imageWhenChecked         : imageWhenDefault
+    property Image  imageWhenDefault        : null
+    property Image  imageWhenChecked        : imageWhenDefault
+
+    property alias  label                   : labelTxt
+    property int    checkboxWidth           : checkboxHeight
+    property int    checkboxHeight          : style.defaultControlsHeight
 
     // private properties
     property Image __currentImage           : imageWhenDefault
 
     id      : root
-    width   : 35
-    height  : 35
+    width   : hLayout.implicitWidth
+    height  : hLayout.implicitHeight
     opacity : enabled ? 1.0 : opactityWhenDisabled
 
-    Rectangle {
-        id              : base
-        anchors.fill    : parent
-        radius          : 5
-        color           : backgroundColor
-        border.width    : 1
-        border.color    : backgroundBorderColor
-        Rectangle {
-            id              : checkRectangle
-            anchors.fill    : parent
-            anchors.margins : base.radius > 0 ? 0.8*base.radius : 0.2*width
-            radius          : 0.8*base.radius
-            Behavior on color { ColorAnimation { duration : 100 } }
+    Row {
+        id      : hLayout
+        height  : style.defaultControlsHeight
+        spacing : 10
+        Text {
+            id                  : labelTxt
+            height              : parent.implicitHeight
+            verticalAlignment   : Text.AlignVCenter
+            color               : root.style.textColor
+            font.pointSize      : root.style.defaultFontSize
+            visible             : text !== ""
         }
+
+        Rectangle {
+            id              : base
+            width           : checkboxWidth
+            height          : checkboxHeight
+            radius          : 5
+            color           : backgroundColor
+            border.width    : 1
+            border.color    : backgroundBorderColor
+            Rectangle {
+                id              : checkRectangle
+                anchors.fill    : parent
+                anchors.margins : base.radius > 0 ? 0.8*base.radius : 0.2*width
+                radius          : 0.8*base.radius
+                Behavior on color { ColorAnimation { duration : 100 } }
+            }
+        }
+
     }
 
     Image {
