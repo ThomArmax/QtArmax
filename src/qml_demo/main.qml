@@ -30,7 +30,7 @@ import com.armax.controls 1.0
 
 Window {
     visible : true
-    width   : 360
+    width   : 480
     height  : 480
 
     XStyle {
@@ -57,6 +57,13 @@ Window {
         Tab {
             title: "Sliders"
             SlidersPage {
+                anchors.fill        : parent
+                anchors.topMargin   : 20
+            }
+        }
+        Tab {
+            title: "Checkables"
+            CheckablesPage {
                 anchors.fill        : parent
                 anchors.topMargin   : 20
             }

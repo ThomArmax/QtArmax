@@ -4,5 +4,6 @@
         <file>ButtonsPage.qml</file>
         <file>SlidersPage.qml</file>
         <file>ProgressPage.qml</file>
+        <file>CheckablesPage.qml</file>
     </qresource>
 </RCC>
