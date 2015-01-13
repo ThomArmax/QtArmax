@@ -29,6 +29,8 @@ QtObject {
     property color      textColor               : "white"
     property int        defaultFontSize         : 12
 
+    property int        defaultControlsHeight   : 30
+
     property color      colorWhenDefault        : "#6A92C3"
     property color      colorWhenPressed        : "#719CD0"
     property color      colorWhenHovered        : "#5C7FAA"
