@@ -31,25 +31,43 @@ XCheckable {
     property real   opactityWhenDisabled    : 0.4
     property color  backgroundColor         : style.colorWhenDefault
     property color  backgroundBorderColor   : Qt.darker(backgroundColor)
+    property alias  label                   : labelTxt
+    property int    radiobuttonWidth        : radiobuttonHeight
+    property int    radiobuttonHeight       : style.defaultControlsHeight
 
     id          : root
-    width       : 35
-    height      : 35
+    width       : hLayout.implicitWidth
+    height      : hLayout.implicitHeight
     checkable   : true
-    Rectangle {
-        id          : base
-        anchors.fill: parent
-        radius      : base.width
-        color       : backgroundColor
-        border.color: backgroundBorderColor
-        border.width: 1
 
+    Row {
+        id      : hLayout
+        height  : style.defaultControlsHeight
+        spacing : 10
+        Text {
+            id                  : labelTxt
+            height              : parent.implicitHeight
+            verticalAlignment   : Text.AlignVCenter
+            color               : root.style.textColor
+            font.pointSize      : root.style.defaultFontSize
+            visible             : text !== ""
+        }
         Rectangle {
-            id              : checkRectangle
-            anchors.fill    : parent
-            anchors.margins : 0.2*parent.width
-            radius          : width
-            Behavior on color { ColorAnimation { duration : 100 } }
+            id          : base
+            width       : radiobuttonWidth
+            height      : radiobuttonHeight
+            radius      : width
+            color       : backgroundColor
+            border.color: backgroundBorderColor
+            border.width: 1
+
+            Rectangle {
+                id              : checkRectangle
+                anchors.fill    : parent
+                anchors.margins : 0.2*parent.width
+                radius          : width
+                Behavior on color { ColorAnimation { duration : 100 } }
+            }
         }
     }
 
