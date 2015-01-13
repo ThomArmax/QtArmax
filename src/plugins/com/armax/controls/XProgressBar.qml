@@ -60,7 +60,7 @@ Item {
 
     id      : root
     width   : 100
-    height  : 25
+    height  : style.defaultControlsHeight
     Rectangle {
         id              : progressBase
         anchors.fill    : parent
