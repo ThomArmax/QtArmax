@@ -1,0 +1,4 @@
+module com.armax.styles
+plugin QtArmaxStylesPlugin
+classname QtArmaxStylesPlugin
+typeinfo QtArmaxStylesPlugin.qmltypes
