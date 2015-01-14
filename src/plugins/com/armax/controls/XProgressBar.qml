@@ -55,7 +55,7 @@ Item {
         }
     }
 
-    Behavior on progress { NumberAnimation { duration: 75 } }
+    //Behavior on progress { NumberAnimation { duration: 75 } }
     //Behavior on progress { SpringAnimation { spring: 2; damping: 0.2; loops:Animation.Infinite } }
 
     id      : root
@@ -81,6 +81,7 @@ Item {
                 color                   : progressColor
                 gradient                : progressGradient
                 radius                  : progressBase.radius
+                Behavior on width { NumberAnimation { duration: 75 } }
             }
         }
         Text {
