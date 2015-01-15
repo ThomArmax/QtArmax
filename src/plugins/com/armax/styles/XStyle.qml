@@ -37,6 +37,12 @@ QtObject {
     property color      colorWhenChecked
     property color      colorWhenDisabled
 
+    property color      handleColorWhenDefault
+    property color      handleColorWhenPressed
+    property color      handleColorWhenHovered
+    property color      handleColorWhenChecked
+    property color      handleColorWhenDisabled
+
     property int        borderWidth
     property color      borderColorWhenDefault
     property color      borderColorWhenPressed
@@ -51,6 +57,12 @@ QtObject {
     property Gradient   gradientWhenHovered
     property Gradient   gradientWhenChecked
     property Gradient   gradientWhenDisabled
+
+    property Gradient   handleGradientWhenDefault
+    property Gradient   handleGradientWhenPressed
+    property Gradient   handleGradientWhenHovered
+    property Gradient   handleGradientWhenChecked
+    property Gradient   handleGradientWhenDisabled
 
     property real       controlAnimationDuration
 }

@@ -7,14 +7,20 @@ XCheckable {
     property int        radius                          : style.radius
 
     property color      backgroundColor                 : style.colorWhenDefault
-    property color      backgroundColorWhenDisabled     : style.colorWhenDefault
-    property color      handleColor                     : style.colorWhenChecked
-    property color      handleColorWhenDisabled         : style.colorWhenDisabled
+    property color      backgroundColorWhenDisabled     : style.colorWhenDisabled
+
+    property color      handleColorWhenDefault          : style.handleColorWhenDefault
+    property color      handleColorWhenPressed          : style.handleColorWhenPressed
+    property color      handleColorWhenHovered          : style.handleColorWhenHovered
+    property color      handleColorWhenDisabled         : style.handleColorWhenDisabled
 
     property Gradient   backgroundGradient              : style.gradientWhenDefault
-    property Gradient   backgroundGradientWhenDisabled  : style.gradientWhenDefault
-    property Gradient   handleGradient                  : style.gradientWhenChecked
-    property Gradient   handleGradientWhenDisabled      : style.gradientWhenDisabled
+    property Gradient   backgroundGradientWhenDisabled  : style.gradientWhenDisabled
+
+    property Gradient   handleGradientWhenDefault       : style.handleGradientWhenDefault
+    property Gradient   handleGradientWhenPressed       : style.handleGradientWhenPressed
+    property Gradient   handleGradientWhenHovered       : style.handleGradientWhenHovered
+    property Gradient   handleGradientWhenDisabled      : style.handleGradientWhenDisabled
 
     property int        borderWidth                     : style.borderWidth
     property color      borderColor                     : style.borderColorWhenDefault
@@ -29,13 +35,17 @@ XCheckable {
     property int        fontSize                        : style.defaultFontSize
     property bool       useGradients                    : true
 
+    property int        handleMargins                   : 3
+
     // slots
     onUseGradientsChanged: {
         if(!useGradients) {
-            backgroundGradient              = null
-            backgroundGradientWhenDisabled  = null
-            handleGradient                  = null
-            handleGradientWhenDisabled      = null
+            handleGradientWhenDefault       = style.handleGradientWhenDefault
+            handleGradientWhenPressed       = style.handleGradientWhenPressed
+            handleGradientWhenHovered       = style.handleGradientWhenHovered
+            handleGradientWhenDisabled      = style.handleGradientWhenDisabled
+            backgroundGradient              = style.gradientWhenDefault
+            backgroundGradientWhenDisabled  = style.gradientWhenDisabled
         }
     }
 
@@ -45,19 +55,21 @@ XCheckable {
     states  : [
         State {
             name: "on"
-            when: checked
+            when: checked && enabled
             PropertyChanges { target: handle; x: parent.width/2 }
         },
         State {
-            when: !checked
+            when: !checked && enabled
             name: "off"
             PropertyChanges { target: handle; x: 0 }
         },
         State {
             name: "disabled"
+            when: !enabled
             PropertyChanges { target: base; color: backgroundColorWhenDisabled; gradient: backgroundGradientWhenDisabled }
             PropertyChanges { target: base; border.color: borderColorWhenDisabled }
             PropertyChanges { target: handle; color: handleColorWhenDisabled; gradient: handleGradientWhenDisabled }
+            PropertyChanges { target: handle; x: enabled ? parent.width/2 : 0 }
         }
     ]
 
@@ -108,13 +120,13 @@ XCheckable {
         Item {
             id              : handleContainer
             anchors.fill    : parent
-            anchors.margins : 2
+            anchors.margins : handleMargins
             Rectangle {
                 id      : handle
                 width   : parent.width / 2
                 height  : parent.height
-                color   : root.enabled ? handleColor : handleColorWhenDisabled
-                gradient: root.enabled ? handleGradient : handleGradientWhenDisabled
+                color   : handleColorWhenDefault
+                gradient: handleGradientWhenDefault
                 radius  : root.radius
                 Behavior on x { SpringAnimation { spring: 3; damping: 0.3; loops:Animation.Infinite } }
             }

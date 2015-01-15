@@ -33,18 +33,19 @@ Item {
         spacing         : 20
 
         XSlider {
-            width: 200
-            value: 50
+            width   : 200
+            value   : 50
         }
 
         XSlider {
-            width: 200
-            value: 20
+            width   : 200
+            value   : 20
         }
 
         XSlider {
-            width: 200
-            value: 75
+            width   : 200
+            value   : 75
+            enabled : false
         }
     }
 }

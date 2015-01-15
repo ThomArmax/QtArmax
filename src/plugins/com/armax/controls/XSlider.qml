@@ -40,6 +40,12 @@ Item {
     property color      colorWhenPressed        : style.colorWhenPressed
     property color      colorWhenHovered        : style.colorWhenHovered
     property color      colorWhenDisabled       : style.colorWhenDisabled
+
+    property color      handleColorWhenDefault  : style.handleColorWhenDefault
+    property color      handleColorWhenPressed  : style.handleColorWhenPressed
+    property color      handleColorWhenHovered  : style.handleColorWhenHovered
+    property color      handleColorWhenDisabled : style.handleColorWhenDisabled
+
     property color      progressColor           : style.colorWhenChecked
     property Gradient   progressGradient        : style.gradientWhenChecked
 
@@ -53,6 +59,11 @@ Item {
     property Gradient   gradientWhenPressed     : style.gradientWhenPressed
     property Gradient   gradientWhenHovered     : style.gradientWhenHovered
     property Gradient   gradientWhenDisabled    : style.gradientWhenDisabled
+
+    property Gradient   handleGradientWhenDefault   : style.handleGradientWhenDefault
+    property Gradient   handleGradientWhenPressed   : style.handleGradientWhenPressed
+    property Gradient   handleGradientWhenHovered   : style.handleGradientWhenHovered
+    property Gradient   handleGradientWhenDisabled  : style.handleGradientWhenDisabled
 
     property bool       useGradients            : true
     property bool       hoverEnabled            : true
@@ -69,9 +80,9 @@ Item {
         }
     }
     onValueChanged: {
-        slide.updatePosition(value)
+        handle.updatePosition(value)
     }
-    Component.onCompleted: slide.updatePosition(value)
+    Component.onCompleted: handle.updatePosition(value)
 
     id      : root
     width   : 100
@@ -83,26 +94,26 @@ Item {
         State {
             name: "hovered"
             when: dragArea.hoverEnabled && dragArea.containsMouse
-            PropertyChanges { target: slide; color          : colorWhenHovered          }
-            PropertyChanges { target: slide; gradient       : gradientWhenHovered       }
-            PropertyChanges { target: slide; border.color   : borderColorWhenHovered    }
+            PropertyChanges { target: handle; color          : handleColorWhenHovered       }
+            PropertyChanges { target: handle; gradient       : handleGradientWhenHovered    }
+            PropertyChanges { target: handle; border.color   : borderColorWhenHovered       }
         },
         State {
             name: "pressed"
             when: dragArea.pressed
-            PropertyChanges { target: slide; color          : colorWhenPressed          }
-            PropertyChanges { target: slide; gradient       : gradientWhenPressed       }
-            PropertyChanges { target: slide; border.color   : borderColorWhenPressed    }
+            PropertyChanges { target: handle; color          : handleColorWhenPressed       }
+            PropertyChanges { target: handle; gradient       : handleGradientWhenPressed    }
+            PropertyChanges { target: handle; border.color   : borderColorWhenPressed       }
         },
         State {
             name: "disabled"
             when: !enabled
-            PropertyChanges { target: slide; color              : colorWhenDisabled         }
-            PropertyChanges { target: slide; gradient           : gradientWhenDisabled      }
-            PropertyChanges { target: slide; border.color       : borderColorWhenDisabled   }
-            PropertyChanges { target: sliderBase; color         : colorWhenDisabled         }
-            PropertyChanges { target: sliderBase; gradient      : gradientWhenDisabled      }
-            PropertyChanges { target: sliderBase; border.color  : borderColorWhenDisabled   }
+            PropertyChanges { target: handle;       color       : handleColorWhenDisabled   }
+            PropertyChanges { target: handle;       gradient    : handleGradientWhenDisabled}
+            PropertyChanges { target: handle;       border.color: borderColorWhenDisabled   }
+            PropertyChanges { target: sliderBase;   color       : colorWhenDisabled         }
+            PropertyChanges { target: sliderBase;   gradient    : gradientWhenDisabled      }
+            PropertyChanges { target: sliderBase;   border.color: borderColorWhenDisabled   }
         }
     ]
 
@@ -116,6 +127,7 @@ Item {
         gradient        : backgroundGradient
         border.width    : borderWidth
         border.color    : borderColorWhenDefault
+        smooth          : true
         Item {
             id              : progressContainer
             anchors.fill    : parent
@@ -123,11 +135,12 @@ Item {
             Rectangle {
                 id                      : sliderProgress
                 height                  : parent.height
-                width                   : slide.x + slide.width/2
+                width                   : handle.x + handle.width/2
                 anchors.verticalCenter  : parent.verticalCenter
                 color                   : progressColor
                 gradient                : progressGradient
-                radius                  : sliderBase.radius
+                radius                  : 0.8*sliderBase.radius
+                smooth                  : true
             }
         }
     }
@@ -147,12 +160,12 @@ Item {
             x           = __activeArea*ratio
         }
 
-        id          : slide
+        id          : handle
         width       : height
         height      : parent.height
         radius      : width/2
-        color       : colorWhenDefault
-        gradient    : gradientWhenDefault
+        color       : handleColorWhenDefault
+        gradient    : handleGradientWhenDefault
         border.width: borderWidth
         border.color: borderColorWhenDefault
         state       : root.state
@@ -163,7 +176,7 @@ Item {
             drag.axis       : Drag.XAxis
             drag.minimumX   : 0
             drag.maximumX   : root.width-width
-            drag.target     : slide
+            drag.target     : handle
             hoverEnabled    : root.hoverEnabled
         }
     }

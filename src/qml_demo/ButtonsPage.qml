@@ -70,6 +70,7 @@ Item {
                 width   : parent.width/2
                 height  : toggle2.height
                 XToggleSwitch {
+                    enabled         : false
                     id              : toggle2
                     anchors.right   : parent.right
                 }
