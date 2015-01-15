@@ -60,11 +60,11 @@ XCheckable {
     // slots
     onUseGradientsChanged: {
         if(!useGradients) {
-            gradientWhenDefault : null
-            gradientWhenPressed : null
-            gradientWhendChecked: null
-            gradientWhenHovered : null
-            gradientWhenDisabled: null
+            gradientWhenDefault = null
+            gradientWhenPressed = null
+            gradientWhendChecked= null
+            gradientWhenHovered = null
+            gradientWhenDisabled= null
         }
     }
 

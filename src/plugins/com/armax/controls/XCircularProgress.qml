@@ -52,10 +52,8 @@ Item {
     // slots
     onUseGradientsChanged: {
         if(!useGradients) {
-            gradientWhenDefault : null
-            gradientWhenPressed : null
-            gradientWhenHovered : null
-            gradientWhenDisabled: null
+            backgroundGradient  = null
+            progressGradient    = null
         }
     }
     onBackgoundColorChanged     : canvas.requestPaint()
