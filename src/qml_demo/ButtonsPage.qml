@@ -54,6 +54,27 @@ Item {
             text    : "Disabled Button"
             enabled : false
         }
+
+        Row {
+            width   : __controlsWidth
+            height  : 30
+            Item {
+                width   : parent.width/2
+                height  : toggle1.height
+                XToggleSwitch {
+                    id          : toggle1
+                    anchors.left: parent.left
+                }
+            }
+            Item {
+                width   : parent.width/2
+                height  : toggle2.height
+                XToggleSwitch {
+                    id              : toggle2
+                    anchors.right   : parent.right
+                }
+            }
+        }
     }
 }
 

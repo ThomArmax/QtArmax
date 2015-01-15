@@ -23,7 +23,7 @@ OTHER_FILES = \
     XSlider.qml \
     XProgressBar.qml \
     XCheckable.qml \
-    XCircularProgress.qml \
+    XCircularProgress.qml
 
 # QML files to be included in resources file
 QML_FILES = \
@@ -33,7 +33,8 @@ QML_FILES = \
     XSlider.qml \
     XProgressBar.qml \
     XCheckable.qml \
-    XCircularProgress.qml
+    XCircularProgress.qml \
+    XToggleSwitch.qml
 
 # Graphics files to be included in resources file
 GFX = \
@@ -45,5 +46,8 @@ include(../../../plugins.pri)
 RESOURCES += $$GENERATED_RESOURCE_FILE
 
 qmldir.files = qmldir
+
+DISTFILES += \
+    XToggleSwitch.qml
 
 

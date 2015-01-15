@@ -37,7 +37,8 @@ static const struct {
     { "XSlider"             , 1, 0 },
     { "XProgressBar"        , 1, 0 },
     { "XCheckable"          , 1, 0 },
-    { "XCircularProgress"   , 1, 0 }
+    { "XCircularProgress"   , 1, 0 },
+    { "XToggleSwitch"       , 1, 0 }
 };
 
 static void initResources()
