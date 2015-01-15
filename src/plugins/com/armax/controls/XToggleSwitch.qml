@@ -17,10 +17,7 @@ XCheckable {
     property Gradient   handleGradientWhenDisabled      : style.gradientWhenDisabled
 
     property int        borderWidth                     : style.borderWidth
-    property color      borderColorWhenDefault          : style.borderColorWhenDefault
-    property color      borderColorWhenPressed          : style.borderColorWhenPressed
-    property color      borderColorWhenHovered          : style.borderColorWhenHovered
-    property color      borderColorWhenChecked          : style.borderColorWhenChecked
+    property color      borderColor                     : style.borderColorWhenDefault
     property color      borderColorWhenDisabled         : style.borderColorWhenDisabled
 
     property string     textWhenOn                      : "ON"
@@ -49,7 +46,7 @@ XCheckable {
         State {
             name: "on"
             when: checked
-            PropertyChanges { target: handle; x: root.width/2 }
+            PropertyChanges { target: handle; x: parent.width/2 }
         },
         State {
             when: !checked
@@ -59,6 +56,7 @@ XCheckable {
         State {
             name: "disabled"
             PropertyChanges { target: base; color: backgroundColorWhenDisabled; gradient: backgroundGradientWhenDisabled }
+            PropertyChanges { target: base; border.color: borderColorWhenDisabled }
             PropertyChanges { target: handle; color: handleColorWhenDisabled; gradient: handleGradientWhenDisabled }
         }
     ]
@@ -70,6 +68,8 @@ XCheckable {
         smooth      : true
         color       : backgroundColor
         gradient    : backgroundGradient
+        border.width: borderWidth
+        border.color: borderColor
 
         Row {
             anchors.fill    : parent
@@ -95,7 +95,7 @@ XCheckable {
                 width   : parent.width/2
                 Text {
                     anchors.fill        : parent
-                    anchors.leftMargin  : 10
+                    anchors.rightMargin : 2
                     verticalAlignment   : Text.AlignVCenter
                     horizontalAlignment : Text.AlignRight
                     color               : textColorWhenOff
@@ -105,14 +105,19 @@ XCheckable {
                 }
             }
         } // END Row
-        Rectangle {
-            id      : handle
-            width   : parent.width / 2
-            height  : parent.height
-            color   : root.enabled ? handleColor : handleColorWhenDisabled
-            gradient: root.enabled ? handleGradient : handleGradientWhenDisabled
-            radius  : root.radius
-            Behavior on x { SpringAnimation { spring: 3; damping: 0.3; loops:Animation.Infinite } }
+        Item {
+            id              : handleContainer
+            anchors.fill    : parent
+            anchors.margins : 2
+            Rectangle {
+                id      : handle
+                width   : parent.width / 2
+                height  : parent.height
+                color   : root.enabled ? handleColor : handleColorWhenDisabled
+                gradient: root.enabled ? handleGradient : handleGradientWhenDisabled
+                radius  : root.radius
+                Behavior on x { SpringAnimation { spring: 3; damping: 0.3; loops:Animation.Infinite } }
+            }
         }
 
     }
