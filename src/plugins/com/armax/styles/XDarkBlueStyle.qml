@@ -43,6 +43,12 @@ XStyle {
     handleColorWhenChecked          : "#A5A5A5"
     handleColorWhenDisabled         : "#656565"
 
+    handleBorderColorWhenDefault    : "#4B4B4B"
+    handleBorderColorWhenPressed    : "#4B4B4B"
+    handleBorderColorWhenHovered    : "#4B4B4B"
+    handleBorderColorWhenChecked    : "#4B4B4B"
+    handleBorderColorWhenDisabled   : "#333333"
+
     borderWidth                     : 1
     borderColorWhenDefault          : "#263659"
     borderColorWhenPressed          : "#263659"

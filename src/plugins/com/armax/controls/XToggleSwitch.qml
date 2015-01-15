@@ -22,9 +22,15 @@ XCheckable {
     property Gradient   handleGradientWhenHovered       : style.handleGradientWhenHovered
     property Gradient   handleGradientWhenDisabled      : style.handleGradientWhenDisabled
 
+    property color      handleBorderColorWhenDefault    : style.handleBorderColorWhenDefault
+    property color      handleBorderColorWhenPressed    : style.handleBorderColorWhenPressed
+    property color      handleBorderColorWhenHovered    : style.handleBorderColorWhenHovered
+    property color      handleBorderColorWhenDisabled   : style.handleBorderColorWhenDisabled
+
     property int        borderWidth                     : style.borderWidth
     property color      borderColor                     : style.borderColorWhenDefault
     property color      borderColorWhenDisabled         : style.borderColorWhenDisabled
+
 
     property string     textWhenOn                      : "ON"
     property string     textWhenOff                     : "OFF"
@@ -67,7 +73,7 @@ XCheckable {
             name: "disabled"
             when: !enabled
             PropertyChanges { target: base; color: backgroundColorWhenDisabled; gradient: backgroundGradientWhenDisabled }
-            PropertyChanges { target: base; border.color: borderColorWhenDisabled }
+            PropertyChanges { target: base; border.color: handleBorderColorWhenDisabled }
             PropertyChanges { target: handle; color: handleColorWhenDisabled; gradient: handleGradientWhenDisabled }
             PropertyChanges { target: handle; x: enabled ? parent.width/2 : 0 }
         }
@@ -122,12 +128,14 @@ XCheckable {
             anchors.fill    : parent
             anchors.margins : handleMargins
             Rectangle {
-                id      : handle
-                width   : parent.width / 2
-                height  : parent.height
-                color   : handleColorWhenDefault
-                gradient: handleGradientWhenDefault
-                radius  : root.radius
+                id          : handle
+                width       : parent.width / 2
+                height      : parent.height
+                color       : handleColorWhenDefault
+                gradient    : handleGradientWhenDefault
+                radius      : root.radius
+                border.color: handleBorderColorWhenDefault
+                border.width: borderWidth
                 Behavior on x { SpringAnimation { spring: 3; damping: 0.3; loops:Animation.Infinite } }
             }
         }

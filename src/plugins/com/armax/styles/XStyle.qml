@@ -50,6 +50,12 @@ QtObject {
     property color      borderColorWhenChecked
     property color      borderColorWhenDisabled
 
+    property color      handleBorderColorWhenDefault
+    property color      handleBorderColorWhenPressed
+    property color      handleBorderColorWhenHovered
+    property color      handleBorderColorWhenChecked
+    property color      handleBorderColorWhenDisabled
+
     property int        radius
 
     property Gradient   gradientWhenDefault

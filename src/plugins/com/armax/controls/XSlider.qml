@@ -26,47 +26,54 @@ import com.armax.styles 1.0
 
 Item {
     // public properties
-    property real       minValue                : 0
-    property real       maxValue                : 100
-    property real       value                   : 0
-    property int        decimals                : 0
+    property real       minValue                        : 0
+    property real       maxValue                        : 100
+    property real       value                           : 0
+    property int        decimals                        : 0
 
-    property XStyle     style                   : XDarkBlueStyle{}
-    property int        radius                  : style.radius
+    property XStyle     style                           : XDarkBlueStyle{}
 
-    property color      backgroundColor         : style.colorWhenDefault
-    property Gradient   backgroundGradient      : style.gradientWhenDefault
-    property color      colorWhenDefault        : style.colorWhenDefault
-    property color      colorWhenPressed        : style.colorWhenPressed
-    property color      colorWhenHovered        : style.colorWhenHovered
-    property color      colorWhenDisabled       : style.colorWhenDisabled
+    property int        radius                          : style.radius
 
-    property color      handleColorWhenDefault  : style.handleColorWhenDefault
-    property color      handleColorWhenPressed  : style.handleColorWhenPressed
-    property color      handleColorWhenHovered  : style.handleColorWhenHovered
-    property color      handleColorWhenDisabled : style.handleColorWhenDisabled
+    property color      backgroundColor                 : style.colorWhenDefault
+    property Gradient   backgroundGradient              : style.gradientWhenDefault
 
-    property color      progressColor           : style.colorWhenChecked
-    property Gradient   progressGradient        : style.gradientWhenChecked
+    property color      colorWhenDefault                : style.colorWhenDefault
+    property color      colorWhenPressed                : style.colorWhenPressed
+    property color      colorWhenHovered                : style.colorWhenHovered
+    property color      colorWhenDisabled               : style.colorWhenDisabled
 
-    property int        borderWidth             : style.borderWidth
-    property color      borderColorWhenDefault  : style.borderColorWhenDefault
-    property color      borderColorWhenPressed  : style.borderColorWhenPressed
-    property color      borderColorWhenHovered  : style.borderColorWhenHovered
-    property color      borderColorWhenDisabled : style.borderColorWhenDisabled
+    property color      handleColorWhenDefault          : style.handleColorWhenDefault
+    property color      handleColorWhenPressed          : style.handleColorWhenPressed
+    property color      handleColorWhenHovered          : style.handleColorWhenHovered
+    property color      handleColorWhenDisabled         : style.handleColorWhenDisabled
 
-    property Gradient   gradientWhenDefault     : style.gradientWhenDefault
-    property Gradient   gradientWhenPressed     : style.gradientWhenPressed
-    property Gradient   gradientWhenHovered     : style.gradientWhenHovered
-    property Gradient   gradientWhenDisabled    : style.gradientWhenDisabled
+    property color      handleBorderColorWhenDefault    : style.handleBorderColorWhenDefault
+    property color      handleBorderColorWhenPressed    : style.handleBorderColorWhenPressed
+    property color      handleBorderColorWhenHovered    : style.handleBorderColorWhenHovered
+    property color      handleBorderColorWhenDisabled   : style.handleBorderColorWhenDisabled
 
-    property Gradient   handleGradientWhenDefault   : style.handleGradientWhenDefault
-    property Gradient   handleGradientWhenPressed   : style.handleGradientWhenPressed
-    property Gradient   handleGradientWhenHovered   : style.handleGradientWhenHovered
-    property Gradient   handleGradientWhenDisabled  : style.handleGradientWhenDisabled
+    property color      progressColor                   : style.colorWhenChecked
+    property Gradient   progressGradient                : style.gradientWhenChecked
 
-    property bool       useGradients            : true
-    property bool       hoverEnabled            : true
+    property int        borderWidth                     : style.borderWidth
+    property color      borderColorWhenDefault          : style.borderColorWhenDefault
+    property color      borderColorWhenPressed          : style.borderColorWhenPressed
+    property color      borderColorWhenHovered          : style.borderColorWhenHovered
+    property color      borderColorWhenDisabled         : style.borderColorWhenDisabled
+
+    property Gradient   gradientWhenDefault             : style.gradientWhenDefault
+    property Gradient   gradientWhenPressed             : style.gradientWhenPressed
+    property Gradient   gradientWhenHovered             : style.gradientWhenHovered
+    property Gradient   gradientWhenDisabled            : style.gradientWhenDisabled
+
+    property Gradient   handleGradientWhenDefault       : style.handleGradientWhenDefault
+    property Gradient   handleGradientWhenPressed       : style.handleGradientWhenPressed
+    property Gradient   handleGradientWhenHovered       : style.handleGradientWhenHovered
+    property Gradient   handleGradientWhenDisabled      : style.handleGradientWhenDisabled
+
+    property bool       useGradients                    : true
+    property bool       hoverEnabled                    : true
 
     // slots
     onUseGradientsChanged: {
@@ -103,17 +110,17 @@ Item {
             when: dragArea.pressed
             PropertyChanges { target: handle; color          : handleColorWhenPressed       }
             PropertyChanges { target: handle; gradient       : handleGradientWhenPressed    }
-            PropertyChanges { target: handle; border.color   : borderColorWhenPressed       }
+            PropertyChanges { target: handle; border.color   : handleBorderColorWhenPressed }
         },
         State {
             name: "disabled"
             when: !enabled
-            PropertyChanges { target: handle;       color       : handleColorWhenDisabled   }
-            PropertyChanges { target: handle;       gradient    : handleGradientWhenDisabled}
-            PropertyChanges { target: handle;       border.color: borderColorWhenDisabled   }
-            PropertyChanges { target: sliderBase;   color       : colorWhenDisabled         }
-            PropertyChanges { target: sliderBase;   gradient    : gradientWhenDisabled      }
-            PropertyChanges { target: sliderBase;   border.color: borderColorWhenDisabled   }
+            PropertyChanges { target: handle;       color       : handleColorWhenDisabled       }
+            PropertyChanges { target: handle;       gradient    : handleGradientWhenDisabled    }
+            PropertyChanges { target: handle;       border.color: handleBorderColorWhenDisabled }
+            PropertyChanges { target: sliderBase;   color       : colorWhenDisabled             }
+            PropertyChanges { target: sliderBase;   gradient    : gradientWhenDisabled          }
+            PropertyChanges { target: sliderBase;   border.color: borderColorWhenDisabled       }
         }
     ]
 
@@ -167,7 +174,7 @@ Item {
         color       : handleColorWhenDefault
         gradient    : handleGradientWhenDefault
         border.width: borderWidth
-        border.color: borderColorWhenDefault
+        border.color: handleBorderColorWhenDefault
         state       : root.state
         onXChanged  : computeValue(x)
         MouseArea {
