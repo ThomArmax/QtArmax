@@ -22,11 +22,12 @@
 ****************************************************************************/
 
 import QtQuick 2.0
+import com.armax.styles 1.0
 
 XCheckable {
 
     // public properties
-    property XStyle style                   : XStyle {}
+    property XStyle style                   : XDarkBlueStyle{}
     property color  colorWhenDefault        : style.colorWhenDefault
     property color  colorWhenChecked        : style.colorWhenChecked
     property alias  radius                  : base.radius
@@ -66,7 +67,7 @@ XCheckable {
             id              : base
             width           : checkboxWidth
             height          : checkboxHeight
-            radius          : 5
+            radius          : style.radius
             color           : backgroundColor
             border.width    : 1
             border.color    : backgroundBorderColor

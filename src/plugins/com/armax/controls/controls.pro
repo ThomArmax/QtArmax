@@ -18,7 +18,6 @@ HEADERS += \
 OTHER_FILES = \
     qmldir \
     XButton.qml \
-    XStyle.qml \
     XRadioButton.qml \
     XCheckBox.qml \
     XSlider.qml \
@@ -28,7 +27,6 @@ OTHER_FILES = \
 
 # QML files to be included in resources file
 QML_FILES = \
-    XStyle.qml \
     XCheckBox.qml \
     XRadioButton.qml \
     XButton.qml \

@@ -26,6 +26,7 @@ import QtQuick.Window 2.1
 import QtQuick.Controls 1.1
 
 import com.armax.controls 1.0
+import com.armax.styles 1.0
 
 Window {
     visible : true
@@ -33,7 +34,7 @@ Window {
     height  : 580
     color   : style.backgroundColor
 
-    XStyle { id: style }
+    XDarkBlueStyle { id: style }
 
     property real __controlsWidth : 30
 

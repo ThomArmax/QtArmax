@@ -22,12 +22,13 @@
 ****************************************************************************/
 
 import QtQuick 2.0
+import com.armax.styles 1.0
 
 Item {
     // public properties
     property int        progress                : 0
 
-    property XStyle     style                   : XStyle{}
+    property XStyle     style                   : XDarkBlueStyle {}
 
     property color      backgoundColor          : style.colorWhenChecked
     property Gradient   backgroundGradient      : style.gradientWhenChecked

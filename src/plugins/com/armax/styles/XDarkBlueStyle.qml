@@ -44,7 +44,7 @@ XStyle {
     borderColorWhenChecked  : "#222222"
     borderColorWhenDisabled : "#222222"
 
-    radius                  : 5
+    radius                  : 3
 
     gradientWhenDefault     : Gradient { GradientStop { position: 0.0; color: colorWhenDefault } GradientStop { position: 1.0; color: colorWhenChecked } }
     gradientWhenPressed     : Gradient { GradientStop { position: 0.0; color: colorWhenPressed } GradientStop { position: 1.0; color: colorWhenDefault } }

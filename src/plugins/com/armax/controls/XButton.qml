@@ -22,11 +22,12 @@
 ****************************************************************************/
 
 import QtQuick 2.0
+import com.armax.styles 1.0
 
 XCheckable {
 
     // public properties
-    property XStyle     style                   : XStyle {}
+    property XStyle     style                   : XDarkBlueStyle{}
 
     property alias      text                    : txt.text
     property color      textColor               : style.textColor
@@ -80,6 +81,7 @@ XCheckable {
         radius      : root.radius
         border.width: borderWidth
         border.color: borderColorWhenDefault
+        smooth      : true
         state       : root.state
     }
 

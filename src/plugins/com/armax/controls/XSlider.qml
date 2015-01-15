@@ -22,6 +22,7 @@
 ****************************************************************************/
 
 import QtQuick 2.0
+import com.armax.styles 1.0
 
 Item {
     // public properties
@@ -30,7 +31,7 @@ Item {
     property real       value                   : 0
     property int        decimals                : 0
 
-    property XStyle     style                   : XStyle{}
+    property XStyle     style                   : XDarkBlueStyle{}
     property int        radius                  : style.radius
 
     property color      backgroundColor         : style.colorWhenDefault

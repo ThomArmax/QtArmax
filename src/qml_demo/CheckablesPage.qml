@@ -22,8 +22,10 @@
 ****************************************************************************/
 
 import QtQuick 2.0
-import com.armax.controls 1.0
 import QtQuick.Controls 1.0
+
+import com.armax.controls 1.0
+import com.armax.styles 1.0
 
 Item {
     id      : root
@@ -34,7 +36,7 @@ Item {
     ExclusiveGroup {
         id: exGp
     }
-    property XStyle style : XStyle {}
+    property XStyle style : XDarkBlueStyle {}
     property int labelsWidth: 0
 
     Column {

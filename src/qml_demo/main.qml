@@ -27,14 +27,15 @@ import QtQuick.Controls 1.0
 import QtQuick.Controls.Styles 1.2
 
 import com.armax.controls 1.0
+import com.armax.styles 1.0
 
 Window {
     visible : true
     width   : 480
     height  : 480
 
-    XStyle {
-        id: style
+    XDarkBlueStyle {
+        id: mainStyle
     }
 
     TabView {
@@ -81,7 +82,7 @@ Window {
                 checked         : styleData.selected
             }
             frame: Rectangle {
-                gradient: style.gradientWhenDisabled
+                gradient: mainStyle.gradientWhenDisabled
                 //color: style.backgroundColor
                 //color: "#677593"
             }
