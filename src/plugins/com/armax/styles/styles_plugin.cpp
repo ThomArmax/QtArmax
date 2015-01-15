@@ -29,11 +29,13 @@ static const struct {
     const char *type;
     int major, minor;
 } qmldir [] = {
+    { "XStyle"          , 1, 0 },
+    { "XDarkBlueStyle"  , 1, 0 }
 };
 
 static void initResources()
 {
-    //Q_INIT_RESOURCE(QtArmaxStylesPlugin);
+    Q_INIT_RESOURCE(QtArmaxStylesPlugin);
 }
 
 void StylesPlugin::registerTypes(const char *uri)
