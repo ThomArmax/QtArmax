@@ -26,7 +26,9 @@ import QtQuick 2.0
 XStyle {
     backgroundColor                 : "#253344"
 
-    textColor                       : "white"
+    fontColor                       : "white"
+    fontColorWhenDisabled           : "#3C3C3C"
+    controlsFontColor               : "#D6E9FF"
     defaultFontSize                 : 12
 
     defaultControlsHeight           : 30
@@ -37,7 +39,7 @@ XStyle {
     colorWhenChecked                : "#425c99"
     colorWhenDisabled               : "#7C7C7C"
 
-    handleColorWhenDefault          : "#F2F2F2"
+    handleColorWhenDefault          : "#E6E6E6"
     handleColorWhenPressed          : "#E5E5E5"
     handleColorWhenHovered          : "#CBCBCB"
     handleColorWhenChecked          : "#A5A5A5"
@@ -58,17 +60,67 @@ XStyle {
 
     radius                          : 3
 
-    gradientWhenDefault             : Gradient { GradientStop { position: 0.0; color: colorWhenDefault } GradientStop { position: 1.0; color: colorWhenChecked } }
-    gradientWhenPressed             : Gradient { GradientStop { position: 0.0; color: colorWhenPressed } GradientStop { position: 1.0; color: colorWhenDefault } }
-    gradientWhenHovered             : Gradient { GradientStop { position: 0.0; color: colorWhenHovered } GradientStop { position: 1.0; color: colorWhenDefault } }
-    gradientWhenChecked             : Gradient { GradientStop { position: 0.0; color: colorWhenChecked } GradientStop { position: 1.0; color: "#253343" } }
-    gradientWhenDisabled            : Gradient { GradientStop { position: 0.0; color: colorWhenDisabled } GradientStop { position: 1.0; color: "#3C3C3C" } }
+    gradientWhenDefault             : Gradient {
+        GradientStop { position: 0.00; color: colorWhenDefault }
+        GradientStop { position: 0.49; color: Qt.darker(colorWhenDefault, 0.95) }
+        GradientStop { position: 0.50; color: Qt.darker(colorWhenDefault, 1.05) }
+        GradientStop { position: 1.00; color: colorWhenChecked }
+    }
+    gradientWhenPressed             : Gradient {
+        GradientStop { position: 0.00; color: colorWhenPressed }
+        GradientStop { position: 0.49; color: Qt.darker(colorWhenPressed, 0.95) }
+        GradientStop { position: 0.50; color: Qt.darker(colorWhenPressed, 1.05) }
+        GradientStop { position: 1.00; color: colorWhenDefault }
+    }
+    gradientWhenHovered             : Gradient {
+        GradientStop { position: 0.00; color: colorWhenHovered }
+        GradientStop { position: 0.49; color: Qt.darker(colorWhenHovered, 0.95) }
+        GradientStop { position: 0.50; color: Qt.darker(colorWhenHovered, 1.05) }
+        GradientStop { position: 1.00; color: colorWhenDefault }
+    }
+    gradientWhenChecked             : Gradient {
+        GradientStop { position: 0.00; color: colorWhenChecked }
+        GradientStop { position: 0.49; color: Qt.darker(colorWhenChecked, 0.95) }
+        GradientStop { position: 0.50; color: Qt.darker(colorWhenChecked, 1.05) }
+        GradientStop { position: 1.00; color: "#253343" }
+    }
+    gradientWhenDisabled            : Gradient {
+        GradientStop { position: 0.00; color: colorWhenDisabled }
+        GradientStop { position: 0.49; color: Qt.darker(colorWhenDisabled, 0.95) }
+        GradientStop { position: 0.50; color: Qt.darker(colorWhenDisabled, 1.05) }
+        GradientStop { position: 1.00; color: "#3C3C3C" }
+    }
 
-    handleGradientWhenDefault       : Gradient { GradientStop { position: 0.0; color: handleColorWhenDefault } GradientStop { position: 1.0; color: handleColorWhenChecked } }
-    handleGradientWhenPressed       : Gradient { GradientStop { position: 0.0; color: handleColorWhenPressed } GradientStop { position: 1.0; color: handleColorWhenDefault } }
-    handleGradientWhenHovered       : Gradient { GradientStop { position: 0.0; color: handleColorWhenHovered } GradientStop { position: 1.0; color: handleColorWhenDefault } }
-    handleGradientWhenChecked       : Gradient { GradientStop { position: 0.0; color: handleColorWhenChecked } GradientStop { position: 1.0; color: Qt.darker(handleColorWhenChecked) } }
-    handleGradientWhenDisabled      : Gradient { GradientStop { position: 0.0; color: handleColorWhenDisabled } GradientStop { position: 1.0; color: Qt.darker(handleColorWhenDisabled) } }
+    handleGradientWhenDefault       : Gradient {
+        GradientStop { position: 0.00; color: handleColorWhenDefault }
+        GradientStop { position: 0.49; color: Qt.darker(handleColorWhenDefault, 0.95) }
+        GradientStop { position: 0.50; color: Qt.darker(handleColorWhenDefault, 1.05) }
+        GradientStop { position: 1.00; color: handleColorWhenChecked }
+    }
+    handleGradientWhenPressed       : Gradient {
+        GradientStop { position: 0.00; color: handleColorWhenPressed }
+        GradientStop { position: 0.49; color: Qt.darker(handleColorWhenPressed, 0.95) }
+        GradientStop { position: 0.50; color: Qt.darker(handleColorWhenPressed, 1.05) }
+        GradientStop { position: 1.00; color: handleColorWhenDefault }
+    }
+    handleGradientWhenHovered       : Gradient {
+        GradientStop { position: 0.00; color: handleColorWhenHovered }
+        GradientStop { position: 0.49; color: Qt.darker(handleColorWhenHovered, 0.95) }
+        GradientStop { position: 0.50; color: Qt.darker(handleColorWhenHovered, 1.05) }
+        GradientStop { position: 1.00; color: handleColorWhenDefault }
+    }
+    handleGradientWhenChecked       : Gradient {
+        GradientStop { position: 0.00; color: handleColorWhenChecked }
+        GradientStop { position: 0.49; color: Qt.darker(handleColorWhenChecked, 0.95) }
+        GradientStop { position: 0.50; color: Qt.darker(handleColorWhenChecked, 1.05) }
+        GradientStop { position: 1.00; color: Qt.darker(handleColorWhenChecked) }
+    }
+    handleGradientWhenDisabled      : Gradient {
+        GradientStop { position: 0.00; color: handleColorWhenDisabled }
+        GradientStop { position: 0.49; color: Qt.darker(handleColorWhenDisabled, 0.95) }
+        GradientStop { position: 0.50; color: Qt.darker(handleColorWhenDisabled, 1.05) }
+        GradientStop { position: 1.00; color: Qt.darker(handleColorWhenDisabled, 1.50) }
+    }
 
     controlAnimationDuration        : 100
 }

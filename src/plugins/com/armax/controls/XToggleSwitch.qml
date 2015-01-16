@@ -17,7 +17,8 @@ XCheckable {
     property Gradient   backgroundGradient              : style.gradientWhenDefault
     property Gradient   backgroundGradientWhenDisabled  : style.gradientWhenDisabled
 
-    property Gradient   handleGradientWhenDefault       : style.handleGradientWhenDefault
+    property Gradient   handleGradientWhenChecked       : style.handleGradientWhenDefault
+    property Gradient   handleGradientWhenDefault       : style.handleGradientWhenChecked
     property Gradient   handleGradientWhenPressed       : style.handleGradientWhenPressed
     property Gradient   handleGradientWhenHovered       : style.handleGradientWhenHovered
     property Gradient   handleGradientWhenDisabled      : style.handleGradientWhenDisabled
@@ -35,8 +36,9 @@ XCheckable {
     property string     textWhenOn                      : "ON"
     property string     textWhenOff                     : "OFF"
 
-    property color      textColorWhenOn                 : style.textColor
-    property color      textColorWhenOff                : style.textColor
+    property color      fontColorWhenOn                 : style.controlsFontColor
+    property color      fontColorWhenOff                : style.fontColorWhenDisabled
+    property color      fontColorWhenDisabled           : style.fontColorWhenDisabled
 
     property int        fontSize                        : style.defaultFontSize
     property bool       useGradients                    : true
@@ -63,17 +65,21 @@ XCheckable {
             name: "on"
             when: checked && enabled
             PropertyChanges { target: handle; x: parent.width/2 }
+            PropertyChanges { target: handle; gradient: handleGradientWhenChecked }
         },
         State {
             when: !checked && enabled
             name: "off"
             PropertyChanges { target: handle; x: 0 }
+            PropertyChanges { target: handle; gradient: handleGradientWhenDefault }
         },
         State {
             name: "disabled"
             when: !enabled
             PropertyChanges { target: base; color: backgroundColorWhenDisabled; gradient: backgroundGradientWhenDisabled }
             PropertyChanges { target: base; border.color: handleBorderColorWhenDisabled }
+            PropertyChanges { target: onText; color: fontColorWhenDisabled }
+            PropertyChanges { target: offText; color: fontColorWhenDisabled }
             PropertyChanges { target: handle; color: handleColorWhenDisabled; gradient: handleGradientWhenDisabled }
             PropertyChanges { target: handle; x: enabled ? parent.width/2 : 0 }
         }
@@ -97,11 +103,12 @@ XCheckable {
                 height  : parent.height
                 width   : parent.width/2
                 Text {
+                    id                  : onText
                     anchors.fill        : parent
                     anchors.leftMargin  : 2
                     verticalAlignment   : Text.AlignVCenter
                     horizontalAlignment : Text.AlignLeft
-                    color               : textColorWhenOn
+                    color               : fontColorWhenOn
                     font.pointSize      : fontSize > 0 ? fontSize : 10
                     text                : textWhenOn
                     clip                : true
@@ -112,11 +119,12 @@ XCheckable {
                 height  : parent.height
                 width   : parent.width/2
                 Text {
+                    id                  : offText
                     anchors.fill        : parent
                     anchors.rightMargin : 2
                     verticalAlignment   : Text.AlignVCenter
                     horizontalAlignment : Text.AlignRight
-                    color               : textColorWhenOff
+                    color               : fontColorWhenOff
                     font.pointSize      : fontSize > 0 ? fontSize : 10
                     text                : textWhenOff
                     clip                : true

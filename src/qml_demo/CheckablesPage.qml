@@ -43,7 +43,7 @@ Item {
         id              : vLayout
         width           : implicitWidth
         anchors.centerIn: parent
-        spacing         : 20
+        spacing         : 10
 
         XCheckBox {
             label.text              : "A checkbox :"
@@ -53,6 +53,19 @@ Item {
         XCheckBox {
             label.text              : "Another checkbox :"
             label.width             : labelsWidth
+            Component.onCompleted   : labelsWidth = Math.max(label.paintedWidth, labelsWidth)
+        }
+        XCheckBox {
+            label.text              : "Disabled checkbox :"
+            label.width             : labelsWidth
+            enabled                 : false
+            Component.onCompleted   : labelsWidth = Math.max(label.paintedWidth, labelsWidth)
+        }
+        XCheckBox {
+            label.text              : "Disabled checked checkbox :"
+            label.width             : labelsWidth
+            enabled                 : false
+            checked                 : true
             Component.onCompleted   : labelsWidth = Math.max(label.paintedWidth, labelsWidth)
         }
 
@@ -81,9 +94,16 @@ Item {
             Component.onCompleted   : labelsWidth = Math.max(label.paintedWidth, labelsWidth)
         }
         XRadioButton {
-            label.text              : "Choice 4 :"
-            exclusiveGroup          : exGp
+            label.text              : "Disabled radio button :"
             label.width             : labelsWidth
+            enabled                 : false
+            Component.onCompleted   : labelsWidth = Math.max(label.paintedWidth, labelsWidth)
+        }
+        XRadioButton {
+            label.text              : "Disabled radio button checked :"
+            label.width             : labelsWidth
+            checked                 : true
+            enabled                 : false
             Component.onCompleted   : labelsWidth = Math.max(label.paintedWidth, labelsWidth)
         }
     }

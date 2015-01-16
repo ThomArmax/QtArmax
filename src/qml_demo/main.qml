@@ -82,8 +82,8 @@ Window {
                 checked         : styleData.selected
             }
             frame: Rectangle {
-                gradient: mainStyle.gradientWhenDisabled
-                //color: style.backgroundColor
+                //gradient: mainStyle.gradientWhenDisabled
+                color: mainStyle.colorWhenDisabled
                 //color: "#677593"
             }
         }

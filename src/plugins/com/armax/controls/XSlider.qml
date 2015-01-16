@@ -115,12 +115,13 @@ Item {
         State {
             name: "disabled"
             when: !enabled
-            PropertyChanges { target: handle;       color       : handleColorWhenDisabled       }
-            PropertyChanges { target: handle;       gradient    : handleGradientWhenDisabled    }
-            PropertyChanges { target: handle;       border.color: handleBorderColorWhenDisabled }
-            PropertyChanges { target: sliderBase;   color       : colorWhenDisabled             }
-            PropertyChanges { target: sliderBase;   gradient    : gradientWhenDisabled          }
-            PropertyChanges { target: sliderBase;   border.color: borderColorWhenDisabled       }
+            PropertyChanges { target: handle;           color       : handleColorWhenDisabled       }
+            PropertyChanges { target: handle;           gradient    : handleGradientWhenDisabled    }
+            PropertyChanges { target: handle;           border.color: handleBorderColorWhenDisabled }
+            PropertyChanges { target: sliderProgress;   visible     : false                         }
+            PropertyChanges { target: sliderBase;       color       : colorWhenDisabled             }
+            PropertyChanges { target: sliderBase;       gradient    : gradientWhenDisabled          }
+            PropertyChanges { target: sliderBase;       border.color: borderColorWhenDisabled       }
         }
     ]
 

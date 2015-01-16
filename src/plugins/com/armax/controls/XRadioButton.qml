@@ -25,21 +25,48 @@ import QtQuick 2.0
 import com.armax.styles 1.0
 
 XCheckable {
-    // public properties
-    property XStyle style                   : XDarkBlueStyle{}
-    property color  colorWhenDefault        : style.colorWhenDefault
-    property color  colorWhenChecked        : style.colorWhenChecked
-    property real   opactityWhenDisabled    : 0.4
-    property color  backgroundColor         : style.colorWhenDefault
-    property color  backgroundBorderColor   : Qt.darker(backgroundColor)
-    property alias  label                   : labelTxt
-    property int    radiobuttonWidth        : radiobuttonHeight
-    property int    radiobuttonHeight       : style.defaultControlsHeight
 
-    id          : root
-    width       : hLayout.implicitWidth
-    height      : hLayout.implicitHeight
-    checkable   : true
+    // public properties
+    property XStyle     style                           : XDarkBlueStyle{}
+
+    property color      colorWhenDefault                : style.colorWhenDefault
+    property color      colorWhenDisabled               : style.colorWhenDisabled
+
+    property color      handleColorWhenChecked          : style.handleColorWhenDefault
+    property color      handleColorWhenDisabled         : style.handleColorWhenDisabled
+
+    property int        borderWidth                     : style.borderWidth
+    property color      borderColorWhenDefault          : style.borderColorWhenDefault
+    property color      borderColorWhenDisabled         : style.borderColorWhenDisabled
+
+    property color      handleBorderColorWhenChecked    : style.handleBorderColorWhenChecked
+    property color      handleBorderColorWhenDisabled   : style.handleBorderColorWhenDisabled
+
+    property Gradient   gradientWhenDefault             : style.gradientWhenDefault
+    property Gradient   gradientWhenDisabled            : style.gradientWhenDisabled
+
+    property Gradient   handleGradientWhenChecked       : style.handleGradientWhenDefault
+    property Gradient   handleGradientWhenDisabled      : style.handleGradientWhenDisabled
+
+    property alias      label                           : labelTxt
+    property int        radioButtonWidth                : radioButtonHeight
+    property int        radioButtonHeight               : style.defaultControlsHeight
+
+    property bool       useGradients                    : true
+
+    // slots
+    onUseGradientsChanged: {
+        if(!useGradients) {
+            gradientWhenDefault         = null
+            gradientWhenDisabled        = null
+            handleGradientWhenChecked   = null
+            handleGradientWhenDisabled  = null
+        }
+    }
+
+    id      : root
+    width   : hLayout.implicitWidth
+    height  : hLayout.implicitHeight
 
     Row {
         id      : hLayout
@@ -49,41 +76,67 @@ XCheckable {
             id                  : labelTxt
             height              : parent.implicitHeight
             verticalAlignment   : Text.AlignVCenter
-            color               : root.style.textColor
+            color               : root.style.fontColor
             font.pointSize      : root.style.defaultFontSize
             visible             : text !== ""
         }
-        Rectangle {
-            id          : base
-            width       : radiobuttonWidth
-            height      : radiobuttonHeight
-            radius      : width
-            color       : backgroundColor
-            border.color: backgroundBorderColor
-            border.width: 1
 
+        Rectangle {
+            id              : base
+            width           : radioButtonWidth
+            height          : radioButtonHeight
+            radius          : width/2
+            color           : colorWhenDefault
+            gradient        : gradientWhenDefault
+            border.width    : borderWidth
+            border.color    : borderColorWhenDefault
+            smooth          : true
             Rectangle {
-                id              : checkRectangle
-                anchors.fill    : parent
-                anchors.margins : 0.2*parent.width
-                radius          : width
-                Behavior on color { ColorAnimation { duration : 100 } }
-            }
-        }
-    }
+                id              : handle
+                width           : 0.8*parent.width
+                height          : 0.8*parent.height
+                anchors.centerIn: parent
+                radius          : width/2
+                color           : handleColorWhenChecked
+                gradient        : handleGradientWhenChecked
+                border.width    : borderWidth
+                border.color    : handleBorderColorWhenChecked
+                smooth          : true
+                Behavior on opacity { NumberAnimation { duration: style.controlAnimationDuration } }
+            } // END Rectangle handle
+        } // END Rectangle base
+    } // END hLayout
 
     states: [
         State {
             name: "default"
-            when: !checked
-            PropertyChanges { target: checkRectangle; color: colorWhenDefault }
-            PropertyChanges { target: checkRectangle; border.color: colorWhenDefault }
+            when: !checked && enabled
+            PropertyChanges { target: handle; opacity       : 0                         }
+            PropertyChanges { target: base;   color         : colorWhenDefault          }
+            PropertyChanges { target: base;   gradient      : gradientWhenDefault       }
+            PropertyChanges { target: base;   border.color  : borderColorWhenDefault    }
         },
         State {
             name: "checked"
-            when: checked
-            PropertyChanges { target: checkRectangle; color: colorWhenChecked }
-            PropertyChanges { target: checkRectangle; border.color: Qt.darker(colorWhenChecked) }
+            when: checked && enabled
+        },
+        State {
+            name: "disabledChecked"
+            when: !enabled && checked
+            PropertyChanges { target: handle; color         : handleColorWhenDisabled       }
+            PropertyChanges { target: handle; gradient      : handleGradientWhenDisabled    }
+            PropertyChanges { target: handle; border.color  : handleBorderColorWhenDisabled }
+            PropertyChanges { target: base;   color         : colorWhenDisabled             }
+            PropertyChanges { target: base;   gradient      : gradientWhenDisabled          }
+            PropertyChanges { target: base;   border.color  : borderColorWhenDisabled       }
+        },
+        State {
+            name: "disabledUnchecked"
+            when: !enabled && !checked
+            PropertyChanges { target: handle; opacity       : 0                             }
+            PropertyChanges { target: base;   color         : colorWhenDisabled             }
+            PropertyChanges { target: base;   gradient      : gradientWhenDisabled          }
+            PropertyChanges { target: base;   border.color  : borderColorWhenDisabled       }
         }
-    ]
+    ] // END states
 }

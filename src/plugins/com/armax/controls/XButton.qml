@@ -30,7 +30,8 @@ XCheckable {
     property XStyle     style                   : XDarkBlueStyle{}
 
     property alias      text                    : txt.text
-    property color      textColor               : style.textColor
+    property color      fontColor               : style.controlsFontColor
+    property color      fontColorWhenDisabled   : style.fontColorWhenDisabled
     property int        fontSize                : style.defaultFontSize
 
     property color      colorWhenDefault        : style.colorWhenDefault
@@ -89,7 +90,7 @@ XCheckable {
         id              : txt
         anchors.centerIn: parent
         text            : "Button"
-        color           : textColor
+        color           : fontColor
         clip            : true
         font.pointSize  : fontSize > 0 ? fontSize : 10
     }
@@ -122,6 +123,7 @@ XCheckable {
         State {
             name: "disabled"
             when: !enabled
+            PropertyChanges { target: txt;       color          : fontColorWhenDisabled     }
             PropertyChanges { target: rectangle; color          : colorWhenDisabled         }
             PropertyChanges { target: rectangle; gradient       : gradientWhenDisabled      }
             PropertyChanges { target: rectangle; border.color   : borderColorWhenDisabled   }

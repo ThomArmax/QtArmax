@@ -40,7 +40,7 @@ Item {
     property int        borderWidth             : style.borderWidth
     property color      borderColor             : style.borderColorWhenDefault
 
-    property color      fontColor               : style.textColor
+    property color      fontColor               : style.controlsFontColor
     property int        fontSize                : style.defaultFontSize
 
     property bool       useGradients            : true

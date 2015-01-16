@@ -53,7 +53,7 @@ Window {
                 height              : parent.height
                 text                : "XCheckBox :"
                 font.pointSize      : style.defaultFontSize
-                color               : style.textColor
+                color               : style.fontColor
                 verticalAlignment   : Text.AlignVCenter
             }
             Item {
@@ -75,7 +75,7 @@ Window {
                 height              : parent.height
                 text                : "XButton :"
                 font.pointSize      : style.defaultFontSize
-                color               : style.textColor
+                color               : style.fontColor
                 verticalAlignment   : Text.AlignVCenter
             }
             Item {
@@ -98,7 +98,7 @@ Window {
                 height              : parent.height
                 text                : "XButton Hoverable :"
                 font.pointSize      : style.defaultFontSize
-                color               : style.textColor
+                color               : style.fontColor
                 verticalAlignment   : Text.AlignVCenter
             }
             Item {
@@ -121,7 +121,7 @@ Window {
                 height              : parent.height
                 text                : "XButton checkable :"
                 font.pointSize      : style.defaultFontSize
-                color               : style.textColor
+                color               : style.fontColor
                 verticalAlignment   : Text.AlignVCenter
             }
             Item {
@@ -144,7 +144,7 @@ Window {
                 height              : parent.height
                 text                : "XButton disabled :"
                 font.pointSize      : style.defaultFontSize
-                color               : style.textColor
+                color               : style.fontColor
                 verticalAlignment   : Text.AlignVCenter
             }
             Item {
@@ -168,7 +168,7 @@ Window {
                 height              : parent.height
                 text                : "XRadioButton :"
                 font.pointSize      : style.defaultFontSize
-                color               : style.textColor
+                color               : style.fontColor
                 verticalAlignment   : Text.AlignVCenter
             }
             Item {
@@ -206,7 +206,7 @@ Window {
                 height              : parent.height
                 text                : "XSlider :"
                 font.pointSize      : style.defaultFontSize
-                color               : style.textColor
+                color               : style.fontColor
                 verticalAlignment   : Text.AlignVCenter
             }
             Item {
@@ -232,7 +232,7 @@ Window {
                 height              : parent.height
                 text                : "XProgressBar :"
                 font.pointSize      : style.defaultFontSize
-                color               : style.textColor
+                color               : style.fontColor
                 verticalAlignment   : Text.AlignVCenter
             }
             Item {
@@ -269,7 +269,7 @@ Window {
                 height              : parent.height
                 text                : "XCircularProgress :"
                 font.pointSize      : style.defaultFontSize
-                color               : style.textColor
+                color               : style.fontColor
                 verticalAlignment   : Text.AlignVCenter
             }
             Item {

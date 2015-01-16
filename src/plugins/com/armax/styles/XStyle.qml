@@ -26,7 +26,9 @@ import QtQuick 2.0
 QtObject {
     property color      backgroundColor
 
-    property color      textColor
+    property color      fontColor
+    property color      fontColorWhenDisabled
+    property color      controlsFontColor
     property int        defaultFontSize
 
     property int        defaultControlsHeight
@@ -56,8 +58,6 @@ QtObject {
     property color      handleBorderColorWhenChecked
     property color      handleBorderColorWhenDisabled
 
-    property int        radius
-
     property Gradient   gradientWhenDefault
     property Gradient   gradientWhenPressed
     property Gradient   gradientWhenHovered
@@ -69,6 +69,8 @@ QtObject {
     property Gradient   handleGradientWhenHovered
     property Gradient   handleGradientWhenChecked
     property Gradient   handleGradientWhenDisabled
+
+    property int        radius
 
     property real       controlAnimationDuration
 }
