@@ -111,6 +111,8 @@ void XCheckablePrivate::setCheckable(const bool checkable)
 {
     if (m_checkable != checkable) {
         m_checkable = checkable;
+        m_checked = false;
+        emit checkedChanged(false);
         emit checkableChanged(checkable);
     }
 }
