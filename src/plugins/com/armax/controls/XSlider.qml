@@ -199,7 +199,7 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
             visible                 : showValue
             color                   : fontColor
-            font.pointSize          : fontSize
+            font.pointSize          : fontSize > 0 ? fontSize : 10
         }
     }
 }
