@@ -19,3 +19,6 @@ include(../common.pri)
 
 # Default rules for deployment.
 #include(deployment.pri)
+
+DISTFILES += \
+    folder-grey-open-icon.png

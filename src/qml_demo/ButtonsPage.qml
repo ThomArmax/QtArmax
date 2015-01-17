@@ -22,37 +22,108 @@
 ****************************************************************************/
 
 import QtQuick 2.0
+import QtQuick.Controls 1.0
+
 import com.armax.controls 1.0
 
 Item {
     width   : 280
     height  : 280
     property int __controlsWidth : 180
+
+    property int __labelsWidth: 0
+
+    Item {
+        id      : buttonContainer
+        width   : parent.width - __labelsWidth - 50
+        height  : parent.height
+        x       : __labelsWidth + 50
+        XButton {
+            id                      : button
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top             : parent.top
+            anchors.topMargin       : vLayout.anchors.margins
+            text                    : "Button"
+        }
+    }
+
     Column {
-        anchors.centerIn: parent
+        id              : vLayout
+        anchors.fill    : parent
+        anchors.margins : 20
         spacing         : 20
-
-        XButton {
-            width   : __controlsWidth
-            text    : "Simple Button"
+        Column {
+            id      : buttonsParametersLayout
+            width   : implicitWidth
+            height  : implicitHeight
+            spacing : 10
+            XCheckBox {
+                label.text              : "Enable hovered"
+                checked                 : button.hoverEnabled
+                onCheckedChanged        : button.hoverEnabled = checked
+                label.width             : __labelsWidth
+                Component.onCompleted   : __labelsWidth = Math.max(label.paintedWidth, __labelsWidth)
+            }
+            XCheckBox {
+                label.text              : "Enabled"
+                checked                 : button.enabled
+                onCheckedChanged        : button.enabled = checked
+                label.width             : __labelsWidth
+                Component.onCompleted   : __labelsWidth = Math.max(label.paintedWidth, __labelsWidth)
+            }
+            XCheckBox {
+                label.text              : "Checkable"
+                onCheckedChanged        : button.checkable = checked
+                label.width             : __labelsWidth
+                Component.onCompleted   : __labelsWidth = Math.max(label.paintedWidth, __labelsWidth)
+            }
+            XCheckBox {
+                enabled                 : false
+                label.text              : "Checked"
+                checked                 : button.checked
+                label.width             : __labelsWidth
+                Component.onCompleted   : __labelsWidth = Math.max(label.paintedWidth, __labelsWidth)
+            }
+            XCheckBox {
+                id                      : showIconCheckBox
+                label.text              : "Show Icon"
+                onCheckedChanged        : checked ? button.icon = "qrc:/folder-grey-open-icon.png" : button.icon = ""
+                label.width             : __labelsWidth
+                Component.onCompleted   : __labelsWidth = Math.max(label.paintedWidth, __labelsWidth)
+            }
+            Row {
+                spacing: 10
+                Text {
+                    text                    : "Button's layout"
+                    width                   : __labelsWidth
+                    Component.onCompleted   : __labelsWidth = Math.max(paintedWidth, __labelsWidth)
+                    font.pointSize          : mainStyle.defaultFontSize
+                    color                   : mainStyle.fontColor
+                    height                  : parent.implicitHeight
+                    verticalAlignment       : Text.AlignVCenter
+                }
+                ExclusiveGroup { id: buttonLayoutExGp }
+                XRadioButton {
+                    exclusiveGroup  : buttonLayoutExGp
+                    label.text      : "LeftToRight"
+                    enabled         : button.icon !== showIconCheckBox.checked
+                    checked         : button.layoutDirection === Qt.LeftToRight
+                    onCheckedChanged: if(checked) button.layoutDirection = Qt.LeftToRight
+                }
+                XRadioButton {
+                    exclusiveGroup  : buttonLayoutExGp
+                    label.text      : "RightToLeft"
+                    enabled         : button.icon !== showIconCheckBox.checked
+                    checked         : button.layoutDirection === Qt.RightToLeft
+                    onCheckedChanged: if(checked) button.layoutDirection = Qt.RightToLeft
+                }
+            }
         }
 
-        XButton {
-            width       : __controlsWidth
-            text        : "Hoverable Button"
-            hoverEnabled: true
-        }
-
-        XButton {
-            width       : __controlsWidth
-            text        : "Checkable Button"
-            checkable   : true
-        }
-
-        XButton {
-            width   : __controlsWidth
-            text    : "Disabled Button"
-            enabled : false
+        Rectangle {
+            width   : parent.width
+            height  : 1
+            color   : mainStyle.controlsFontColor
         }
 
         Row {

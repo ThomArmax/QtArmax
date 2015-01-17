@@ -30,9 +30,15 @@ XCheckable {
     property XStyle     style                   : XDarkBlueStyle{}
 
     property alias      text                    : txt.text
+    property alias      textElement             : txt
     property color      fontColor               : style.controlsFontColor
     property color      fontColorWhenDisabled   : style.fontColorWhenDisabled
     property int        fontSize                : style.defaultFontSize
+    property alias      textHAlignment          : txt.horizontalAlignment
+    property alias      textVAlignment          : txt.verticalAlignment
+
+    property alias      layoutDirection         : hLayout.layoutDirection
+    property alias      layout                  : hLayout
 
     property color      colorWhenDefault        : style.colorWhenDefault
     property color      colorWhenPressed        : style.colorWhenPressed
@@ -58,6 +64,10 @@ XCheckable {
     property bool       useGradients            : true
     property real       animationDuration       : style.controlAnimationDuration
 
+    property url        icon                    : ""
+    property int        spacing                 : 4
+    property int        margins                 : 4
+
     // slots
     onUseGradientsChanged: {
         if(!useGradients) {
@@ -70,7 +80,7 @@ XCheckable {
     }
 
     id          : root
-    width       : txt.paintedWidth + 20
+    width       : icon === "" ? (txt.paintedWidth) : (txt.paintedWidth + image.width + layout.spacing) + 20
     height      : txt.paintedHeight + 10
     checkable   : false
 
@@ -86,13 +96,44 @@ XCheckable {
         state       : root.state
     }
 
-    Text {
-        id              : txt
-        anchors.centerIn: parent
-        text            : "Button"
-        color           : fontColor
-        clip            : true
-        font.pointSize  : fontSize > 0 ? fontSize : 10
+    Row {
+        id              : hLayout
+        anchors.fill    : parent
+        anchors.margins : root.margins
+        spacing         : root.spacing
+        layoutDirection : Qt.LeftToRight
+
+        Item {
+            id      : imageItem
+            height  : parent.height
+            width   : visible ? height : 0
+            visible : ((image.source != "") /*|| showIcon*/)
+
+            Image {
+                id                      : image
+                height                  : parent.height < implicitHeight ? parent.height : implicitHeight
+                width                   : height
+                anchors.verticalCenter  : parent.verticalCenter
+                source                  : icon
+                fillMode                : Image.PreserveAspectFit
+            }
+        }
+        Item {
+            id      : textItem
+            height  : parent.height
+            width   : imageItem.visible ? root.width - imageItem.width - 3*root.spacing : root.width - 2 * root.spacing
+
+            Text {
+                id                  : txt
+                anchors.fill        : parent
+                horizontalAlignment : root.icon.toString() !== "" ?  (layout.layoutDirection === Qt.LeftToRight ? Text.AlignRight : Text.AlignLeft) : Text.AlignHCenter
+                verticalAlignment   : Text.AlignVCenter
+                text                : "Button"
+                color               : fontColor
+                font.pointSize      : fontSize > 0 ? fontSize : 10
+                clip                : true
+            }
+        }
     }
 
     states: [
