@@ -1,0 +1,24 @@
+project = QtArmax
+url = https://github.com/ThomArmax/QtArmax
+description = Qt and QML addons for Qt5
+sourcedirs = ./
+sourcedirs += ../src
+sourcedirs += ../src/core
+sourcedirs += ../src/core/datamodels
+sourcedirs += ../src/plugins
+sourcedirs += ../src/plugins/com/armax/controls
+sourcedirs += ../src/plugins/com/armax/styles
+sourcedirs += ../src/plugins/com/armax/datamodels
+exampledirs += snippets
+imagedirs = images
+sources.fileextensions = "*.qml *.qdoc *.cpp"
+headers.fileextensions = "*.h"
+outputdir = html
+outputformats = HTML
+version = 1.0
+syntaxhighlighting = true
+sourceencoding = UTF-8
+HTML.templatedir = ./template/
+HTML.stylesheets = ./template/style/offline.css
+HTML.headerstyles = \
+    "  <link rel=\"stylesheet\" type=\"text/css\" href=\"style/offline.css\" />\n"

@@ -24,6 +24,21 @@
 import QtQuick 2.0
 import com.armax.styles 1.0
 
+/*!
+   \qmltype XRadioButton
+   \inqmlmodule com.armax.controls 1.0
+   \ingroup controls
+   \brief A radio button with a text label.
+
+    A XRadioButton is an option button that can be switched on (checked) or off (unchecked).
+
+    Radio buttons typically present the user with a "one of many" choices.
+
+    In a group of radio buttons, only one radio button can be checked at a time;
+    if the user selects another button, the previously selected button is switched off.
+
+    The label is shown next to the checkbox, and you can set the label text using its label property.
+ */
 XCheckable {
 
     // public properties

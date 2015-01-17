@@ -24,9 +24,23 @@
 import QtQuick 2.0
 import com.armax.styles 1.0
 
-XCheckable {
+/*!
+   \qmltype XCheckBox
+   \inqmlmodule com.armax.controls 1.0
+   \ingroup controls
+   \brief A checkbox with a text label.
 
+    A XCheckBox is an option button that can be toggled on (checked) or off (unchecked).
+
+    Checkboxes are typically used to represent features in an application that can be enabled or disabled without affecting others.
+
+    The state of the checkbox can be set with the checked property.
+
+    The label is shown next to the checkbox, and you can set the label text using its label property.
+ */
+XCheckable {
     // public properties
+    /*! The XStyle style Component for this control. */
     property XStyle     style                           : XDarkBlueStyle{}
 
     property color      colorWhenDefault                : style.colorWhenDefault

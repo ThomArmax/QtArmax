@@ -3,10 +3,17 @@ import QtQuick.Controls 1.0
 
 import com.armax.controls.private 1.0
 
+/*!
+   \qmltype XCheckable
+   \inqmlmodule com.armax.controls 1.0
+   \ingroup controls
+   \brief Base item to create checkable components
+ */
 XCheckablePrivate {
     id: root
 
     // public properties
+    /*! This property stores the ExclusiveGroup that the control belongs to.*/
     property ExclusiveGroup exclusiveGroup: null
 
     // slots

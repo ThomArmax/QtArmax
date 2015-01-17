@@ -22,7 +22,12 @@
 ****************************************************************************/
 
 import QtQuick 2.0
-
+/*!
+   \qmltype XDarkBlueStyle
+   \inqmlmodule com.armax.styles
+   \ingroup styles
+   \brief Dark blue style sheet
+ */
 XStyle {
     backgroundColor                 : "#253344"
 
