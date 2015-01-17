@@ -62,6 +62,9 @@ public slots:
     void            setChecked          (const bool checked);
     void            setCheckable        (const bool checkable);
 
+private slots:
+    void            onEnabledChanged    ();
+
 private:
     void            setHovered          (const bool hovered);
 
