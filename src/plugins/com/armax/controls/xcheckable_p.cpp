@@ -33,6 +33,7 @@ XCheckablePrivate::XCheckablePrivate(QQuickItem *parent):
 {
     setAcceptHoverEvents(m_hoverEnabled);
     setAcceptedMouseButtons(Qt::LeftButton);
+    connect(this, SIGNAL(enabledChanged()), this, SLOT(onEnabledChanged()));
 }
 
 /**
@@ -135,5 +136,12 @@ void XCheckablePrivate::setChecked(const bool checked)
         m_checked = checked;
         emit checkedChanged(checked);
         emit toggled(checked);
+    }
+}
+
+void XCheckablePrivate::onEnabledChanged()
+{
+    if(!isEnabled()) {
+        setChecked(false);
     }
 }
