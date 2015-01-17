@@ -35,6 +35,8 @@ Item {
         XSlider {
             width   : 200
             value   : 50
+            minValue: -50
+            maxValue: 75
         }
 
         XSlider {

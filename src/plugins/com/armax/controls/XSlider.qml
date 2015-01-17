@@ -74,6 +74,10 @@ Item {
 
     property bool       useGradients                    : true
     property bool       hoverEnabled                    : true
+    property bool       showValue                       : true
+    property color      fontColor                       : style.fontColor
+    property color      fontColorWhenDisabled           : style.fontColorWhenDisabled
+    property int        fontSize                        : style.defaultFontSize
 
     // slots
     onUseGradientsChanged: {
@@ -122,6 +126,7 @@ Item {
             PropertyChanges { target: sliderBase;       color       : colorWhenDisabled             }
             PropertyChanges { target: sliderBase;       gradient    : gradientWhenDisabled          }
             PropertyChanges { target: sliderBase;       border.color: borderColorWhenDisabled       }
+            PropertyChanges { target: textValue;        color       : fontColorWhenDisabled         }
         }
     ]
 
@@ -186,6 +191,15 @@ Item {
             drag.maximumX   : root.width-width
             drag.target     : handle
             hoverEnabled    : root.hoverEnabled
+        }
+        Text {
+            id                      : textValue
+            text                    : value
+            anchors.bottom          : parent.top
+            anchors.horizontalCenter: parent.horizontalCenter
+            visible                 : showValue
+            color                   : fontColor
+            font.pointSize          : fontSize
         }
     }
 }
