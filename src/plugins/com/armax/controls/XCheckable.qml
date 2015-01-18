@@ -6,8 +6,8 @@ import com.armax.controls.private 1.0
 /*!
    \qmltype XCheckable
    \inqmlmodule com.armax.controls 1.0
-   \ingroup controls
-   \brief Base item to create checkable components
+   \ingroup qmlmodules
+   \brief Base item to create checkable components.
  */
 XCheckablePrivate {
     id: root

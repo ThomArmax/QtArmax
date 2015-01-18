@@ -1,6 +1,29 @@
 import QtQuick 2.0
 import com.armax.styles 1.0
 
+/*!
+   \qmltype XToggleSwitch
+   \inqmlmodule com.armax.controls 1.0
+   \ingroup qmlmodules
+   \brief A switch.
+
+    On and Off states of a Switch.
+
+    A Switch is a toggle button that can be switched on (checked) or off (unchecked).
+    Switches are typically used to represent features in an application that can be enabled or disabled without affecting others.
+
+    On mobile platforms, switches are commonly used to enable or disable features.
+
+    \code
+    Column {
+        spacing: 10
+        XToggleSwitch { checked: true }
+        XToggleSwitch { checked: false }
+    }
+    \endcode
+
+    You can create a custom appearance for a \l{XToggleSwitch} by assigning a \l{XStyle}.
+ */
 XCheckable {
     property XStyle     style                           : XDarkBlueStyle{}
 

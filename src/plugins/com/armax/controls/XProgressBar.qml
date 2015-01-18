@@ -24,6 +24,35 @@
 import QtQuick 2.0
 import com.armax.styles 1.0
 
+/*!
+   \qmltype XProgressBar
+   \inqmlmodule com.armax.controls 1.0
+   \ingroup qmlmodules
+   \brief A progress indicator.
+
+    The XProgressBar is used to give an indication of the progress of an operation.
+    Value is updated regularly and must be between 0 and 100, which is expressed in percent.
+
+    \code
+    XProgressBar {
+        id: progress
+    }
+
+    Timer {
+        running: true
+        interval: 500
+        repeat: true
+        onTriggered : {
+            if(progress.progress < 100)
+                progress.progress += 1
+            else
+                progress.progress = 0
+        }
+    }
+    \endcode
+
+    You can create a custom appearance for a \l{XProgressBar} by assigning a \l{XStyle}.
+ */
 Item {
     // public properties
     property int        progress                : 0

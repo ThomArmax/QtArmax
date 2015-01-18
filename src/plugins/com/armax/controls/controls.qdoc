@@ -1,0 +1,18 @@
+/*!
+   \qmlmodule com.armax.controls 1.0
+   \inqmlmodule com.armax.controls 1.0
+   \ingroup qmlmodules
+   \brief Provides a set of QML types to to interact with the user interface (buttons, checkboxes, ...)
+
+    The com.armax.controls module provides a set of controls that can be used to build complete interfaces in Qt Quick.
+
+    Controls can be styled using the \l{XStyle}{Styles QML Types}.
+
+    The QML types can be imported into your application using the following import statement in your .qml file.
+
+    \code
+    import com.armax.controls 1.0
+    \endcode
+
+
+ */

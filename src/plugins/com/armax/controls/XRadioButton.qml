@@ -27,7 +27,7 @@ import com.armax.styles 1.0
 /*!
    \qmltype XRadioButton
    \inqmlmodule com.armax.controls 1.0
-   \ingroup controls
+   \ingroup qmlmodules
    \brief A radio button with a text label.
 
     A XRadioButton is an option button that can be switched on (checked) or off (unchecked).
@@ -38,6 +38,26 @@ import com.armax.styles 1.0
     if the user selects another button, the previously selected button is switched off.
 
     The label is shown next to the checkbox, and you can set the label text using its label property.
+
+    \code
+    ExclusiveGroup {
+        id: radioExGp
+    }
+    Column {
+        spacing: 10
+        XRadioButton {
+            checked: true
+            label.text: "Option1"
+            exclusiveGroup: radioExGp
+        }
+        XRadioButton {
+            label.text: "Option2"
+            exclusiveGroup: radioExGp
+        }
+    }
+    \endcode
+
+    You can create a custom appearance for a \l{XRadioButton} by assigning a \l{XStyle}.
  */
 XCheckable {
 

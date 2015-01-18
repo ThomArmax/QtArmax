@@ -24,14 +24,36 @@
 import QtQuick 2.0
 
 /*!
-   \qmltype XStyle
-   \inqmlmodule com.armax.styles
-   \ingroup styles
-   \brief Base style sheet used in QtArmax.
+    \qmltype XStyle
+    \inqmlmodule com.armax.styles
+    \ingroup qmlmodules
+    \brief Base style sheet used in QtArmax.
 
-   The XStyle is used over all com.armax plugins, to stylish the QML component.
-   So each compoment has a style property.
-   To customize the components, you can create your own stylesheet based on XStyle.
+    The XStyle is used over all com.armax plugins, to stylish the QML component.
+    So each compoment has a style property.
+    To customize the components, you can create your own stylesheet based on XStyle.
+
+    \code
+    //MyStyle.qml
+    import com.armax.styles 1.0
+
+    XStyle {
+        backgroundColor: "darkgrey"
+        fontColor: "white"
+        defaultFontSize: 10
+        fontColor: "darkblue"
+        ...
+   }
+
+    //main.qml
+    import com.armax.styles 1.0
+    import com.armax.controls 1.0
+
+    XButton {
+        text: "Button"
+        style: MyStyle {}
+    }
+    \endcode
  */
 
 QtObject {

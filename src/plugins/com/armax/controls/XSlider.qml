@@ -24,6 +24,29 @@
 import QtQuick 2.0
 import com.armax.styles 1.0
 
+/*!
+   \qmltype XSlider
+   \inqmlmodule com.armax.controls 1.0
+   \ingroup qmlmodules
+   \brief Provides a vertical or horizontal slider control.
+
+    The slider is the classic control for providing a bounded value.
+    It lets the user move a slider handle along a horizontal or vertical groove and translates
+    the handle's position into a value within the legal range.
+
+    \code
+    Slider {
+        id: slider
+        minValue: -50
+        maxValue: 50
+        value: 25
+    }
+    \endcode
+
+    The slider value is by default in the range [0, 100].
+    If floats values are needed, you can set the \l{decimals} property.
+    You can create a custom appearance for a \l{XSlider} by assigning a \l{XStyle}.
+ */
 Item {
     // public properties
     property real       minValue                        : 0
