@@ -41,7 +41,7 @@ XStyle {
     colorWhenDefault                : "#F2272D"
     colorWhenPressed                : "#CB2026"
     colorWhenHovered                : "#A51A1F"
-    colorWhenChecked                : "#651013"
+    colorWhenChecked                : "#AE3A32"
     colorWhenDisabled               : "#7C7C7C"
 
     handleColorWhenDefault          : "#E6E6E6"
