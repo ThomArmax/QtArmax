@@ -3,3 +3,6 @@ imports
 *.pro.*user*
 usr/*
 Makefile
+Makefile.*
+demos
+tests
