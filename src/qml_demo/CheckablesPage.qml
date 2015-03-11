@@ -70,7 +70,7 @@ Item {
             label.width             : labelsWidth
             enabled                 : false
             checked                 : true
-            Component.onCompleted   : labelsWidth = Math.max(label.paintedWidth, labelsWidth)
+            Component.onCompleted   : {labelsWidth = Math.max(label.paintedWidth, labelsWidth); checked = true}
         }
 
 //        Rectangle {

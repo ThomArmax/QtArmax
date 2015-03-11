@@ -99,8 +99,9 @@ Window {
             width   : parent.width
             height  : 75
             Column {
-                anchors.fill: parent
-                spacing     : 5
+                anchors.fill    : parent
+                anchors.margins : 10
+                spacing         : 5
                 Text {
                     text            : "Choose a style"
                     color           : mainStyle.fontColor

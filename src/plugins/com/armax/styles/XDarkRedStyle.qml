@@ -57,10 +57,10 @@ XStyle {
     handleBorderColorWhenDisabled   : "#333333"
 
     borderWidth                     : 1
-    borderColorWhenDefault          : "#CB2026"
-    borderColorWhenPressed          : "#CB2026"
-    borderColorWhenHovered          : "#CB2026"
-    borderColorWhenChecked          : "#CB2026"
+    borderColorWhenDefault          : "#59201C"
+    borderColorWhenPressed          : "#59201C"
+    borderColorWhenHovered          : "#59201C"
+    borderColorWhenChecked          : "#59201C"
     borderColorWhenDisabled         : "#3C3C3C"
 
     radius                          : 3
