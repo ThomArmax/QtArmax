@@ -43,6 +43,7 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top             : parent.top
             anchors.topMargin       : vLayout.anchors.margins
+            style                   : mainStyle
             text                    : "Button"
         }
     }
@@ -58,6 +59,7 @@ Item {
             height  : implicitHeight
             spacing : 10
             XCheckBox {
+                style                   : mainStyle
                 label.text              : "Enable hovered"
                 checked                 : button.hoverEnabled
                 onCheckedChanged        : button.hoverEnabled = checked
@@ -65,6 +67,7 @@ Item {
                 Component.onCompleted   : __labelsWidth = Math.max(label.paintedWidth, __labelsWidth)
             }
             XCheckBox {
+                style                   : mainStyle
                 label.text              : "Enabled"
                 checked                 : button.enabled
                 onCheckedChanged        : button.enabled = checked
@@ -72,12 +75,14 @@ Item {
                 Component.onCompleted   : __labelsWidth = Math.max(label.paintedWidth, __labelsWidth)
             }
             XCheckBox {
+                style                   : mainStyle
                 label.text              : "Checkable"
                 onCheckedChanged        : button.checkable = checked
                 label.width             : __labelsWidth
                 Component.onCompleted   : __labelsWidth = Math.max(label.paintedWidth, __labelsWidth)
             }
             XCheckBox {
+                style                   : mainStyle
                 enabled                 : false
                 label.text              : "Checked"
                 checked                 : button.checked
@@ -85,6 +90,7 @@ Item {
                 Component.onCompleted   : __labelsWidth = Math.max(label.paintedWidth, __labelsWidth)
             }
             XCheckBox {
+                style                   : mainStyle
                 id                      : showIconCheckBox
                 label.text              : "Show Icon"
                 onCheckedChanged        : checked ? button.icon = "qrc:/folder-grey-open-icon.png" : button.icon = ""
@@ -104,6 +110,7 @@ Item {
                 }
                 ExclusiveGroup { id: buttonLayoutExGp }
                 XRadioButton {
+                    style                   : mainStyle
                     exclusiveGroup  : buttonLayoutExGp
                     label.text      : "LeftToRight"
                     enabled         : button.icon !== showIconCheckBox.checked
@@ -111,6 +118,7 @@ Item {
                     onCheckedChanged: if(checked) button.layoutDirection = Qt.LeftToRight
                 }
                 XRadioButton {
+                    style                   : mainStyle
                     exclusiveGroup  : buttonLayoutExGp
                     label.text      : "RightToLeft"
                     enabled         : button.icon !== showIconCheckBox.checked
@@ -135,14 +143,16 @@ Item {
                 XToggleSwitch {
                     id          : toggle1
                     anchors.left: parent.left
+                    style       : mainStyle
                 }
             }
             Item {
                 width   : parent.width/2
                 height  : toggle2.height
                 XToggleSwitch {
-                    enabled         : false
                     id              : toggle2
+                    style           : mainStyle
+                    enabled         : false
                     anchors.right   : parent.right
                 }
             }

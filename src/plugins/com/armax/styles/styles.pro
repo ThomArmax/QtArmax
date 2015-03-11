@@ -17,11 +17,13 @@ OTHER_FILES = \
     qmldir \
     XStyle.qml \
     XDarkBlueStyle.qml \
+    XDarkRedStyle.qml
 
 # QML files to be included in resources file
 QML_FILES = \
     XStyle.qml \
-    XDarkBlueStyle.qml
+    XDarkBlueStyle.qml \
+    XDarkRedStyle.qml
 
 # Graphics files to be included in resources file
 GFX = \

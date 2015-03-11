@@ -37,17 +37,20 @@ Item {
             value   : 50
             minValue: -50
             maxValue: 75
+            style   : mainStyle
         }
 
         XSlider {
             width   : 200
             value   : 20
+            style   : mainStyle
         }
 
         XSlider {
             width   : 200
             value   : 75
             enabled : false
+            style   : mainStyle
         }
     }
 }

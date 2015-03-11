@@ -46,22 +46,26 @@ Item {
         spacing         : 10
 
         XCheckBox {
+            style                   : mainStyle
             label.text              : "A checkbox :"
             label.width             : labelsWidth
             Component.onCompleted   : labelsWidth = Math.max(label.paintedWidth, labelsWidth)
         }
         XCheckBox {
+            style                   : mainStyle
             label.text              : "Another checkbox :"
             label.width             : labelsWidth
             Component.onCompleted   : labelsWidth = Math.max(label.paintedWidth, labelsWidth)
         }
         XCheckBox {
+            style                   : mainStyle
             label.text              : "Disabled checkbox :"
             label.width             : labelsWidth
             enabled                 : false
             Component.onCompleted   : labelsWidth = Math.max(label.paintedWidth, labelsWidth)
         }
         XCheckBox {
+            style                   : mainStyle
             label.text              : "Disabled checked checkbox :"
             label.width             : labelsWidth
             enabled                 : false
@@ -76,30 +80,35 @@ Item {
 //        }
 
         XRadioButton {
+            style                   : mainStyle
             label.text              : "Choice 1 :"
             exclusiveGroup          : exGp
             label.width             : labelsWidth
             Component.onCompleted   : labelsWidth = Math.max(label.paintedWidth, labelsWidth)
         }
         XRadioButton {
+            style                   : mainStyle
             label.text              : "Choice 2 :"
             exclusiveGroup          : exGp
             label.width             : labelsWidth
             Component.onCompleted   : labelsWidth = Math.max(label.paintedWidth, labelsWidth)
         }
         XRadioButton {
+            style                   : mainStyle
             label.text              : "Choice 3 :"
             exclusiveGroup          : exGp
             label.width             : labelsWidth
             Component.onCompleted   : labelsWidth = Math.max(label.paintedWidth, labelsWidth)
         }
         XRadioButton {
+            style                   : mainStyle
             label.text              : "Disabled radio button :"
             label.width             : labelsWidth
             enabled                 : false
             Component.onCompleted   : labelsWidth = Math.max(label.paintedWidth, labelsWidth)
         }
         XRadioButton {
+            style                   : mainStyle
             label.text              : "Disabled radio button checked :"
             label.width             : labelsWidth
             checked                 : true

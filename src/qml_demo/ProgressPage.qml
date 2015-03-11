@@ -35,22 +35,26 @@ Item {
         XProgressBar {
             id      : progress1
             width   : 200
+            style   : mainStyle
         }
 
         XProgressBar {
             id      : progress2
             width   : 200
+            style   : mainStyle
         }
 
         XProgressBar {
             id      : progress3
             width   : 200
+            style   : mainStyle
         }
 
         XCircularProgress {
             id      : progress4
             width   : 200
             height  : 200
+            style   : mainStyle
         }
     }
 

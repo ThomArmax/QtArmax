@@ -34,58 +34,86 @@ Window {
     width   : 480
     height  : 480
 
-    XDarkBlueStyle {
-        id: mainStyle
-    }
+    property XStyle mainStyle : darkBlueStyle
 
-    TabView {
-        id          : tabView
+    XDarkRedStyle   { id: darkRedStyle }
+    XDarkBlueStyle  { id: darkBlueStyle }
+
+    Column {
+        id          : vLayout
         anchors.fill: parent
-        Tab {
-            title: "Buttons"
-            ButtonsPage {
-                anchors.fill        : parent
-                anchors.topMargin   : 20
+        spacing     : 10
+        TabView {
+            id      : tabView
+            width   : parent.width
+            height  : parent.height - styleChooserLayout.height - parent.spacing
+            Tab {
+                title: "Buttons"
+                ButtonsPage {
+                    anchors.fill        : parent
+                    anchors.topMargin   : 20
+                }
             }
-        }
-        Tab {
-            title: "Progress"
-            ProgressPage {
-                anchors.fill        : parent
-                anchors.topMargin   : 20
+            Tab {
+                title: "Progress"
+                ProgressPage {
+                    anchors.fill        : parent
+                    anchors.topMargin   : 20
+                }
             }
-        }
-        Tab {
-            title: "Sliders"
-            SlidersPage {
-                anchors.fill        : parent
-                anchors.topMargin   : 20
+            Tab {
+                title: "Sliders"
+                SlidersPage {
+                    anchors.fill        : parent
+                    anchors.topMargin   : 20
+                }
             }
-        }
-        Tab {
-            title: "Checkables"
-            CheckablesPage {
-                anchors.fill        : parent
-                anchors.topMargin   : 20
+            Tab {
+                title: "Checkables"
+                CheckablesPage {
+                    anchors.fill        : parent
+                    anchors.topMargin   : 20
+                }
             }
-        }
 
-        style: TabViewStyle {
-            tab: XButton {
-                radius          : 0
-                implicitWidth   : width
-                implicitHeight  : height
-                width           : tabView.width/tabView.count
-                text            : styleData.title
-                enabled         : false
-                checkable       : true
-                checked         : styleData.selected
+            style: TabViewStyle {
+                tab: XButton {
+                    radius          : 0
+                    implicitWidth   : width
+                    implicitHeight  : height
+                    width           : tabView.width/tabView.count
+                    text            : styleData.title
+                    enabled         : false
+                    checkable       : true
+                    checked         : styleData.selected
+                    style           : mainStyle
+                }
+                frame: Rectangle {
+                    color: mainStyle.colorWhenDisabled
+                }
             }
-            frame: Rectangle {
-                //gradient: mainStyle.gradientWhenDisabled
-                color: mainStyle.colorWhenDisabled
-                //color: "#677593"
+        } // END TabView
+        Rectangle {
+            id      : styleChooserLayout
+            color   : mainStyle.colorWhenDisabled
+            width   : parent.width
+            height  : 75
+            Column {
+                anchors.fill: parent
+                spacing     : 5
+                Text {
+                    text            : "Choose a style"
+                    color           : mainStyle.fontColor
+                    font.pointSize  : mainStyle.defaultFontSize
+                }
+                Row {
+                    width   : parent.width
+                    spacing : 20
+                    ExclusiveGroup { id: styleExGp }
+                    XButton { exclusiveGroup: styleExGp; style: darkBlueStyle; text: "DarkBlue"; checkable: true; onCheckedChanged: if(checked) mainStyle = darkBlueStyle; checked: true }
+                    XButton { exclusiveGroup: styleExGp; style: darkRedStyle;  text: "DarkRed";  checkable: true; onCheckedChanged: if(checked) mainStyle = darkRedStyle }
+                }
             }
         }
-    }
+    } // END Column
 }
