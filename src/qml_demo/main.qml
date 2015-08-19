@@ -36,8 +36,9 @@ Window {
 
     property XStyle mainStyle : darkBlueStyle
 
-    XDarkRedStyle   { id: darkRedStyle }
-    XDarkBlueStyle  { id: darkBlueStyle }
+    XDarkRedStyle       { id: darkRedStyle }
+    XDarkBlueStyle      { id: darkBlueStyle }
+    XFlatDarkBlueStyle  { id: flatDarkBlueStyle }
 
     Column {
         id          : vLayout
@@ -89,13 +90,13 @@ Window {
                     style           : mainStyle
                 }
                 frame: Rectangle {
-                    color: mainStyle.colorWhenDisabled
+                    color: mainStyle.backgroundColor
                 }
             }
         } // END TabView
         Rectangle {
             id      : styleChooserLayout
-            color   : mainStyle.colorWhenDisabled
+            color   : mainStyle.backgroundColor
             width   : parent.width
             height  : 75
             Column {
@@ -113,6 +114,7 @@ Window {
                     ExclusiveGroup { id: styleExGp }
                     XButton { exclusiveGroup: styleExGp; style: darkBlueStyle; text: "DarkBlue"; checkable: true; onCheckedChanged: if(checked) mainStyle = darkBlueStyle; checked: true }
                     XButton { exclusiveGroup: styleExGp; style: darkRedStyle;  text: "DarkRed";  checkable: true; onCheckedChanged: if(checked) mainStyle = darkRedStyle }
+                    XButton { exclusiveGroup: styleExGp; style: flatDarkBlueStyle;  text: "FlatDarkBlue";  checkable: true; onCheckedChanged: if(checked) mainStyle = flatDarkBlueStyle }
                 }
             }
         }

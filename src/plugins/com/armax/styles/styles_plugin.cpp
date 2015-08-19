@@ -29,9 +29,10 @@ static const struct {
     const char *type;
     int major, minor;
 } qmldir [] = {
-    { "XStyle"          , 1, 0 },
-    { "XDarkBlueStyle"  , 1, 0 },
-    { "XDarkRedStyle"   , 1, 0 }
+    { "XStyle"              , 1, 0 },
+    { "XDarkBlueStyle"      , 1, 0 },
+    { "XDarkRedStyle"       , 1, 0 },
+    { "XFlatDarkBlueStyle"  , 1, 0 }
 };
 
 static void initResources()
