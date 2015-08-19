@@ -95,7 +95,7 @@ Item {
     property Gradient   handleGradientWhenHovered       : style.handleGradientWhenHovered
     property Gradient   handleGradientWhenDisabled      : style.handleGradientWhenDisabled
 
-    property bool       useGradients                    : true
+    property bool       useGradients                    : style.useGradients
     property bool       hoverEnabled                    : true
     property bool       showValue                       : true
     property color      fontColor                       : style.fontColor

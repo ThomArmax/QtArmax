@@ -29,7 +29,8 @@ import QtQuick 2.0
    \brief Dark red style sheet
  */
 XStyle {
-    backgroundColor                 : "#253344"
+    useGradients                    : true
+    backgroundColor                 : "#721215"
 
     fontColor                       : "white"
     fontColorWhenDisabled           : "#3C3C3C"
@@ -38,7 +39,7 @@ XStyle {
 
     defaultControlsHeight           : 30
 
-    colorWhenDefault                : "#F2272D"
+    colorWhenDefault                : "#F2393E"
     colorWhenPressed                : "#CB2026"
     colorWhenHovered                : "#A51A1F"
     colorWhenChecked                : "#AE3A32"

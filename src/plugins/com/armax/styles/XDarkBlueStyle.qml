@@ -29,6 +29,7 @@ import QtQuick 2.0
    \brief Dark blue style sheet
  */
 XStyle {
+    useGradients                    : true
     backgroundColor                 : "#253344"
 
     fontColor                       : "white"

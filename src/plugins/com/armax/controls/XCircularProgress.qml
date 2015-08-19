@@ -74,7 +74,7 @@ Item {
     property int        backgroundLineSize      : 2
     property int        progressLineSize        : 4
 
-    property bool       useGradients            : true
+    property bool       useGradients            : style.useGradients
 
     property string     text                    : progress + "%"
 

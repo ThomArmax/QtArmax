@@ -72,7 +72,7 @@ Item {
     property color      fontColor               : style.controlsFontColor
     property int        fontSize                : style.defaultFontSize
 
-    property bool       useGradients            : true
+    property bool       useGradients            : style.useGradients
     property bool       showProgress            : true
 
     // slots

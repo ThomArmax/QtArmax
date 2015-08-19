@@ -87,7 +87,7 @@ XCheckable {
     property int        radioButtonWidth                : radioButtonHeight
     property int        radioButtonHeight               : style.defaultControlsHeight
 
-    property bool       useGradients                    : true
+    property bool       useGradients                    : style.useGradients
 
     // slots
     onUseGradientsChanged: {

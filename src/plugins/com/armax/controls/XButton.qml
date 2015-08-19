@@ -81,7 +81,7 @@ XCheckable {
 
     property int        radius                  : style.radius
 
-    property bool       useGradients            : true
+    property bool       useGradients            : style.useGradients
     property real       animationDuration       : style.controlAnimationDuration
 
     property url        icon                    : ""

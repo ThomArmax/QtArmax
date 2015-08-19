@@ -64,7 +64,7 @@ XCheckable {
     property color      fontColorWhenDisabled           : style.fontColorWhenDisabled
 
     property int        fontSize                        : style.defaultFontSize
-    property bool       useGradients                    : true
+    property bool       useGradients                    : style.useGradients
 
     property int        handleMargins                   : 3
 

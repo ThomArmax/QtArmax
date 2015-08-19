@@ -57,6 +57,8 @@ import QtQuick 2.0
  */
 
 QtObject {
+    /*! Tell the style should use gradients or not. */
+    property bool       useGradients
     /*! The color used as background. */
     property color      backgroundColor
     /*! The default font color. */

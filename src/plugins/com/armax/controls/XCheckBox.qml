@@ -76,7 +76,7 @@ XCheckable {
     property int        checkboxWidth                   : checkboxHeight
     property int        checkboxHeight                  : style.defaultControlsHeight
 
-    property bool       useGradients                    : true
+    property bool       useGradients                    : style.useGradients
 
     // slots
     onUseGradientsChanged: {
