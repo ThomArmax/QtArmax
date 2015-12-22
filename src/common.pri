@@ -12,7 +12,7 @@ MOC_DIR = $$OUT_PWD/moc
 RCC_DIR = $$OUT_PWD/qrc
 UI_DIR = $$OUT_PWD/ui
 
-LIB_DIR = /usr/lib/QtArmax-$$VERSION
+LIB_DIR = /usr/lib/
 INC_DIR = /usr/include/QtArmax-$$VERSION
 LOCAL_LIB_DEST_DIR = $$absolute_path($$PWD/../usr/lib/QtArmax)
 
