@@ -32,11 +32,10 @@
 void DataModelsPlugin::registerTypes(const char *uri)
 {
     // @uri com.armax.datamodels
-    qmlRegisterType<Armax::Datamodels::ListModel>  (uri, 1, 0, "XListModel");
-    qmlRegisterType<Armax::Datamodels::Fifo>       (uri, 1, 0, "XFifo");
-    qmlRegisterType<Armax::Datamodels::Lifo>       (uri, 1, 0, "XLifo");
-
-    qmlRegisterUncreatableType<Armax::Datamodels::AbstractListItem>(uri, 1, 0, "XAbstractListItem", "Virtual");
+    qmlRegisterUncreatableType<Armax::Datamodels::ListModel>    (uri, 1, 0, "XListModel", "Can only be instanciated from C++ side");
+    qmlRegisterUncreatableType<Armax::Datamodels::Fifo>         (uri, 1, 0, "XFifo", "Can only be instanciated from C++ side");
+    qmlRegisterUncreatableType<Armax::Datamodels::Lifo>         (uri, 1, 0, "XLifo", "Can only be instanciated from C++ side");
+    qmlRegisterType<Armax::Datamodels::AbstractListItem>        ();
 }
 
 void DataModelsPlugin::initializeEngine(QQmlEngine *engine, const char *uri)
