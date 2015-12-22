@@ -26,6 +26,9 @@
 #include "abstractlistitem.h"
 #include "fifo.h"
 #include "lifo.h"
+#include "treemodel.h"
+#include "sortfilterproxymodel.h"
+#include "treesortfilterproxymodel.h"
 
 #include <QtQml>
 
@@ -33,9 +36,16 @@ void DataModelsPlugin::registerTypes(const char *uri)
 {
     // @uri com.armax.datamodels
     qmlRegisterUncreatableType<Armax::Datamodels::ListModel>    (uri, 1, 0, "XListModel", "Can only be instanciated from C++ side");
+    qmlRegisterUncreatableType<Armax::Datamodels::TreeModel>    (uri, 1, 0, "XTreeModel", "Can only be instanciated from C++ side");
     qmlRegisterUncreatableType<Armax::Datamodels::Fifo>         (uri, 1, 0, "XFifo", "Can only be instanciated from C++ side");
     qmlRegisterUncreatableType<Armax::Datamodels::Lifo>         (uri, 1, 0, "XLifo", "Can only be instanciated from C++ side");
-    qmlRegisterType<Armax::Datamodels::AbstractListItem>        ();
+    qmlRegisterType<Armax::Datamodels::SortFilterProxyModel>    (uri, 1, 0, "XSortFilterProxyModel");
+    qmlRegisterType<Armax::Datamodels::TreeSortFilterProxyModel>(uri, 1, 0, "XTreeSortFilterProxyModel");
+
+    qmlRegisterType<QSortFilterProxyModel>();
+    qmlRegisterType<QAbstractProxyModel>();
+    qmlRegisterType<QAbstractItemModel>();
+    qmlRegisterType<Armax::Datamodels::AbstractListItem>();
 }
 
 void DataModelsPlugin::initializeEngine(QQmlEngine *engine, const char *uri)
