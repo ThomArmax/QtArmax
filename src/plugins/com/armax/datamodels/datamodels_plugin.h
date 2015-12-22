@@ -34,10 +34,6 @@ class DataModelsPlugin : public QQmlExtensionPlugin
 public:
     void registerTypes(const char *uri);
     void initializeEngine(QQmlEngine *engine, const char *uri);
-
-private:
-    QString fileLocation() const;
-    bool isLoadedFromResource() const;
 };
 
 #endif // DATAMODELS_PLUGIN_H
