@@ -14,7 +14,9 @@ DATA_MODELS_HEADERS = \
     datamodels/fifo.h \
     datamodels/lifo.h \
     datamodels/listmodel.h \
-    datamodels/treemodel.h
+    datamodels/treemodel.h \
+    datamodels/sortfilterproxymodel.h \
+    datamodels/treesortfilterproxymodel.h
 
 PUBLIC_HEADERS += \
     $$DATA_MODELS_HEADERS
@@ -29,7 +31,9 @@ SOURCES += \
     datamodels/fifo.cpp \
     datamodels/lifo.cpp \
     datamodels/listmodel.cpp \
-    datamodels/treemodel.cpp
+    datamodels/treemodel.cpp \
+    datamodels/sortfilterproxymodel.cpp \
+    datamodels/treesortfilterproxymodel.cpp
 
 OTHER_FILES += \
     core.pri
