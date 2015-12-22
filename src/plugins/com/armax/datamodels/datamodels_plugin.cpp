@@ -33,6 +33,7 @@ using namespace Armax::Datamodels;
 
 void DataModelsPlugin::registerTypes(const char *uri)
 {
+    // @uri com.armax.datamodels
     qmlRegisterType<ListModel>  (uri, 1, 0, "XListModel");
     qmlRegisterType<Fifo>       (uri, 1, 0, "XFifo");
     qmlRegisterType<Lifo>       (uri, 1, 0, "XLifo");
