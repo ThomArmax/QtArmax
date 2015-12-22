@@ -29,16 +29,14 @@
 
 #include <QtQml>
 
-using namespace Armax::Datamodels;
-
 void DataModelsPlugin::registerTypes(const char *uri)
 {
     // @uri com.armax.datamodels
-    qmlRegisterType<ListModel>  (uri, 1, 0, "XListModel");
-    qmlRegisterType<Fifo>       (uri, 1, 0, "XFifo");
-    qmlRegisterType<Lifo>       (uri, 1, 0, "XLifo");
+    qmlRegisterType<Armax::Datamodels::ListModel>  (uri, 1, 0, "XListModel");
+    qmlRegisterType<Armax::Datamodels::Fifo>       (uri, 1, 0, "XFifo");
+    qmlRegisterType<Armax::Datamodels::Lifo>       (uri, 1, 0, "XLifo");
 
-    qmlRegisterUncreatableType<AbstractListItem>(uri, 1, 0, "XAbstractListItem", "Virtual");
+    qmlRegisterUncreatableType<Armax::Datamodels::AbstractListItem>(uri, 1, 0, "XAbstractListItem", "Virtual");
 }
 
 void DataModelsPlugin::initializeEngine(QQmlEngine *engine, const char *uri)
