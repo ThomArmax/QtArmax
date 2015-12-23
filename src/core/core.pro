@@ -9,10 +9,14 @@ DESTDIR = $$LOCAL_LIB_DEST_DIR
 
 DATA_MODELS_HEADERS = \
     datamodels/abstractlistitem.h \
+    datamodels/abstracttreeitem.h \
     datamodels/abstractqueue.h \
     datamodels/fifo.h \
     datamodels/lifo.h \
-    datamodels/listmodel.h
+    datamodels/listmodel.h \
+    datamodels/treemodel.h \
+    datamodels/sortfilterproxymodel.h \
+    datamodels/treesortfilterproxymodel.h
 
 PUBLIC_HEADERS += \
     $$DATA_MODELS_HEADERS
@@ -22,10 +26,14 @@ HEADERS += \
 
 SOURCES += \
     datamodels/abstractlistitem.cpp \
+    datamodels/abstracttreeitem.cpp \
     datamodels/abstractqueue.cpp \
     datamodels/fifo.cpp \
     datamodels/lifo.cpp \
-    datamodels/listmodel.cpp
+    datamodels/listmodel.cpp \
+    datamodels/treemodel.cpp \
+    datamodels/sortfilterproxymodel.cpp \
+    datamodels/treesortfilterproxymodel.cpp
 
 OTHER_FILES += \
     core.pri

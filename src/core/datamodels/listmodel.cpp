@@ -45,6 +45,7 @@ ListModel::ListModel(QObject *parent) : QAbstractItemModel(parent),
  * @brief ListModel contructor
  * @param prototype : the type of items which the model will contains
  * @param parent : the parent object
+ * @note the ListModel will take the 'prototype' ownership
  */
 ListModel::ListModel(AbstractListItem* prototype, QObject *parent) : QAbstractItemModel(parent),
     m_prototype         (prototype),

@@ -26,51 +26,30 @@
 #include "abstractlistitem.h"
 #include "fifo.h"
 #include "lifo.h"
+#include "treemodel.h"
+#include "sortfilterproxymodel.h"
+#include "treesortfilterproxymodel.h"
 
 #include <QtQml>
 
-using namespace Armax::Datamodels;
-
-static void initResources()
-{
-    //Q_INIT_RESOURCE(datamodels);
-}
-
 void DataModelsPlugin::registerTypes(const char *uri)
 {
-    initResources();
+    // @uri com.armax.datamodels
+    qmlRegisterUncreatableType<Armax::Datamodels::ListModel>    (uri, 1, 0, "XListModel", "Can only be instanciated from C++ side");
+    qmlRegisterUncreatableType<Armax::Datamodels::TreeModel>    (uri, 1, 0, "XTreeModel", "Can only be instanciated from C++ side");
+    qmlRegisterUncreatableType<Armax::Datamodels::Fifo>         (uri, 1, 0, "XFifo", "Can only be instanciated from C++ side");
+    qmlRegisterUncreatableType<Armax::Datamodels::Lifo>         (uri, 1, 0, "XLifo", "Can only be instanciated from C++ side");
+    qmlRegisterType<Armax::Datamodels::SortFilterProxyModel>    (uri, 1, 0, "XSortFilterProxyModel");
+    qmlRegisterType<Armax::Datamodels::TreeSortFilterProxyModel>(uri, 1, 0, "XTreeSortFilterProxyModel");
 
-    qmlRegisterType<ListModel>  (uri, 1, 0, "XListModel");
-    qmlRegisterType<Fifo>       (uri, 1, 0, "XFifo");
-    qmlRegisterType<Lifo>       (uri, 1, 0, "XLifo");
-
-    qmlRegisterUncreatableType<AbstractListItem>(uri, 1, 0, "XAbstractListItem", "Virtual");
+    qmlRegisterType<QSortFilterProxyModel>();
+    qmlRegisterType<QAbstractProxyModel>();
+    qmlRegisterType<QAbstractItemModel>();
+    qmlRegisterType<Armax::Datamodels::AbstractListItem>();
 }
 
 void DataModelsPlugin::initializeEngine(QQmlEngine *engine, const char *uri)
 {
     Q_UNUSED(uri);
     Q_UNUSED(engine);
-
-    if (isLoadedFromResource())
-        engine->addImportPath(QStringLiteral("qrc:/"));
-
-}
-
-QString DataModelsPlugin::fileLocation() const
-{
-    if (isLoadedFromResource())
-        return "qrc:/com/armax/datamodels";
-    return baseUrl().toString();
-}
-
-bool DataModelsPlugin::isLoadedFromResource() const
-{
-    // If one file is missing, it will load all the files from the resource
-//    QFile file(baseUrl().toLocalFile() + "/ApplicationWindow.qml");
-//    if (!file.exists())
-//        return true;
-//    return false;
-
-    return true;
 }
