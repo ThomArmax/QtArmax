@@ -26,6 +26,7 @@ Module {
         name: "Armax::Datamodels::AbstractQueue"
         prototype: "QObject"
         exports: ["com.armax.datamodels/XFifo 1.0"]
+        isCreatable: false
         exportMetaObjectRevisions: [0]
         Signal { name: "queueFull" }
         Signal { name: "queueEmpty" }
@@ -37,6 +38,7 @@ Module {
         name: "Armax::Datamodels::Lifo"
         prototype: "Armax::Datamodels::AbstractQueue"
         exports: ["com.armax.datamodels/XLifo 1.0"]
+        isCreatable: false
         exportMetaObjectRevisions: [0]
         Signal { name: "lifoFull" }
         Signal { name: "lifoEmpty" }
@@ -46,6 +48,7 @@ Module {
         name: "Armax::Datamodels::ListModel"
         prototype: "QAbstractItemModel"
         exports: ["com.armax.datamodels/XListModel 1.0"]
+        isCreatable: false
         exportMetaObjectRevisions: [0]
         Property { name: "size"; type: "int"; isReadonly: true }
         Property { name: "selectedIndex"; type: "int" }
@@ -95,6 +98,7 @@ Module {
         name: "Armax::Datamodels::TreeModel"
         prototype: "QAbstractItemModel"
         exports: ["com.armax.datamodels/XTreeModel 1.0"]
+        isCreatable: false
         exportMetaObjectRevisions: [0]
         Property { name: "selectedIndex"; type: "QModelIndex" }
         Method {

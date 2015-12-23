@@ -69,7 +69,7 @@ Module {
         exportMetaObjectRevisions: [0]
         isComposite: true
         defaultProperty: "data"
-        Property { name: "style"; type: "XStyle_QMLTYPE_0"; isPointer: true }
+        Property { name: "style"; type: "XStyle_QMLTYPE_1"; isPointer: true }
         Property { name: "fontColor"; type: "QColor" }
         Property { name: "fontColorWhenDisabled"; type: "QColor" }
         Property { name: "fontSize"; type: "int" }
@@ -158,7 +158,7 @@ Module {
         exportMetaObjectRevisions: [0]
         isComposite: true
         defaultProperty: "data"
-        Property { name: "style"; type: "XStyle_QMLTYPE_0"; isPointer: true }
+        Property { name: "style"; type: "XStyle_QMLTYPE_1"; isPointer: true }
         Property { name: "colorWhenDefault"; type: "QColor" }
         Property { name: "colorWhenDisabled"; type: "QColor" }
         Property { name: "handleColorWhenChecked"; type: "QColor" }
@@ -292,7 +292,7 @@ Module {
         isComposite: true
         defaultProperty: "data"
         Property { name: "progress"; type: "int" }
-        Property { name: "style"; type: "XStyle_QMLTYPE_0"; isPointer: true }
+        Property { name: "style"; type: "XStyle_QMLTYPE_1"; isPointer: true }
         Property { name: "backgoundColor"; type: "QColor" }
         Property { name: "backgroundGradient"; type: "QQuickGradient"; isPointer: true }
         Property { name: "progressColor"; type: "QColor" }
@@ -314,7 +314,7 @@ Module {
         isComposite: true
         defaultProperty: "data"
         Property { name: "progress"; type: "int" }
-        Property { name: "style"; type: "XStyle_QMLTYPE_0"; isPointer: true }
+        Property { name: "style"; type: "XStyle_QMLTYPE_1"; isPointer: true }
         Property { name: "radius"; type: "int" }
         Property { name: "backgoundColor"; type: "QColor" }
         Property { name: "backgroundGradient"; type: "QQuickGradient"; isPointer: true }
@@ -334,7 +334,7 @@ Module {
         exportMetaObjectRevisions: [0]
         isComposite: true
         defaultProperty: "data"
-        Property { name: "style"; type: "XStyle_QMLTYPE_0"; isPointer: true }
+        Property { name: "style"; type: "XStyle_QMLTYPE_1"; isPointer: true }
         Property { name: "colorWhenDefault"; type: "QColor" }
         Property { name: "colorWhenDisabled"; type: "QColor" }
         Property { name: "handleColorWhenChecked"; type: "QColor" }
@@ -413,7 +413,7 @@ Module {
         Property { name: "maxValue"; type: "double" }
         Property { name: "value"; type: "double" }
         Property { name: "decimals"; type: "int" }
-        Property { name: "style"; type: "XStyle_QMLTYPE_0"; isPointer: true }
+        Property { name: "style"; type: "XStyle_QMLTYPE_1"; isPointer: true }
         Property { name: "radius"; type: "int" }
         Property { name: "backgroundColor"; type: "QColor" }
         Property { name: "backgroundGradient"; type: "QQuickGradient"; isPointer: true }
@@ -458,7 +458,7 @@ Module {
         exportMetaObjectRevisions: [0]
         isComposite: true
         defaultProperty: "data"
-        Property { name: "style"; type: "XStyle_QMLTYPE_0"; isPointer: true }
+        Property { name: "style"; type: "XStyle_QMLTYPE_1"; isPointer: true }
         Property { name: "radius"; type: "int" }
         Property { name: "backgroundColor"; type: "QColor" }
         Property { name: "backgroundColorWhenDisabled"; type: "QColor" }
