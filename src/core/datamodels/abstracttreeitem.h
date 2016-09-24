@@ -34,9 +34,9 @@ public :
     AbstractTreeItem    (AbstractTreeItem *parent);
     ~AbstractTreeItem   ();
 
-    QVariant                            data                (int role) const; Q_DECL_OVERRIDE
-    bool                                setData             (const QVariant& value, int role); Q_DECL_OVERRIDE
-    QHash<int,QByteArray>               roleNames           ()                                  const; Q_DECL_OVERRIDE
+    QVariant                            data                (int role) const Q_DECL_OVERRIDE;
+    bool                                setData             (const QVariant& value, int role) Q_DECL_OVERRIDE;
+    QHash<int,QByteArray>               roleNames           ()                                  const Q_DECL_OVERRIDE;
     virtual int                         childrenCount       ()                                  const;
     virtual AbstractTreeItem*           parent              ()                                  const;
     virtual QModelIndex                 index               ()                                  const { return m_index; }

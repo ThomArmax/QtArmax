@@ -53,14 +53,14 @@ public:
     // QAbstractListModel
     int                     rowCount            (const QModelIndex &parent = QModelIndex()) const;
     int                     columnCount         (const QModelIndex &parent = QModelIndex()) const;
-    QVariant                data                (const QModelIndex &index, int role = Qt::DisplayRole) const;
-    bool                    setData             (const QModelIndex &index, const QVariant &value, int role = Qt::EditRole);
+    QVariant                data                (const QModelIndex &index, int role = Qt::DisplayRole) const Q_DECL_OVERRIDE;
+    bool                    setData             (const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) Q_DECL_OVERRIDE;
     bool                    removeRows          (const int &row, const int &count, const QModelIndex &parent = QModelIndex());
     QModelIndexList         match               (const QModelIndex &start, int role, const QVariant &value, int hits=1, Qt::MatchFlags flags = Qt::MatchStartsWith | Qt::MatchWrap) const;
     QHash<int, QByteArray>  roleNames           () const { return m_rolesNames; }
     QModelIndex             index               (int row) const;
-    virtual QModelIndex     index               (int row, int column, const QModelIndex & parent = QModelIndex()) const;
-    QModelIndex             parent              (const QModelIndex &child) const;
+    virtual QModelIndex     index               (int row, int column, const QModelIndex & parent = QModelIndex()) const Q_DECL_OVERRIDE;
+    QModelIndex             parent              (const QModelIndex &child) const Q_DECL_OVERRIDE;
 
     // Sizes
     bool                    isEmpty             () const { return m_list.isEmpty(); }
@@ -76,7 +76,7 @@ public:
     bool                    removeRow           (const int &row, const QModelIndex &parent = QModelIndex());
     AbstractListItem*       takeRow             (int row);
     Q_INVOKABLE bool        moveRow             (const int from, const int to);
-    bool                    moveRows            (const QModelIndex &sourceParent, int sourceRow, int count, const QModelIndex &destinationParent, int destinationChild);
+    bool                    moveRows            (const QModelIndex &sourceParent, int sourceRow, int count, const QModelIndex &destinationParent, int destinationChild) Q_DECL_OVERRIDE;
 
     // Item getters
     AbstractListItem*       at                  (int row);

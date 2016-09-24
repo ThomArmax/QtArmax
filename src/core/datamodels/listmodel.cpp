@@ -124,7 +124,6 @@ bool ListModel::moveRow(const int from, const int to)
 }
 
 bool ListModel::moveRows(const QModelIndex &sourceParent, int sourceRow, int count, const QModelIndex &destinationParent, int destinationChild)
-Q_DECL_OVERRIDE
 {
     Q_UNUSED(sourceParent)
     Q_UNUSED(destinationParent)
@@ -143,7 +142,6 @@ Q_DECL_OVERRIDE
  * invalid QVariant otherwise.
  */
 QVariant ListModel::data(const QModelIndex &index, int role) const
-Q_DECL_OVERRIDE
 {
     if(index.row() < 0 || index.row() >= m_list.size()) {
         return QVariant();
@@ -159,7 +157,6 @@ Q_DECL_OVERRIDE
  * @return true if successful; otherwise returns false.
  */
 bool ListModel::setData(const QModelIndex &index, const QVariant &value, int role/* = Qt::EditRole*/)
-Q_DECL_OVERRIDE
 {
     if(index.row() < 0 || index.row() >= m_list.size())
         return false;
@@ -178,14 +175,12 @@ QModelIndex ListModel::index(int row) const
 }
 
 QModelIndex ListModel::index(int row, int column, const QModelIndex &parent) const
-Q_DECL_OVERRIDE
 {
     Q_UNUSED(parent)
     return createIndex(row, column, m_list.at(row));
 }
 
 QModelIndex ListModel::parent(const QModelIndex &) const
-Q_DECL_OVERRIDE
 {
     return QModelIndex();
 }
