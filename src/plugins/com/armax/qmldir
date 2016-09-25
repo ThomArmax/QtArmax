@@ -1,0 +1,3 @@
+module com.armax
+plugin QtArmaxPlugin
+typeinfo QtArmaxPlugin.qmltypes
