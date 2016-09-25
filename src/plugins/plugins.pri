@@ -65,6 +65,9 @@ qmldir.path         = $$installPath
 qmltypes.files      = $${TARGET}.qmltypes
 qmltypes.path       = $$installPath
 
+copyToDestdir($${_PRO_FILE_PWD_}/$${TARGET}.qmltypes)
+copyToDestdir($${_PRO_FILE_PWD_}/qmldir)
+
 message(Qml plugin $$uri will be installed in $$installPath)
 
 INSTALLS += target qmldir qmltypes
