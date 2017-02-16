@@ -110,7 +110,7 @@ Item {
                 }
                 ExclusiveGroup { id: buttonLayoutExGp }
                 XRadioButton {
-                    style                   : mainStyle
+                    style           : mainStyle
                     exclusiveGroup  : buttonLayoutExGp
                     label.text      : "LeftToRight"
                     enabled         : button.icon !== showIconCheckBox.checked
@@ -118,7 +118,7 @@ Item {
                     onCheckedChanged: if(checked) button.layoutDirection = Qt.LeftToRight
                 }
                 XRadioButton {
-                    style                   : mainStyle
+                    style           : mainStyle
                     exclusiveGroup  : buttonLayoutExGp
                     label.text      : "RightToLeft"
                     enabled         : button.icon !== showIconCheckBox.checked
