@@ -9,11 +9,13 @@ uri = com.armax.controls
 # Input
 SOURCES += \
     controls_plugin.cpp \
-    xcheckable_p.cpp
+    xcheckable_p.cpp \
+    xexclusivegroup.cpp
 
 HEADERS += \
     controls_plugin.h \
-    xcheckable_p.h
+    xcheckable_p.h \
+    xexclusivegroup.h
 
 OTHER_FILES = \
     qmldir \

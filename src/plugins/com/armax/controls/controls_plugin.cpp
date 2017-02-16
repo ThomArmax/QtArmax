@@ -22,6 +22,7 @@
 ****************************************************************************/
 
 #include "controls_plugin.h"
+#include "xexclusivegroup.h"
 #include "xcheckable_p.h"
 
 #include <QQmlEngine>
@@ -50,6 +51,8 @@ void DataModelsPlugin::registerTypes(const char *uri)
 {
     initResources();
     // @uri com.mycompany.qmlcomponents
+
+    qmlRegisterType<XExclusiveGroup>(uri, 1, 0, "XExclusiveGroup");
 
     const QString filesLocation = fileLocation();
     for (int i = 0; i < int(sizeof(qmldir)/sizeof(qmldir[0])); i++)
