@@ -23,7 +23,7 @@
 
 #include "xexclusivegroup.h"
 
-#include "xcheckable_p.h"
+#include "xcheckable.h"
 
 /**
  * @brief XExclusiveGroup's constructor
@@ -36,24 +36,24 @@ XExclusiveGroup::XExclusiveGroup(QObject *parent)
 }
 
 /**
- * @brief Adds the given XCheckablePrivate into the exclusive group in order to manage it
+ * @brief Adds the given XCheckable into the exclusive group in order to manage it
  * @param checkable checkable to be added
  */
-void XExclusiveGroup::addCheckable(XCheckablePrivate *checkable)
+void XExclusiveGroup::addCheckable(XCheckable *checkable)
 {
     if (!checkable)
         return;
 
     m_checkables << checkable;
-    connect(checkable, &XCheckablePrivate::checkedChanged, this, &XExclusiveGroup::onCheckedChanged);
-    connect(checkable, &XCheckablePrivate::destroyed, this, &XExclusiveGroup::onCheckableDeleted);
+    connect(checkable, &XCheckable::checkedChanged, this, &XExclusiveGroup::onCheckedChanged);
+    connect(checkable, &XCheckable::destroyed, this, &XExclusiveGroup::onCheckableDeleted);
 }
 
 /**
  * @brief Removes the given XCheckable from the XExclusiveGroup
  * @param checkable XCheckable to be removed
  */
-void XExclusiveGroup::removeCheckable(XCheckablePrivate *checkable)
+void XExclusiveGroup::removeCheckable(XCheckable *checkable)
 {
     if (!m_checkables.contains(checkable))
         return;
@@ -68,7 +68,7 @@ void XExclusiveGroup::removeCheckable(XCheckablePrivate *checkable)
  */
 void XExclusiveGroup::onCheckedChanged()
 {
-    XCheckablePrivate *checkable = static_cast<XCheckablePrivate*>(QObject::sender());
+    XCheckable *checkable = static_cast<XCheckable*>(QObject::sender());
 
     if (!checkable)
         return;
@@ -76,7 +76,7 @@ void XExclusiveGroup::onCheckedChanged()
     if (!checkable->isChecked())
         return;
 
-    foreach (XCheckablePrivate* c, m_checkables)
+    foreach (XCheckable* c, m_checkables)
         if (c != checkable && c->isChecked())
             c->setChecked(false);
 }
@@ -86,7 +86,7 @@ void XExclusiveGroup::onCheckedChanged()
  */
 void XExclusiveGroup::onCheckableDeleted()
 {
-    XCheckablePrivate *checkable = static_cast<XCheckablePrivate*>(QObject::sender());
+    XCheckable *checkable = static_cast<XCheckable*>(QObject::sender());
 
     if (!checkable)
         return;

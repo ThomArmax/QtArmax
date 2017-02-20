@@ -23,7 +23,7 @@
 
 #include "controls_plugin.h"
 #include "xexclusivegroup.h"
-#include "xcheckable_p.h"
+#include "xcheckable.h"
 
 #include <QQmlEngine>
 #include <QQmlContext>
@@ -37,7 +37,6 @@ static const struct {
     { "XButton"             , 1, 0 },
     { "XSlider"             , 1, 0 },
     { "XProgressBar"        , 1, 0 },
-    { "XCheckable"          , 1, 0 },
     { "XCircularProgress"   , 1, 0 },
     { "XToggleSwitch"       , 1, 0 }
 };
@@ -52,8 +51,6 @@ void DataModelsPlugin::registerTypes(const char *uri)
     initResources();
     // @uri com.mycompany.qmlcomponents
 
-    qmlRegisterType<XExclusiveGroup>(uri, 1, 0, "XExclusiveGroup");
-
     const QString filesLocation = fileLocation();
     for (int i = 0; i < int(sizeof(qmldir)/sizeof(qmldir[0])); i++)
         qmlRegisterType(QUrl(filesLocation + "/" + qmldir[i].type + ".qml"), uri, qmldir[i].major, qmldir[i].minor, qmldir[i].type);
@@ -61,14 +58,13 @@ void DataModelsPlugin::registerTypes(const char *uri)
 
 void DataModelsPlugin::initializeEngine(QQmlEngine *engine, const char *uri)
 {
-    Q_UNUSED(uri);
     Q_UNUSED(engine);
 
     if (isLoadedFromResource())
         engine->addImportPath(QStringLiteral("qrc:/"));
 
-    const char *private_uri = "com.armax.controls.private";
-    qmlRegisterType<XCheckablePrivate>(private_uri, 1, 0, "XCheckablePrivate");
+    qmlRegisterType<XCheckable>(uri, 1, 0, "XCheckable");
+    qmlRegisterType<XExclusiveGroup>(uri, 1, 0, "XExclusiveGroup");
 }
 
 QString DataModelsPlugin::fileLocation() const

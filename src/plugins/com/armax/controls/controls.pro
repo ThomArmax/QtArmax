@@ -9,12 +9,12 @@ uri = com.armax.controls
 # Input
 SOURCES += \
     controls_plugin.cpp \
-    xcheckable_p.cpp \
+    xcheckable.cpp \
     xexclusivegroup.cpp
 
 HEADERS += \
     controls_plugin.h \
-    xcheckable_p.h \
+    xcheckable.h \
     xexclusivegroup.h
 
 OTHER_FILES = \
@@ -24,7 +24,6 @@ OTHER_FILES = \
     XCheckBox.qml \
     XSlider.qml \
     XProgressBar.qml \
-    XCheckable.qml \
     XCircularProgress.qml \
     XToggleSwitch.qml
 
@@ -35,7 +34,6 @@ QML_FILES = \
     XButton.qml \
     XSlider.qml \
     XProgressBar.qml \
-    XCheckable.qml \
     XCircularProgress.qml \
     XToggleSwitch.qml
 

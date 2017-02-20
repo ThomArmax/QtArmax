@@ -27,7 +27,7 @@
 #include <QObject>
 
 
-class XCheckablePrivate;
+class XCheckable;
 
 /**
  * @brief XExclusiveGroup provides a way to declare several
@@ -40,15 +40,15 @@ public:
     explicit XExclusiveGroup(QObject *parent = 0);
 
 public slots:
-    void addCheckable(XCheckablePrivate *checkable);
-    void removeCheckable(XCheckablePrivate *checkable);
+    void addCheckable(XCheckable *checkable);
+    void removeCheckable(XCheckable *checkable);
 
 private slots:
     void onCheckedChanged();
     void onCheckableDeleted();
 
 private:
-    QList<XCheckablePrivate*> m_checkables;
+    QList<XCheckable*> m_checkables;
 };
 
 #endif // XEXCLUSIVEGROUP_H
