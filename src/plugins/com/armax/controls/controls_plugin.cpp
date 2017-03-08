@@ -51,6 +51,9 @@ void ControlsPlugin::registerTypes(const char *uri)
     initResources();
     // @uri com.mycompany.qmlcomponents
 
+    qmlRegisterType<XCheckable>(uri, 1, 0, "XCheckable");
+    qmlRegisterType<XExclusiveGroup>(uri, 1, 0, "XExclusiveGroup");
+
     const QString filesLocation = fileLocation();
     for (int i = 0; i < int(sizeof(qmldir)/sizeof(qmldir[0])); i++)
         qmlRegisterType(QUrl(filesLocation + "/" + qmldir[i].type + ".qml"), uri, qmldir[i].major, qmldir[i].minor, qmldir[i].type);
@@ -59,12 +62,13 @@ void ControlsPlugin::registerTypes(const char *uri)
 void ControlsPlugin::initializeEngine(QQmlEngine *engine, const char *uri)
 {
     Q_UNUSED(engine);
-
-    if (isLoadedFromResource())
-        engine->addImportPath(QStringLiteral("qrc:/"));
+    Q_UNUSED(uri);
 
     qmlRegisterType<XCheckable>(uri, 1, 0, "XCheckable");
     qmlRegisterType<XExclusiveGroup>(uri, 1, 0, "XExclusiveGroup");
+
+    if (isLoadedFromResource())
+        engine->addImportPath(QStringLiteral("qrc:/"));
 }
 
 QString ControlsPlugin::fileLocation() const
