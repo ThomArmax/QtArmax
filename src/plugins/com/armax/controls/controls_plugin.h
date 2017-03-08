@@ -26,7 +26,7 @@
 
 #include <QQmlExtensionPlugin>
 
-class DataModelsPlugin : public QQmlExtensionPlugin
+class ControlsPlugin : public QQmlExtensionPlugin
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QQmlExtensionInterface")
