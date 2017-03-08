@@ -111,7 +111,7 @@ Window {
                 Row {
                     width   : parent.width
                     spacing : 20
-                    ExclusiveGroup { id: styleExGp }
+                    XExclusiveGroup { id: styleExGp }
                     XButton { exclusiveGroup: styleExGp; style: darkBlueStyle; text: "DarkBlue"; checkable: true; onCheckedChanged: if(checked) mainStyle = darkBlueStyle; checked: true }
                     XButton { exclusiveGroup: styleExGp; style: darkRedStyle;  text: "DarkRed";  checkable: true; onCheckedChanged: if(checked) mainStyle = darkRedStyle }
                     XButton { exclusiveGroup: styleExGp; style: flatDarkBlueStyle;  text: "FlatDarkBlue";  checkable: true; onCheckedChanged: if(checked) mainStyle = flatDarkBlueStyle }

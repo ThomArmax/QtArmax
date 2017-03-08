@@ -22,7 +22,6 @@
 ****************************************************************************/
 
 import QtQuick 2.0
-import QtQuick.Controls 1.0
 
 import com.armax.controls 1.0
 
@@ -108,9 +107,9 @@ Item {
                     height                  : parent.implicitHeight
                     verticalAlignment       : Text.AlignVCenter
                 }
-                ExclusiveGroup { id: buttonLayoutExGp }
+                XExclusiveGroup { id: buttonLayoutExGp }
                 XRadioButton {
-                    style                   : mainStyle
+                    style           : mainStyle
                     exclusiveGroup  : buttonLayoutExGp
                     label.text      : "LeftToRight"
                     enabled         : button.icon !== showIconCheckBox.checked
@@ -118,7 +117,7 @@ Item {
                     onCheckedChanged: if(checked) button.layoutDirection = Qt.LeftToRight
                 }
                 XRadioButton {
-                    style                   : mainStyle
+                    style           : mainStyle
                     exclusiveGroup  : buttonLayoutExGp
                     label.text      : "RightToLeft"
                     enabled         : button.icon !== showIconCheckBox.checked

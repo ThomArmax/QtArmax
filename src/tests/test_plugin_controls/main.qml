@@ -23,7 +23,6 @@
 
 import QtQuick 2.2
 import QtQuick.Window 2.1
-import QtQuick.Controls 1.1
 
 import com.armax.controls 1.0
 import com.armax.styles 1.0
@@ -174,7 +173,7 @@ Window {
             Item {
                 width   : __controlsWidth
                 height  : parent.height
-                ExclusiveGroup { id: radioEX }
+                XExclusiveGroup { id: radioEX }
                 Row {
                     width           : implicitWidth
                     height          : parent.height

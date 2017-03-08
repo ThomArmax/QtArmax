@@ -22,7 +22,8 @@
 ****************************************************************************/
 
 #include "controls_plugin.h"
-#include "xcheckable_p.h"
+#include "xexclusivegroup.h"
+#include "xcheckable.h"
 
 #include <QQmlEngine>
 #include <QQmlContext>
@@ -36,7 +37,6 @@ static const struct {
     { "XButton"             , 1, 0 },
     { "XSlider"             , 1, 0 },
     { "XProgressBar"        , 1, 0 },
-    { "XCheckable"          , 1, 0 },
     { "XCircularProgress"   , 1, 0 },
     { "XToggleSwitch"       , 1, 0 }
 };
@@ -46,36 +46,39 @@ static void initResources()
     Q_INIT_RESOURCE(QtArmaxControlsPlugin);
 }
 
-void DataModelsPlugin::registerTypes(const char *uri)
+void ControlsPlugin::registerTypes(const char *uri)
 {
     initResources();
     // @uri com.mycompany.qmlcomponents
+
+    qmlRegisterType<XCheckable>(uri, 1, 0, "XCheckable");
+    qmlRegisterType<XExclusiveGroup>(uri, 1, 0, "XExclusiveGroup");
 
     const QString filesLocation = fileLocation();
     for (int i = 0; i < int(sizeof(qmldir)/sizeof(qmldir[0])); i++)
         qmlRegisterType(QUrl(filesLocation + "/" + qmldir[i].type + ".qml"), uri, qmldir[i].major, qmldir[i].minor, qmldir[i].type);
 }
 
-void DataModelsPlugin::initializeEngine(QQmlEngine *engine, const char *uri)
+void ControlsPlugin::initializeEngine(QQmlEngine *engine, const char *uri)
 {
-    Q_UNUSED(uri);
     Q_UNUSED(engine);
+    Q_UNUSED(uri);
+
+    qmlRegisterType<XCheckable>(uri, 1, 0, "XCheckable");
+    qmlRegisterType<XExclusiveGroup>(uri, 1, 0, "XExclusiveGroup");
 
     if (isLoadedFromResource())
         engine->addImportPath(QStringLiteral("qrc:/"));
-
-    const char *private_uri = "com.armax.controls.private";
-    qmlRegisterType<XCheckablePrivate>(private_uri, 1, 0, "XCheckablePrivate");
 }
 
-QString DataModelsPlugin::fileLocation() const
+QString ControlsPlugin::fileLocation() const
 {
     if (isLoadedFromResource())
         return "qrc:/com/armax/controls";
     return baseUrl().toString();
 }
 
-bool DataModelsPlugin::isLoadedFromResource() const
+bool ControlsPlugin::isLoadedFromResource() const
 {
     // If one file is missing, it will load all the files from the resource
 //    QFile file(baseUrl().toLocalFile() + "/ApplicationWindow.qml");

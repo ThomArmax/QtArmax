@@ -21,15 +21,17 @@
 **
 ****************************************************************************/
 
-#include "xcheckable_p.h"
+#include "xcheckable.h"
+#include "xexclusivegroup.h"
 
-XCheckablePrivate::XCheckablePrivate(QQuickItem *parent):
+XCheckable::XCheckable(QQuickItem *parent):
     QQuickItem      (parent),
     m_checkable     (true),
     m_hoverEnabled  (false),
     m_pressed       (false),
     m_checked       (false),
-    m_hovered       (false)
+    m_hovered       (false),
+    m_exclusiveGroup(NULL)
 {
     setAcceptHoverEvents(m_hoverEnabled);
     setAcceptedMouseButtons(Qt::LeftButton);
@@ -37,13 +39,13 @@ XCheckablePrivate::XCheckablePrivate(QQuickItem *parent):
 }
 
 /**
- * @brief Destroys the XCheckablePrivate instance
+ * @brief Destroys the XCheckable instance
  */
-XCheckablePrivate::~XCheckablePrivate()
+XCheckable::~XCheckable()
 {
 }
 
-void XCheckablePrivate::mousePressEvent(QMouseEvent *event)
+void XCheckable::mousePressEvent(QMouseEvent *event)
 {
     Q_UNUSED(event)
     setHovered(false);
@@ -56,7 +58,7 @@ void XCheckablePrivate::mousePressEvent(QMouseEvent *event)
  * @param event
  * @todo Avoid emitting checked, clicked, pressed and CO if the event is catch outside of the component
  */
-void XCheckablePrivate::mouseReleaseEvent(QMouseEvent *event)
+void XCheckable::mouseReleaseEvent(QMouseEvent *event)
 {
     Q_UNUSED(event);
 
@@ -67,6 +69,10 @@ void XCheckablePrivate::mouseReleaseEvent(QMouseEvent *event)
             setChecked(!isChecked());
         }
         emit clicked();
+        // set toogled to true if the XCheckable is in
+        // an XExclusveGroup and if it is checkable
+        if (m_exclusiveGroup && m_checkable)
+            setChecked(true);
     }
 
     setPressed(false);
@@ -77,17 +83,17 @@ void XCheckablePrivate::mouseReleaseEvent(QMouseEvent *event)
     emit released();
 }
 
-void XCheckablePrivate::hoverEnterEvent(QHoverEvent */*event*/)
+void XCheckable::hoverEnterEvent(QHoverEvent */*event*/)
 {
     setHovered( m_hoverEnabled );
 }
 
-void XCheckablePrivate::hoverLeaveEvent(QHoverEvent */*event*/)
+void XCheckable::hoverLeaveEvent(QHoverEvent */*event*/)
 {
     setHovered(false);
 }
 
-void XCheckablePrivate::setHoverEnabled(const bool enabled)
+void XCheckable::setHoverEnabled(const bool enabled)
 {
     if(m_hoverEnabled != enabled)
     {
@@ -98,7 +104,7 @@ void XCheckablePrivate::setHoverEnabled(const bool enabled)
     }
 }
 
-void XCheckablePrivate::setHovered(const bool hovered)
+void XCheckable::setHovered(const bool hovered)
 {
     bool newHovered = hovered && m_hoverEnabled;
     if(m_hovered != newHovered)
@@ -108,7 +114,7 @@ void XCheckablePrivate::setHovered(const bool hovered)
     }
 }
 
-void XCheckablePrivate::setCheckable(const bool checkable)
+void XCheckable::setCheckable(const bool checkable)
 {
     if (m_checkable != checkable) {
         m_checkable = checkable;
@@ -120,7 +126,17 @@ void XCheckablePrivate::setCheckable(const bool checkable)
     }
 }
 
-void XCheckablePrivate::setPressed(const bool pressed)
+void XCheckable::setExclusiveGroup(XExclusiveGroup *exclusiveGroup)
+{
+    if (m_exclusiveGroup != exclusiveGroup) {
+        m_exclusiveGroup = exclusiveGroup;
+        if (m_exclusiveGroup)
+            m_exclusiveGroup->addCheckable(this);
+        emit exclusiveGroupChanged();
+    }
+}
+
+void XCheckable::setPressed(const bool pressed)
 {
     if(m_pressed != pressed)
     {
@@ -129,7 +145,7 @@ void XCheckablePrivate::setPressed(const bool pressed)
     }
 }
 
-void XCheckablePrivate::setChecked(const bool checked)
+void XCheckable::setChecked(const bool checked)
 {
     if (m_checkable && m_checked != checked)
     {
@@ -139,7 +155,7 @@ void XCheckablePrivate::setChecked(const bool checked)
     }
 }
 
-void XCheckablePrivate::onEnabledChanged()
+void XCheckable::onEnabledChanged()
 {
     if(!isEnabled()) {
         setChecked(false);

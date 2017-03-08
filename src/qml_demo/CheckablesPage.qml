@@ -22,7 +22,6 @@
 ****************************************************************************/
 
 import QtQuick 2.0
-import QtQuick.Controls 1.0
 
 import com.armax.controls 1.0
 import com.armax.styles 1.0
@@ -33,7 +32,7 @@ Item {
     height  : 280
     property int __controlsWidth
 
-    ExclusiveGroup {
+    XExclusiveGroup {
         id: exGp
     }
     property XStyle style : XDarkBlueStyle {}

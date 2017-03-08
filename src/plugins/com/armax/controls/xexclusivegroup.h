@@ -21,24 +21,34 @@
 **
 ****************************************************************************/
 
-#ifndef CONTROLS_PLUGIN_H
-#define CONTROLS_PLUGIN_H
+#ifndef XEXCLUSIVEGROUP_H
+#define XEXCLUSIVEGROUP_H
 
-#include <QQmlExtensionPlugin>
+#include <QObject>
 
-class ControlsPlugin : public QQmlExtensionPlugin
+
+class XCheckable;
+
+/**
+ * @brief XExclusiveGroup provides a way to declare several
+ * checkable controls as mutually exclusive
+ */
+class XExclusiveGroup : public QObject
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QQmlExtensionInterface")
-
 public:
-    void registerTypes(const char *uri);
-    void initializeEngine(QQmlEngine *engine, const char *uri);
+    explicit XExclusiveGroup(QObject *parent = 0);
+
+public slots:
+    void addCheckable(XCheckable *checkable);
+    void removeCheckable(XCheckable *checkable);
+
+private slots:
+    void onCheckedChanged();
+    void onCheckableDeleted();
 
 private:
-    QString fileLocation() const;
-    bool isLoadedFromResource() const;
+    QList<XCheckable*> m_checkables;
 };
 
-#endif // CONTROLS_PLUGIN_H
-
+#endif // XEXCLUSIVEGROUP_H
