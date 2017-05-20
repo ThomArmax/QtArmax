@@ -30,7 +30,7 @@
 void ArmaxPlugin::registerTypes(const char *uri)
 {
     // @uri com.armax
-    qmlRegisterType<XPen>();
+    qmlRegisterType<XPen>(uri, 1, 0, "XPen");
     qmlRegisterType<XPolygon>(uri, 1, 0, "XPolygon");
     qmlRegisterType<XRegularPolygon>(uri, 1, 0, "XRegularPolygon");
 }
