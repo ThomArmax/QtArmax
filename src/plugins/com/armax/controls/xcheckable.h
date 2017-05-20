@@ -47,12 +47,6 @@ public:
                         XCheckable              (QQuickItem *parent = 0);
                         ~XCheckable             ();
 
-    // Overridden from QQuickItem
-    virtual void        mouseReleaseEvent       (QMouseEvent * event);
-    virtual void        mousePressEvent         (QMouseEvent * event);
-    virtual void        hoverEnterEvent         (QHoverEvent * event);
-    virtual void        hoverLeaveEvent         (QHoverEvent * event);
-
     bool                isHoverEnabled          () const { return m_hoverEnabled; } /**< @return the hoverEnabled property */
     bool                isPressed               () const { return m_pressed; }      /**< @return the pressed property */
     bool                isChecked               () const { return m_checked; }      /**< @return the checked property */
@@ -66,6 +60,13 @@ public slots:
     void                setChecked              (const bool checked);
     void                setCheckable            (const bool checkable);
     void                setExclusiveGroup       (XExclusiveGroup *exclusiveGroup);
+
+protected:
+    // Overridden from QQuickItem
+    virtual void        mouseReleaseEvent       (QMouseEvent * event) Q_DECL_OVERRIDE;
+    virtual void        mousePressEvent         (QMouseEvent * event) Q_DECL_OVERRIDE;
+    virtual void        hoverEnterEvent         (QHoverEvent * event) Q_DECL_OVERRIDE;
+    virtual void        hoverLeaveEvent         (QHoverEvent * event) Q_DECL_OVERRIDE;
 
 private slots:
     void                onEnabledChanged        ();
