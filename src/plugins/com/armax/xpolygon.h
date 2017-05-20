@@ -71,6 +71,7 @@ public:
     ~XPolygon();
 
     void paint(QPainter *painter);
+    bool contains(const QPointF &point) const;
 
     QPolygonF polygon() const;
     void setPolygon(const QPolygonF &polygon);

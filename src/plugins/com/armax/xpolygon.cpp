@@ -173,3 +173,8 @@ void XPolygon::paint(QPainter *painter)
     if (m_border->isValid())
         painter->drawPath(path);
 }
+
+bool XPolygon::contains(const QPointF &point) const
+{
+    return m_polygon.contains(point);
+}
