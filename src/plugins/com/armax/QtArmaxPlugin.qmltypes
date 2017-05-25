@@ -53,4 +53,13 @@ Module {
             Parameter { name: "angle"; type: "double" }
         }
     }
+    Component {
+        prototype: "QQuickItem"
+        name: "com.armax/XPolygonMask 1.0"
+        exports: ["com.armax/XPolygonMask 1.0"]
+        exportMetaObjectRevisions: [0]
+        isComposite: true
+        defaultProperty: "data"
+        Property { name: "polygon"; type: "XPolygon"; isPointer: true }
+    }
 }

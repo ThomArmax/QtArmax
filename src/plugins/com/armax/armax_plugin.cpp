@@ -25,19 +25,31 @@
 #include "xpolygon.h"
 #include "xregularpolygon.h"
 
-#include <QtQml>
+#include <QQmlEngine>
+#include <QQmlContext>
+
+static const struct {
+    const char *type;
+    int major, minor;
+} qmldir [] = {
+    { "XPolygonMask", 1, 0 }
+};
 
 void ArmaxPlugin::registerTypes(const char *uri)
 {
+    Q_INIT_RESOURCE(QtArmaxPlugin);
+
     // @uri com.armax
     qmlRegisterType<XPen>(uri, 1, 0, "XPen");
     qmlRegisterType<XPolygon>(uri, 1, 0, "XPolygon");
     qmlRegisterType<XRegularPolygon>(uri, 1, 0, "XRegularPolygon");
+
+    for (int i = 0; i < int(sizeof(qmldir)/sizeof(qmldir[0])); i++)
+        qmlRegisterType(QUrl(QString("qrc:/com/armax/") + qmldir[i].type + ".qml"), uri, qmldir[i].major, qmldir[i].minor, qmldir[i].type);
 }
 
 void ArmaxPlugin::initializeEngine(QQmlEngine *engine, const char *uri)
 {
     Q_UNUSED(uri);
-    Q_UNUSED(engine);
+    engine->addImportPath(QStringLiteral("qrc:/"));
 }
-
