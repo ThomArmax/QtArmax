@@ -26,6 +26,9 @@
 
 #include "xpolygon.h"
 
+/**
+ * @brief A regulator polygon item
+ */
 class XRegularPolygon : public XPolygon
 {
     Q_OBJECT
@@ -41,7 +44,15 @@ public:
     void setAngle(qreal angle);
 
 signals:
+    /**
+     * @brief Emitted when the faces property changed
+     * @param faces
+     */
     void facesChanged(uint faces);
+    /**
+     * @brief Emitted when the angle protopery changed
+     * @param angle
+     */
     void angleChanged(qreal angle);
 
 private slots:

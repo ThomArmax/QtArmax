@@ -58,6 +58,9 @@ private:
     bool m_valid : 1;
 };
 
+/**
+ * @brief XPolygon is polygon item
+ */
 class XPolygon : public QQuickPaintedItem
 {
     Q_OBJECT
@@ -82,7 +85,19 @@ public:
     XPen * border() const;
 
 signals:
+    /**
+     * @brief Emittied when the polygon changed
+     * @param polygon
+     * @sa polygon()
+     * @sa setPolygon()
+     */
     void polygonChanged(QPolygonF polygon);
+    /**
+     * @brief Emitted when the color changed
+     * @param color
+     * @sa color()
+     * @sa setColor()
+     */
     void colorChanged(QColor color);
 
 private:

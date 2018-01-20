@@ -25,6 +25,10 @@
 
 #include <QtMath>
 
+/**
+ * @brief Constructs a new regular polygon
+ * @param parent
+ */
 XRegularPolygon::XRegularPolygon(QQuickItem *parent)
     : XPolygon(parent)
     , m_faces(3)
@@ -36,11 +40,22 @@ XRegularPolygon::XRegularPolygon(QQuickItem *parent)
     connect(this, SIGNAL(implicitWidthChanged()), this, SLOT(updatePolygon()));
 }
 
+/**
+ * @brief Returns the number of faces of the polygon
+ * @return the number of faces of the polygon
+ * @sa setFaces()
+ */
 uint XRegularPolygon::faces() const
 {
     return m_faces;
 }
 
+/**
+ * @brief Sets the number of faces of the polygon
+ * @param faces
+ * @sa faces()
+ * @sa facesChanged()
+ */
 void XRegularPolygon::setFaces(uint faces)
 {
     if (m_faces == faces)
@@ -56,11 +71,22 @@ void XRegularPolygon::setFaces(uint faces)
     emit facesChanged(faces);
 }
 
+/**
+ * @brief Returns the rotation angle of the polygon
+ * @return the rotation angle of the polygon
+ * @sa setAngle()
+ */
 qreal XRegularPolygon::angle() const
 {
     return m_angle;
 }
 
+/**
+ * @brief Sets the angle of the polygon
+ * @param angle
+ * @sa angle()
+ * @sa angleChanged()
+ */
 void XRegularPolygon::setAngle(qreal angle)
 {
     if (m_angle == angle)
@@ -71,6 +97,9 @@ void XRegularPolygon::setAngle(qreal angle)
     updatePolygon();
 }
 
+/**
+ * @brief Updates the polygon
+ */
 void XRegularPolygon::updatePolygon()
 {
     QPolygonF p;

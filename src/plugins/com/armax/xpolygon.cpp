@@ -89,6 +89,10 @@ bool XPen::isValid() const
  * XPolygon
  *******************************************************************/
 
+/**
+ * @brief Default constructo. Consturcts a new XPolygon
+ * @param parent
+ */
 XPolygon::XPolygon(QQuickItem *parent)
     : QQuickPaintedItem(parent)
     , m_color(Qt::black)
@@ -98,6 +102,11 @@ XPolygon::XPolygon(QQuickItem *parent)
     connect(m_border, SIGNAL(penChanged()), this, SLOT(update()));
 }
 
+/**
+ * @brief Constructs a new polygon based on the given QPolygon @p polygon
+ * @param polygon
+ * @param parent
+ */
 XPolygon::XPolygon(const QPolygon &polygon, QQuickItem *parent)
     : QQuickPaintedItem(parent)
     , m_polygon(polygon)
@@ -108,6 +117,11 @@ XPolygon::XPolygon(const QPolygon &polygon, QQuickItem *parent)
     connect(m_border, SIGNAL(penChanged()), this, SLOT(update()));
 }
 
+/**
+ * @brief Constructs a new polygon based on the given QPolygonf @p polygon
+ * @param polygon
+ * @param parent
+ */
 XPolygon::XPolygon(const QPolygonF &polygon, QQuickItem *parent)
     : QQuickPaintedItem(parent)
     , m_polygon(polygon)
@@ -118,16 +132,30 @@ XPolygon::XPolygon(const QPolygonF &polygon, QQuickItem *parent)
     connect(m_border, SIGNAL(penChanged()), this, SLOT(update()));
 }
 
+/**
+ * @brief Destroyes the XPolygon
+ */
 XPolygon::~XPolygon()
 {
 
 }
 
+/**
+ * @brief Returns the color property
+ * @return the color property
+ * @sa setColor()
+ */
 QColor XPolygon::color() const
 {
     return m_color;
 }
 
+/**
+ * @brief Sets the color property
+ * @param color
+ * @sa color()
+ * @sa colorChanged()
+ */
 void XPolygon::setColor(const QColor &color)
 {
     if (m_color == color)
@@ -137,16 +165,33 @@ void XPolygon::setColor(const QColor &color)
     emit colorChanged(color);
 }
 
+/**
+ * @brief Returns the border property
+ * @return the border property
+ * @sa setBorder()
+ * @sa borderChanged()
+ */
 XPen * XPolygon::border() const
 {
     return m_border;
 }
 
+/**
+ * @brief Returns the polygon property
+ * @return the polygon property
+ * @sa setPolygon()
+ */
 QPolygonF XPolygon::polygon() const
 {
     return m_polygon;
 }
 
+/**
+ * @brief Sets the polygon property
+ * @param polygon
+ * @sa polygon()
+ * @sa polygonChanged()
+ */
 void XPolygon::setPolygon(const QPolygonF &polygon)
 {
     if (m_polygon == polygon)
@@ -157,6 +202,10 @@ void XPolygon::setPolygon(const QPolygonF &polygon)
     update();
 }
 
+/**
+ * @brief Paints the polygon
+ * @param painter
+ */
 void XPolygon::paint(QPainter *painter)
 {
     QPainterPath path;
@@ -174,6 +223,11 @@ void XPolygon::paint(QPainter *painter)
         painter->drawPath(path);
 }
 
+/**
+ * @brief Tells whether the XPolygon contains the given @p point or not
+ * @param point
+ * @return true if @p point is contained into the polygon; false otherwise
+ */
 bool XPolygon::contains(const QPointF &point) const
 {
     return m_polygon.contains(point);
