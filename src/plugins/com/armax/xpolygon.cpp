@@ -90,7 +90,7 @@ bool XPen::isValid() const
  *******************************************************************/
 
 /**
- * @brief Default constructo. Consturcts a new XPolygon
+ * @brief Default constructor. Consturcts a new XPolygon
  * @param parent
  */
 XPolygon::XPolygon(QQuickItem *parent)
