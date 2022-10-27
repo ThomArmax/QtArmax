@@ -35,7 +35,7 @@ class XPen : public QObject
     Q_PROPERTY(QColor color READ color WRITE setColor NOTIFY penChanged)
     Q_PROPERTY(bool pixelAligned READ pixelAligned WRITE setPixelAligned NOTIFY penChanged)
 public:
-    XPen(QObject *parent=0);
+    XPen(QObject *parent = Q_NULLPTR);
 
     qreal width() const;
     void setWidth(qreal w);
@@ -69,8 +69,8 @@ class XPolygon : public QQuickPaintedItem
     Q_PROPERTY(XPen * border READ border CONSTANT)
 public:
     explicit XPolygon(QQuickItem *parent = 0);
-    XPolygon(const QPolygon &polygon, QQuickItem *parent = 0);
-    XPolygon(const QPolygonF &polygon, QQuickItem *parent = 0);
+    XPolygon(const QPolygon &polygon, QQuickItem *parent = Q_NULLPTR);
+    XPolygon(const QPolygonF &polygon, QQuickItem *parent = Q_NULLPTR);
     ~XPolygon();
 
     void paint(QPainter *painter);

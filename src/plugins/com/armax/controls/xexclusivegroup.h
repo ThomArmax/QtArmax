@@ -37,7 +37,7 @@ class XExclusiveGroup : public QObject
 {
     Q_OBJECT
 public:
-    explicit XExclusiveGroup(QObject *parent = 0);
+    explicit XExclusiveGroup(QObject *parent = Q_NULLPTR);
 
 public slots:
     void addCheckable(XCheckable *checkable);

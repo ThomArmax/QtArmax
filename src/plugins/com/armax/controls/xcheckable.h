@@ -44,7 +44,7 @@ class XCheckable : public QQuickItem
     Q_PROPERTY(XExclusiveGroup* exclusiveGroup  READ exclusiveGroup WRITE setExclusiveGroup NOTIFY exclusiveGroupChanged)
 
 public:
-                        XCheckable              (QQuickItem *parent = 0);
+                        XCheckable              (QQuickItem *parent = Q_NULLPTR);
                         ~XCheckable             ();
 
     bool                isHoverEnabled          () const { return m_hoverEnabled; } /**< @return the hoverEnabled property */
