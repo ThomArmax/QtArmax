@@ -25,6 +25,7 @@
 
 #include <QPainter>
 #include <QDebug>
+#include <QPainterPath>
 
 /*******************************************************************
  * XPen
