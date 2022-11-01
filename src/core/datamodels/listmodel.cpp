@@ -520,7 +520,8 @@ bool ListModel::selectIndex(const int &row)
         foreach(AbstractListItem *item, m_list)
             item->setIsSelected(false);
 
-        m_list.at(m_selectedIndex)->setIsSelected(true);
+        if (row >= 0 && row < (m_list.size() - 1))
+            m_list.at(m_selectedIndex)->setIsSelected(true);
 
         emit selectedIndexChanged();
         emit selectedItemChanged();
