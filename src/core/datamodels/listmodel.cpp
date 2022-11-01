@@ -361,7 +361,7 @@ AbstractListItem * ListModel::find(const QVariant &toFind, const int &role) cons
 QModelIndex ListModel::indexFromItem(const AbstractListItem *item) const
 {
     Q_ASSERT(item);
-    for(int row=0; row<m_list.size(); ++row)
+    for(int row = 0; row < m_list.size(); ++row)
     {
         if(m_list.at(row) == item)
         {
